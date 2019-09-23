@@ -2,7 +2,7 @@
 
 return [
     'database' => [
-        'name' => 'phpdasar',
+        'name' => 'users',
         'username' => 'root',
         'password' => 'root',
         'connection' => 'mysql:host=127.0.0.1',

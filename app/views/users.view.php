@@ -1,14 +1,20 @@
 <?php require('partials/head.php'); ?>
 
-<h1>Homepage</h1>
+<h1>All users</h1>
 
 
+<ul>
+    <?php foreach ($users as $user) : ?>
+    <li><?= $user->name; ?></li>
+    <?php endforeach; ?>
+</ul>
 
-<form action="/names" method="POST">
+<!-- 
+<form action="/users" method="POST">
     <label for="name">Name:</label>
     <input name="name" type="text">
     <button type="submit">Submit</button>
-</form>
+</form> -->
 
 
 <?php require('partials/footer.php'); ?>
