@@ -20,4 +20,8 @@ class PagesController
         // require 'views/contact.view.php';
         view('contact');
     }
+    public function login()
+    {
+        view('login');
+    }
 }
