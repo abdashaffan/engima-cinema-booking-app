@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar white-background">
     <div class="left-navbar">
         <div>
             <b class="blue-color">Engi</b>ma

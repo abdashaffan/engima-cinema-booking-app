@@ -104,8 +104,16 @@ form label {
   color: #2d9cdb;
 }
 
+
+/* Basic color pallete */
 .blue-color {
   color: #2f80ed;
+}
+.black-background {
+  background-color: #393939;
+}
+.white-background {
+  background-color: #fff;
 }
 
 /* Navigation Bar */
