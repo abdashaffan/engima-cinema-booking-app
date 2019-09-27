@@ -1,0 +1,1 @@
+Bikin redirect ke 404 kalo routenya gaada
