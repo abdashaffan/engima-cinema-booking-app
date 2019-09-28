@@ -1,10 +1,19 @@
+<?php
+$loginErrMsg = "";
+if (isset($invalidLogin) && $invalidLogin) {
+    $loginErrMsg = $loginErrMsg .  "<span class='invalid'>Invalid credentials</span>";
+}
+?>
 <div class="card">
     <span class="form-header">Welcome to <b>Engi</b>ma!</span>
-    <form action="" method="post">
+    <form action="<?= BASE_URL; ?>/login/validate" method="POST">
         <label for="email">Email</label>
         <input type="email" name="email" required class="input" placeholder="john@doe.com">
         <label for="password">Password</label>
         <input type="password" name="password" required class="input" placeholder="Insert password">
+        <?php if ($loginErrMsg !== "") : ?>
+        <?= $loginErrMsg; ?>
+        <?php endif; ?>
         <button type="submit" name="submit" class="btn form-btn">Login</button>
     </form>
     <span class="form-card-footer">

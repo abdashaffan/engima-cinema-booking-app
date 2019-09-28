@@ -9,11 +9,11 @@ class HomeController extends Controller
         parent::__construct('home');
     }
 
-    public function index()
+    public function index($username = "")
     {
         $data['judul'] = 'Home/index';
         $data['css'] = $this->cssPath . "/style.css";
-        $data['user_name'] = $this->model('User')->getUser();
+        $data['user_name'] = $username;
         $data['films'] = $this->model('Film')->getAllCurrentFilm();
         $this->view('templates/header', $data);
         $this->view('templates/nav');
