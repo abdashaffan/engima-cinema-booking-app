@@ -6,7 +6,7 @@
     <div class="list-film">
         <?php foreach ($films as $key => $film): ?>
             <div>
-                <?php echo "<img src='/public/assets/img/".$film['thumbnail']."'>" ?>
+                <?php echo "<img src='/public/assets/img/film/".$film['thumbnail']."'>" ?>
                 <div>
                     <h3><?php echo $film['title'] ?></h3>
                     <div class='rating'>
