@@ -5,8 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="<?= BASE_CSS; ?>">
-        <link rel="stylesheet" href="<?= $css; ?>">
+        <link rel="stylesheet" type="text/css" href="<?= BASE_CSS; ?>" />
+        <link rel="stylesheet" type="text/css" href="<?= $css; ?>" />
         <title><?= $judul; ?></title>
     </head>
     <!-- <nav style="display:block;">
