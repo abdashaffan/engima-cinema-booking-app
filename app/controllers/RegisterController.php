@@ -13,7 +13,6 @@ class RegisterController extends Controller
     public function index()
     {
 
-        var_dump("Register/index");
         $data['judul'] = 'Register/index';
         $data['css'] = $this->cssPath . "/style.css";
         $data['js'] = $this->jsPath . "/index.js";
@@ -22,20 +21,47 @@ class RegisterController extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function validateUsername()
+    public function validateUsername($str)
     {
-        var_dump($_GET['username']);
-        $data['username'] = $_GET['username'];
-        $data['css'] = $this->cssPath . "/style.css";
-        $data['js'] = $this->jsPath;
+        // $data['username'] = $_GET['username'];
+        // $data['css'] = $this->cssPath . "/style.css";
+        // $data['js'] = $this->jsPath;
 
 
-        if (!$this->model('Register')->checkIfUsernameExist($data['username'])) {
-            $data["usernameExistMsg"] = "Username {$data["username"]} is already exist!";
+        // if (!$this->model('Register')->checkIfUsernameExist($data['username'])) {
+        //     $data["usernameExistMsg"] = "Username {$data["username"]} is already exist!";
+        // }
+
+        // $this->view('templates/header', $data);
+        // $this->view('register/index', $data);
+        // $this->view('templates/footer', $data);
+    }
+
+    public function add()
+    {
+
+        // ALGORITMA MANGGIL MODEL BUAT VALIDASI
+
+        #Your code here
+
+
+        // SEBELUM JALANIN CODE DIBAWAH SEMUA DATA HARUS DIVALIDASI DULU DIATAS
+        $tmpProfileLocation = $_FILES['profile']['tmp_name'];
+        $storedPassword =  password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $profileExtension = explode('/', $_FILES['profile']['type'])[1];
+        $savedLocation = "{$_SERVER["DOCUMENT_ROOT"]}/active/app/database/img/users/{$_POST['username']}.{$profileExtension}";
+
+        if (move_uploaded_file($tmpProfileLocation, $savedLocation)) {
+            $data = [];
+            $data['username'] = $_POST["username"];
+            $data['password'] = $storedPassword;
+            $data['email'] = $_POST['email'];
+            $data['profile_picture'] = "app/database/img/users/{$_POST['username']}.{$profileExtension}";
+            $data['phone_num'] = $_POST['phone-number'];
+
+            if ($this->model('Register')->addNewUser($data) > 0) {
+                $this->redirect(BASE_URL . '/login');
+            }
         }
-
-        $this->view('templates/header', $data);
-        $this->view('register/index', $data);
-        $this->view('templates/footer', $data);
     }
 }
