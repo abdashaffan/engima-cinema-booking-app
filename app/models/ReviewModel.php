@@ -12,7 +12,7 @@ class ReviewModel
 
     }
 
-    public function addNewUser($data)
+    public function addNewUserReview($data)
     {
         $query =
             "INSERT INTO {$this->table} (
@@ -37,5 +37,13 @@ class ReviewModel
         $this->db->execute();
 
         return $this->db->rowCount();
+    }
+    public function getReviewedFilmName($film_id)
+    {
+        $this->db->query(
+            "SELECT title FROM {$this->table} r INNER JOIN film f ON r.film_id=f.film_id WHERE f.film_id = :id"
+        );
+        $this->db->bind('id', $film_id);
+        return $this->db->resultSet();
     }
 }

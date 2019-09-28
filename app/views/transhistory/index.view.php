@@ -39,9 +39,9 @@
                     if($currdate>$date){
                       
                       if($transaction['status']==0){
-                        echo ("<button type=\"submit\" class=\"AddBtn\">Add Review</button>
-                        <input type=\"hidden\" name=\"transaction_id\" value = ".$transaction['transaction_id'].">
-                        <input type=\"hidden\" name=\"film_id\" value=".$transaction['film_id'].">");
+                        echo ("<input type=\"hidden\" name=\"transaction_id\" value = ".$transaction['transaction_id'].">
+                        <input type=\"hidden\" name=\"film_id\" value=".$transaction['film_id'].">
+                        <button type=\"submit\" class=\"AddBtn\">Add Review</button>);");
                       }
                       else{
                         echo "

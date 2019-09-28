@@ -12,7 +12,9 @@
   <form id="review" action="<?= BASE_URL; ?>/public/review/add" method="post">
     <div class="flex">
       <button type="button" class="iconbtn"><</button>
-      <h1>Avengers Endgame</h1>
+      <?php
+        echo "<h1>".$film_name[0]['title']."</h1>";
+        ?>
     </div>
     <div class="flexmid">
       <div><h3>Add Rating</h3></div>

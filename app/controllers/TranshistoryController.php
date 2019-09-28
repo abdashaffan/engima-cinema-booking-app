@@ -27,10 +27,10 @@ class TranshistoryController extends Controller
     // }
     public function toreview(){
         $data = [];
-        $data['film_id'] = $_GET["film_id"];
-        $data['transaction_id'] = $_GET['transaction_id'];
-        echo($data['film_id']);
-        echo($data['transaction_id']);
-        $this->redirect(BASE_URL . "/" . "public" . "/" . "review" . "?" . $data['film_id'] . "," . $data['transaction_id']);
+        // HARDCODED
+        $data['film_id'] = 1;
+        $data['transaction_id'] = 1;
+        var_dump($data['film_id']);
+        $this->redirect(BASE_URL . "/" . "public" . "/" . "review" . "?filmid=" . $data['film_id'] . "&transid=" . $data['transaction_id']);
     }
 }
