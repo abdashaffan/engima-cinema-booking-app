@@ -35,8 +35,17 @@
                     $currdatestr = date('Y-m-d H:i:s', time());
                     $currdate = DateTime::createFromFormat('Y-m-d H:i:s', $currdatestr);
                     if($currdate>$date){
-                      // if blom ada review
-                      echo "<button type=\"button\" class=\"AddBtn\">Add Review</button>" ;
+                      
+                      if($transaction['status']==0){
+                        echo "<button type=\"button\" class=\"AddBtn\">Add Review</button>" ;
+                      }
+                      else{
+                        echo "
+                        <div class=\"Btn2\"><div>
+                        <button type=\"button\" class=\"DelBtn\">Delete Review</button></div>
+                        <button type=\"button\" class=\"EdtBtn\">Edit Review</button>
+                        </div>";
+                      }
                     } 
                     else{
                       echo "<h4>Belum Tayang</h4>" ;
