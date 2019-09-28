@@ -1,9 +1,4 @@
 /* Home */
-.list-film img {
-  height: 250px;
-  width: 170px;
-  border-radius: 10px;
-}
 .list-film {
   display: flex;
   flex-wrap: wrap;
@@ -12,7 +7,4 @@
   margin-right: 15px;
   margin-bottom: 20px;
   max-width: 170px;
-}
-.home h3 {
-  margin: 7px 0;
 }

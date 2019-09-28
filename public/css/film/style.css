@@ -2,3 +2,66 @@
 .film-detail {
     display: flex;
 }
+.film-detail-desc {
+    margin: 0 50px
+}
+.film-detail p {
+    margin: 10px 0;
+    color: gray;
+    font-weight: bold;
+}
+.rating span {
+    font-size: 0.8em;
+}
+.film-desc {
+    display: flex;
+    margin-top: 40px;
+}
+.film-schedule {
+    flex: 5;
+}
+.film-review {
+    flex: 4;
+}
+.film-desc .wrapper {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    padding: 30px;
+    margin-right: 20px;
+}
+
+/* Schedule */
+.film-schedule table {
+    width: 100%;
+    color: gray;
+    text-align: left;
+    border-collapse: collapse;
+}
+.table-state {
+    text-align: right;
+}
+.table-seat {
+    color: black;
+}
+.film-schedule td {
+    border-top: 1px solid gray;
+}
+.film-schedule th {
+    border-bottom: 2px solid gray;
+}
+.film-schedule td, .film-schedule th {
+    padding: 10px 30px 10px 0
+}
+td.table-state {
+    padding-right: 0px;
+}
+
+/* Review */
+.film-review img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+.review-detail > div {
+    display: flex;
+}

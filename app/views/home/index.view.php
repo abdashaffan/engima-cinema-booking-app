@@ -6,14 +6,16 @@
     <div class="list-film">
         <?php foreach ($films as $key => $film) : ?>
         <div>
-            <?php echo "<img src='/public/assets/img/" . $film['thumbnail'] . "'>" ?>
+            <?php echo "<img src='/public/assets/img/film/" . $film['thumbnail'] . "'>" ?>
             <div>
-                <h3><?php echo $film['title'] ?></h3>
-                <div class='rating'>
-                    <h3>
-                        <i class='fa fa-star'></i>
-                        <?php echo $film['rating'] ?>
-                    </h3>
+                <div>
+                    <h3><?php echo $film['title'] ?></h3>
+                    <div class='rating'>
+                        <h3>
+                            <i class='fa fa-star'></i>
+                            <?php echo $film['rating'] ?>
+                        </h3>
+                    </div>
                 </div>
             </div>
         </div>

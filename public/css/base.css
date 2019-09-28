@@ -108,11 +108,14 @@ form label {
   font-weight: bold;
   color: #2d9cdb;
 }
-
+/* Heading */
+h3 {
+  margin: 7px 0;
+}
 
 /* Basic color pallete */
 .blue-color {
-  color: #2f80ed;
+  color: #2f80ed !important;
 }
 .black-background {
   background-color: #393939;
@@ -178,7 +181,7 @@ form label {
 .layout-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding: 10vh 50px 0 50px;
+  padding: 10vh 50px 5vh 50px;
   box-sizing: border-box;
 }
 
@@ -188,4 +191,11 @@ form label {
 }
 .rating {
   color: gray;
+}
+
+/* Film Image */
+.film-image-big {
+  height: 250px;
+  width: 170px;
+  border-radius: 10px;
 }
