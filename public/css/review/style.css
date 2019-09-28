@@ -1,0 +1,118 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: rgb(240, 232, 232); 
+ float: right; 
+}
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+ .buttons{
+    align-items: right;
+}
+.savebutton{
+    background-color: #0094cc;
+    border-radius: 5px;
+    color:white;
+    padding-left : 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    align-items: right;
+    border-style: none;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+.cancelbutton{
+    background-color: white;
+    color:rgb(141, 139, 139);
+    border: 2px solid rgb(129, 131, 129);
+    border-radius: 5px;
+    padding-left : 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    align-items: right;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+.cancelbutton:hover{
+    background: rgb(163, 162, 162);
+    color: white;
+}
+
+
+.comment{
+    border: 1px solid #818181;
+    width: 80%;
+    height: 100px;
+    font-size:24px;
+    font-family: helvetica;
+    margin-left:50px;
+}
+
+body {
+    font-family: Arial;
+    margin: 0 auto; /* Center website */
+    padding: 20px;
+  }
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top: 10px;
+}
+
+.middle {
+    float: left;
+    width: 85%;
+    margin-top: 10px;
+}
+
+
+@media (max-width: 100%) {
+    .side, .middle {
+      width: 100%;
+    }
+  }
