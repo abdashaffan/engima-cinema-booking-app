@@ -22,6 +22,7 @@ class Controller
 
     public function model($model)
     {
+        $model = ucwords($model);
         $model = $model . 'Model';
         require_once '../app/models/' . $model . '.php';
 

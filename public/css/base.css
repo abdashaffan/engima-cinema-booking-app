@@ -126,6 +126,7 @@ h3 {
 
 /* Navigation Bar */
 .navbar {
+  z-index: 500;
   position: fixed;
   top: 0px;
   display: flex;
@@ -210,3 +211,5 @@ h3 {
 .svg-small {
   height: 15px;
 }
+
+
