@@ -12,8 +12,7 @@ class FilmModel
         $this->db = new Database();
     }
 
-    //TODO changee to get all
-    //TODO fix review decimal
+    //TODO change to get all today
     public function getAllCurrentFilm()
     {
         $this->db->query(

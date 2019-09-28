@@ -15,9 +15,14 @@ class FilmController extends Controller
         $id = 1;
         $data['judul'] = 'Film/index';
         $data['css'] = $this->cssPath . "/style.css";
+        
         $data['film'] = $this->model('Film')->getFilmById($id);
         $dateTime = date_create_from_format('Y-m-d', $data['film']['release_date']);
         $data['film']['release_date'] = $dateTime->format('F d, Y');
+        
+        $data['schedules'] = $this->model('Schedule')->getAllScheduleByFilmId($id);
+        $data['reviews'] = $this->model('Review')->getAllReviewByFilmId($id);
+
         $this->view('templates/header', $data);
         $this->view('templates/nav');
         $this->view('templates/layout');

@@ -39,51 +39,53 @@
                             
                         </th>
                     </tr>
-                    <tr>
-                        <td>
-                            September 2, 2019
-                        </td>
-                        <td>
-                            08.30 PM
-                        </td>
-                        <td class="table-seat">
-                            10 seats
-                        </td>
-                        <td class="table-state available">
-                            Book Now 
-                            <img class="svg-med" src="/public/assets/icon/right-arrow.svg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            September 2, 2019
-                        </td>
-                        <td>
-                            08.30 PM
-                        </td>
-                        <td class="table-seat">
-                            10 seats
-                        </td>
-                        <td class="table-state not-available">
-                            Not Available 
-                            <img class="svg-med" src="/public/assets/icon/times-circle-solid.svg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            September 2, 2019
-                        </td>
-                        <td>
-                            08.30 PM
-                        </td>
-                        <td class="table-seat">
-                            10 seats
-                        </td>
-                        <td class="table-state available">
-                            Book Now 
-                            <img class="svg-med" src="/public/assets/icon/right-arrow.svg">
-                        </td>
-                    </tr>
+                    <?php foreach ($schedules as $key => $schedule) : ?>
+                        <tr>
+                            <td>
+                                <!-- TODO: trim zero in front of date -->
+                                <?php
+                                    $dateTime = date_create_from_format('Y-m-d H:i:s', $schedule['showtime']);
+                                    echo $dateTime->Format('F d, Y');
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    $time = date_create_from_format('Y-m-d H:i:s', $schedule['showtime'])->Format('H:i');
+                                    $boundary = date('H:i', strtotime("12:00:00"));
+                                    if ($time < $boundary) {
+                                        echo $time.' AM';
+                                    } else {
+                                        $interval = strtotime($time) - strtotime($boundary);
+                                        echo date("H:i", $interval).' PM';
+                                    }
+                                ?>
+                            </td>
+                            <td class="table-seat">
+                                <?php 
+                                    if ($schedule['count'] == NULL) {
+                                        $schedule['count'] = 0;
+                                    } 
+                                    echo $schedule['count']; 
+                                ?> 
+                                seats
+                            </td>
+                            <?php 
+                                if ($schedule['count'] == 30) {
+                                    echo '
+                                        <td class="table-state not-available">
+                                            Not Available 
+                                            <img class="svg-med" src="/public/assets/icon/times-circle-solid.svg">
+                                        </td>';
+                                } else {
+                                    echo '
+                                        <td class="table-state available">
+                                            Book Now 
+                                            <img class="svg-med" src="/public/assets/icon/right-arrow.svg">
+                                        </td>';
+                                } 
+                            ?>
+                        </tr>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </div>
