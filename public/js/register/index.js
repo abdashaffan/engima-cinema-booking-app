@@ -11,7 +11,7 @@ const validateUsername = (str) => {
         }
     };
 
-    xhttp.open("GET", `register/validateUsername?username=${str}`);
+    xhttp.open("GET", `/active/public/register/validateUsername?username=${str}`);
     console.log('testaja');
     xhttp.send();
 
