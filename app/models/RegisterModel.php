@@ -38,16 +38,23 @@ class RegisterModel
 
     public function addNewUser($data)
     {
+        // $data['id'] = '';
         $query =
-            "INSERT INTO {$this->table} VALUES
+            "INSERT INTO {$this->table} (
+                username,
+                password,
+                email,
+                profile_picture,
+                phone_num   
+            ) VALUES
             (
-                0, 
                 :username,
                 :password,
                 :email,
                 :profile_picture,
                 :phone_num
             )";
+        var_dump($query);
         $this->db->query($query);
         $this->db->bind('username', $data["username"]);
         $this->db->bind('password', $data["password"]);
@@ -56,7 +63,9 @@ class RegisterModel
         $this->db->bind('phone_num', $data["phone_num"]);
         $this->db->execute();
 
-
+        if ($this->db->rowCount() > 0) {
+            $this->model("Login")->setLoginCookie($data["username"]);
+        }
         return $this->db->rowCount();
     }
 }

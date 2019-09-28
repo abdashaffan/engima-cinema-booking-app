@@ -11,6 +11,11 @@ class HomeController extends Controller
 
     public function index($username = "")
     {
+
+        if (!$this->model("Login")->isRedirectedToHome()) {
+            $this->redirect(BASE_URL . "/login");
+        }
+
         $data['judul'] = 'Home/index';
         $data['css'] = $this->cssPath . "/style.css";
         $data['user_name'] = $username;

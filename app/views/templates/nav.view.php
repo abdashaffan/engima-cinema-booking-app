@@ -13,6 +13,6 @@
     </div>
     <div class="right-navbar">
         <a href="/transaction">Transactions</a>
-        <a href="<?= BASE_URL; ?>/login">Logout</a>
+        <a href="<?= BASE_URL; ?>/login/logout">Logout</a>
     </div>
 </div>
