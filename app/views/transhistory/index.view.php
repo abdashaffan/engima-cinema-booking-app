@@ -30,6 +30,8 @@
                       }
                     ?>
                   </h3>
+                  <form id="passV" method="get" action="<?= BASE_URL; ?>/public/transhistory/toreview">
+                  
                   <?php
                     date_default_timezone_set('Asia/Jakarta');
                     $currdatestr = date('Y-m-d H:i:s', time());
@@ -37,13 +39,15 @@
                     if($currdate>$date){
                       
                       if($transaction['status']==0){
-                        echo "<button type=\"button\" class=\"AddBtn\">Add Review</button>" ;
+                        echo ("<button type=\"submit\" class=\"AddBtn\">Add Review</button>
+                        <input type=\"hidden\" name=\"transaction_id\" value = ".$transaction['transaction_id'].">
+                        <input type=\"hidden\" name=\"film_id\" value=".$transaction['film_id'].">");
                       }
                       else{
                         echo "
                         <div class=\"Btn2\"><div>
-                        <button type=\"button\" class=\"DelBtn\">Delete Review</button></div>
-                        <button type=\"button\" class=\"EdtBtn\">Edit Review</button>
+                        <button type=\"submit\" class=\"DelBtn\">Delete Review</button></div>
+                        <button type=\"submit\" class=\"EdtBtn\">Edit Review</button>
                         </div>";
                       }
                     } 
@@ -51,6 +55,7 @@
                       echo "<h4>Belum Tayang</h4>" ;
                     }
                   ?>
+                  </form>
                 </div>
             </div>
         <?php endforeach; ?>

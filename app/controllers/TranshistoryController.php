@@ -22,4 +22,15 @@ class TranshistoryController extends Controller
         $this->view('templates/layout-end');
         $this->view('templates/footer');
     }
+    // public function toreview($transaction_id,$film_id){
+    //     $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory?transid=".$transaction_id.",filmid=".$film_id);
+    // }
+    public function toreview(){
+        $data = [];
+        $data['film_id'] = $_GET["film_id"];
+        $data['transaction_id'] = $_GET['transaction_id'];
+        echo($data['film_id']);
+        echo($data['transaction_id']);
+        $this->redirect(BASE_URL . "/" . "public" . "/" . "review" . "?" . $data['film_id'] . "," . $data['transaction_id']);
+    }
 }
