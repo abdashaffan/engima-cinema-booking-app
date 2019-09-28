@@ -1,3 +1,18 @@
+<div id="overlay">
+    <div class="modal-overlay"> </div>
+    <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <h3 class="blue-color">Payment Success!</h3>
+            <p>
+                Thank you for purchasing! You can view your purchase now.
+            </p>
+            <!-- TODO: go to transaction -->
+            <a href="/transaction">
+                <div class="modal-bottom">Go to transaction history</div>
+            </a>
+        </div>
+    </div>
+</div>
 <div class="seat">
     <div class="seat-detail">
         <img class="svg-superbig" src="/public/assets/icon/chevron-left-solid.svg">
@@ -40,6 +55,7 @@
         <div class="seat-summary"> 
             <h3>Booking Summary</h3>
             <div id="seat-summary-content" class="seat-sumary-content">
+                <!-- TODO: create AJAX here -->
                 <!-- <div class="not-selected"> 
                     You haven't selected any seat yet. Please click on one of the seat provided. 
                 </div> -->
@@ -51,7 +67,7 @@
                     <h4>Seat #18</h4>
                     <h4>Rp 45.000</h4>
                 </div>
-                <div class="seat-buy">Buy Ticket</div>
+                <div class="seat-buy" onclick="showBuyModal()">Buy Ticket</div>
             <div>
         </div>
     </div>

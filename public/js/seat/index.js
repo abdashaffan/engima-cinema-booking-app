@@ -14,8 +14,8 @@ function getSeatDetail(seat_id) {
 }
 
 function printSeatDetail(){
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    }
+    // if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    // }
     var content = document.getElementById('seat-summary-content');
     // content.innerHTML = xmlhttp.responseText;
     // TODO change this from response
@@ -26,4 +26,11 @@ function printSeatDetail(){
     content.innerHTML = ```
         <b>
     ```
+}
+
+function showBuyModal() {
+    // TODO: create AJAX here
+    var overlay = document.getElementById('overlay');
+    overlay.style.display = "block";
+
 }
