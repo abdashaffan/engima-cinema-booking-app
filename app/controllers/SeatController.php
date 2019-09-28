@@ -9,12 +9,13 @@ class SeatController extends Controller
 
     public function index($id=1)
     {
-        // TODO: Change to parse id
+        // TODO: Change to parse schedule id
         $id = 1;
         $data['judul'] = 'Seat/index';
         $data['css'] = $this->cssPath . "/style.css";
         
-        // $data['film'] = $this->model('Film')->getFilmById($id);
+        $data['schedule'] = $this->model('Schedule')->getScheduleByScheduleId($id);
+        $data['film'] = $this->model('Film')->getFilmById($data['schedule']['film_id']);
         // $dateTime = date_create_from_format('Y-m-d', $data['film']['release_date']);
         // $data['film']['release_date'] = $dateTime->format('F d, Y');
         
