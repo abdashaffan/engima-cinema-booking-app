@@ -60,7 +60,7 @@ class RegisterController extends Controller
             $data['phone_num'] = $_POST['phone-number'];
 
             if ($this->model('Register')->addNewUser($data) > 0) {
-                $this->redirect(BASE_URL . '/login');
+                $this->redirect(BASE_URL . "/" . "home" . "/" . $data['username']);
             }
         }
     }
