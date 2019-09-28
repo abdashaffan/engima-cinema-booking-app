@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="stylesheet" type="text/css" href="../css/main.css"> -->
 </head>
 
 <header>
@@ -11,16 +10,12 @@
 
 <body>
   <div class="row">
-    <div class="side">
-      <div><button type="button" class="backbutton">Back</button></div>
-    </div>
-    <div class="middle">
+    <div class="flex">
+      <div><button type="button" class="iconbtn"><i class="arrow left"></i></button></div>
       <div><h1>Avengers Endgame</h1></div>
     </div>
-    <div class="side">
+    <div class="flex">
       <div><h3>Add Rating</h3></div>
-    </div>
-    <div class="middle"> 
       <div><fieldset class="rating">
         <input type="radio" id="star10" name="rating" value="10" /><label class = "full" for="star10" title="Awesome - 10 stars"></label>
         <input type="radio" id="star9half" name="rating" value="9 and a half" /><label class="half" for="star9half" title="9.5 stars"></label>
@@ -45,20 +40,13 @@
       </fieldset>
       </div>
     </div>
-    <div class="side">
+    <div class="flex">
       <div><h3>Add Comment</h3></div>
+      <textarea rows="7" class="comment" name="comment" form="review"></textarea>
     </div>
-    <div class = "middle">
-      <!-- <textarea rows="7" class="comment" name="comment" form="review"></textarea> -->
-      <div><h3>Add Comment</h3></div>
-    </div>
-    <div class ="side">
-    </div>
-    <div class = "middle">
-      <div class ="buttons">
+    <div class = "cancelsubmitbuttons">
         <button type="button" class="cancelbutton"> Cancel </button>
         <button type="button" class="savebutton"> Submit </button>
-      </div>
     </div>
   </div>
 </body>
