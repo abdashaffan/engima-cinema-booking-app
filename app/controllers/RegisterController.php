@@ -16,7 +16,7 @@ class RegisterController extends Controller
     {
 
         if ($this->model("Login")->isRedirectedToHome()) {
-            $this->redirect(BASE_URL . "home/index/{$_COOKIE['engima_user']}");
+            $this->redirect(BASE_URL . "/home/index/{$_COOKIE['engima_user']}");
         } else {
             $this->model("Login")->resetCookie();
         }
