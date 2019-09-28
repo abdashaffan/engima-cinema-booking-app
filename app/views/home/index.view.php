@@ -12,7 +12,7 @@
                     <h3><?php echo $film['title'] ?></h3>
                     <div class='rating'>
                         <h3>
-                            <i class='fa fa-star'></i>
+                            <img class="svg-big" src="/public/assets/icon/star-solid.svg">
                             <?php echo $film['rating'] ?>
                         </h3>
                     </div>

@@ -162,8 +162,8 @@ h3 {
   color: gray;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
-.navbar i {
-  color: gray;
+.navbar img {
+  filter: invert(56%) sepia(7%) saturate(10%) hue-rotate(50deg) brightness(89%) contrast(92%);
 }
 .navbar a {
   text-decoration: none;
@@ -186,8 +186,8 @@ h3 {
 }
 
 /* Rating */
-.rating i {
-  color: #eac903;
+.rating img {
+  filter: invert(66%) sepia(74%) saturate(1742%) hue-rotate(14deg) brightness(108%) contrast(104%);
 }
 .rating {
   color: gray;
@@ -198,4 +198,15 @@ h3 {
   height: 250px;
   width: 170px;
   border-radius: 10px;
+}
+
+/* SVG Image */
+.svg-big {
+  height: 20px;
+}
+.svg-med {
+  height: 18px;
+}
+.svg-small {
+  height: 15px;
 }

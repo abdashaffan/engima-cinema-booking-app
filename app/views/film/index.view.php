@@ -3,11 +3,13 @@
         <img class="film-image-big" src='/public/assets/img/film/1.jpeg'>
         <div class="film-detail-desc">
             <h2>Avengers: Endgame</h2>
-            <p class="blue-color">Drama, Fantasy, Adventure | 187 mins</p>
-            <p>Released date: April 17, 2019</p>
+            <b>
+                <p class="blue-color">Drama, Fantasy, Adventure | 187 mins</p>
+                <p>Released date: April 17, 2019</p>
+            </b>
             <div class='rating'>
                 <h3>
-                    <i class='fa fa-star'></i> 
+                    <img class="svg-big" src="/public/assets/icon/star-solid.svg">
                     8.75
                     <span>/10</span>
                 </h3>
@@ -46,9 +48,9 @@
                         <td class="table-seat">
                             10 seats
                         </td>
-                        <td class="table-state">
+                        <td class="table-state available">
                             Book Now 
-                            <i class='fa fa-star'></i> 
+                            <img class="svg-med" src="/public/assets/icon/right-arrow.svg">
                         </td>
                     </tr>
                     <tr>
@@ -61,9 +63,9 @@
                         <td class="table-seat">
                             10 seats
                         </td>
-                        <td class="table-state">
+                        <td class="table-state not-available">
                             Not Available 
-                            <i class='fa fa-star'></i> 
+                            <img class="svg-med" src="/public/assets/icon/times-circle-solid.svg">
                         </td>
                     </tr>
                     <tr>
@@ -76,9 +78,9 @@
                         <td class="table-seat">
                             10 seats
                         </td>
-                        <td class="table-state">
+                        <td class="table-state available">
                             Book Now 
-                            <i class='fa fa-star'></i> 
+                            <img class="svg-med" src="/public/assets/icon/right-arrow.svg">
                         </td>
                     </tr>
                 </table>
@@ -89,12 +91,12 @@
                 <h3>Reviews</h3>
                 <div class="review-detail">
                     <div>
-                        <img src="/public/assets/img/user/1.png">
+                        <img class="review-user" class="review-user" src="/public/assets/img/user/5.jpg">
                         <div>
-                            <p>antonius.wahyu</p>
+                            <b><p>antonius.wahyu</p></b>
                             <div class='rating'>
                                 <h3>
-                                    <i class='fa fa-star'></i> 
+                                    <img class="svg-small" src="/public/assets/icon/star-solid.svg">
                                     8.75
                                     <span>/10</span>
                                 </h3>
@@ -105,12 +107,12 @@
                         </div>
                     </div>
                     <div>
-                        <img src="/public/assets/img/user/1.png">
+                        <img class="review-user" src="/public/assets/img/user/5.jpg">
                         <div>
-                            <p>antonius.wahyu</p>
+                            <b><p>antonius.wahyu</p></b>
                             <div class='rating'>
                                 <h3>
-                                    <i class='fa fa-star'></i> 
+                                    <img class="svg-small" src="/public/assets/icon/star-solid.svg">
                                     8.75
                                     <span>/10</span>
                                 </h3>
@@ -120,13 +122,13 @@
                             </p>
                         </div>
                     </div>
-                    <div>
-                        <img src="/public/assets/img/user/1.png">
+                    <div class="review-last">
+                        <img class="review-user" src="/public/assets/img/user/5.jpg">
                         <div>
-                            <p>antonius.wahyu</p>
+                            <b><p>antonius.wahyu</p></b>
                             <div class='rating'>
                                 <h3>
-                                    <i class='fa fa-star'></i> 
+                                    <img class="svg-small" src="/public/assets/icon/star-solid.svg">
                                     8.75
                                     <span>/10</span>
                                 </h3>

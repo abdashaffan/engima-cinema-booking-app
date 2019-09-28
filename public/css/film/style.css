@@ -5,10 +5,9 @@
 .film-detail-desc {
     margin: 0 50px
 }
-.film-detail p {
+.film p {
     margin: 10px 0;
     color: gray;
-    font-weight: bold;
 }
 .rating span {
     font-size: 0.8em;
@@ -18,10 +17,10 @@
     margin-top: 40px;
 }
 .film-schedule {
-    flex: 5;
+    flex: 9;
 }
 .film-review {
-    flex: 4;
+    flex: 8;
 }
 .film-desc .wrapper {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
@@ -39,9 +38,24 @@
 }
 .table-state {
     text-align: right;
+    font-weight: bold;
 }
+.available img {
+    filter: invert(44%) sepia(93%) saturate(3622%) hue-rotate(202deg) brightness(100%) contrast(86%);
+}
+.not-available img {
+    filter: invert(21%) sepia(73%) saturate(4377%) hue-rotate(10deg) brightness(98%) contrast(104%);
+}
+.available {
+    color: #2f80ed;
+}
+.not-available {
+    color: #ec2c2c;
+}
+
 .table-seat {
     color: black;
+    font-weight: bold;
 }
 .film-schedule td {
     border-top: 1px solid gray;
@@ -55,13 +69,35 @@
 td.table-state {
     padding-right: 0px;
 }
+.film-schedule img {
+    vertical-align: middle;
+    margin-left: 5px;
+}
 
 /* Review */
-.film-review img {
+img.review-user {
     height: 50px;
     width: 50px;
     border-radius: 50px;
+    margin-right: 20px;
 }
 .review-detail > div {
     display: flex;
+    border-bottom: 1px solid gray;
+    padding: 15px 0;
+}
+.review-detail p {
+    font-size: 0.8em;
+    margin: 6px 0;
+}
+.film h3 {
+    margin: 15px 0;
+}
+.film-review .rating h3 {
+    font-size: 0.8em;
+    margin: 0;
+}
+div.review-last {
+    border-bottom: none;
+    padding-bottom: 0;
 }
