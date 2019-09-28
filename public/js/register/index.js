@@ -1,8 +1,0 @@
-
-
-
-const validateUsername = (str) => {
-
-    // TODO
-
-}

@@ -1,14 +1,10 @@
 <div class="card">
     <span class="form-header">Welcome to <b>Engi</b>ma!</span>
 
-    <form action="<?= BASE_URL; ?>/register/add" method="post" enctype="multipart/form-data">
+    <form action="/register" method="post" enctype="multipart/form-data">
 
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="joe.johndoe" class="input" autocomplete="off"
-            required onkeyup="validateUsername(this.value)">
-        <!-- <?php if (isset($usernameExistMsg)) : ?>
-        <p><?= $usernameExistMsg; ?></p>
-        <?php endif; ?> -->
+        <input type="text" name="username" id="username" placeholder="joe.johndoe" class="input" required>
 
         <label for="email">Email</label>
         <input type="email" name="email" required class="input" placeholder="john@doe.com" required>

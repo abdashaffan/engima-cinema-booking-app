@@ -1,4 +1,11 @@
 /* Home */
+
+
+.list-film img {
+  height: 250px;
+  width: 170px;
+  border-radius: 10px;
+}
 .list-film {
   display: flex;
   flex-wrap: wrap;
@@ -7,4 +14,13 @@
   margin-right: 15px;
   margin-bottom: 20px;
   max-width: 170px;
+}
+.rating i {
+  color: #eac903;
+}
+.rating h3 {
+  color: gray;
+}
+.home h3 {
+  margin: 7px 0;
 }

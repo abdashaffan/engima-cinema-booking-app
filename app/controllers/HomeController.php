@@ -3,17 +3,17 @@
 
 
 class HomeController extends Controller
-{
+{   
     public function __construct()
     {
         parent::__construct('home');
     }
 
-    public function index($username = "")
+    public function index()
     {
         $data['judul'] = 'Home/index';
         $data['css'] = $this->cssPath . "/style.css";
-        $data['user_name'] = $username;
+        $data['user_name'] = $this->model('User')->getUser();
         $data['films'] = $this->model('Film')->getAllCurrentFilm();
         $this->view('templates/header', $data);
         $this->view('templates/nav');
