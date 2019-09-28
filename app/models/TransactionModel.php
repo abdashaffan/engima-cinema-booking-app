@@ -5,7 +5,7 @@ class TransactionModel
 {
     private $table = 'transaction';
     private $db;
-
+    
 
     public function __construct()
     {

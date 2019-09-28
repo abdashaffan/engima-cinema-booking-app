@@ -14,6 +14,7 @@ class TranshistoryController extends Controller
         $data['judul'] = 'Transhistory/index';
         $data['css'] = $this->cssPath . "/style.css";
         $data['transactions'] = $this->model('Transaction')->getAllTransaction();
+        $data['user_name'] = $this->model('User')->getUser();
         $this->view('templates/header', $data);
         $this->view('templates/nav');
         $this->view('templates/layout');

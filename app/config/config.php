@@ -9,5 +9,5 @@ define('BASE_URL', 'http://localhost/tugas-besar-1-2019');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'tubes_wbd_1');
+define('DB_NAME', 'tubes_wbd_1_baru');
 define('BASE_CSS', "../public/css/base.css");
