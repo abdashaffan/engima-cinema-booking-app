@@ -9,8 +9,8 @@
         <!-- TODO: remove fontawesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
             integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-        <link rel="stylesheet" href="<?= BASE_CSS; ?>">
-        <link rel="stylesheet" href="<?= $css; ?>">
+        <link rel="stylesheet" type="text/css" href="<?= BASE_CSS; ?>">
+        <link rel="stylesheet" type="text/css" href="<?= $css; ?>">
         <title><?= $judul; ?></title>
     </head>
     <!-- <nav style="display:block;">

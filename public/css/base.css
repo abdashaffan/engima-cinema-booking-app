@@ -181,3 +181,11 @@ form label {
   padding: 10vh 50px 0 50px;
   box-sizing: border-box;
 }
+
+/* Rating */
+.rating i {
+  color: #eac903;
+}
+.rating {
+  color: gray;
+}
