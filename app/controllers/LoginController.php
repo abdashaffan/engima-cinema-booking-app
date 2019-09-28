@@ -13,7 +13,7 @@ class LoginController extends Controller
     public function index()
     {
         $data['judul'] = 'login/index';
-        $data['css'] = $this->cssPath;
+        $data['css'] = $this->cssPath . "/style.css";
         $this->view('templates/header', $data);
         $this->view('login/index', $data);
         $this->view('templates/footer');

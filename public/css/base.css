@@ -1,0 +1,106 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background: #fff;
+    font-family: "Lato", sans-serif;
+  }
+  
+  
+  .form-header {
+    margin-bottom: 1.7em;
+  }
+  
+  .card {
+    margin: 50px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    border: 1px solid #f2f2f2;
+    box-shadow: 0 4px 6px #828282;
+    padding: 50px 40px;
+    border-radius: 6px;
+  }
+  
+  .form-header {
+    font-weight: 400;
+    font-size: 1.5em;
+    margin: 0px 20px 40px 20px;
+  }
+  
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #828282;
+  }
+  
+  ::placeholder {
+    color: #dadedf;
+    opacity: 0.6;
+  }
+  
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #dadedf;
+    opacity: 0.6;
+  }
+  
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #dadedf;
+    opacity: 0.6;
+  }
+  
+  form label {
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .input {
+    font-family: inherit;
+    border: 0.5px solid #e0e0e0;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #828282;
+  }
+  
+  .btn {
+    cursor: pointer;
+  }
+  
+  .form-btn {
+    margin: 1.5em 0em;
+    background-color: #2d9cdb;
+    letter-spacing: 1.1px;
+    font-weight: bold;
+    color: #f2f2f2;
+    border: none;
+    font-family: inherit;
+    padding: 1em 4em;
+    border-radius: 5px;
+  }
+  
+  .form-btn:hover {
+    background-color: #2f80ed;
+  }
+  
+  .form-card-footer {
+    font-size: 0.75em;
+  }
+  
+  .link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2d9cdb;
+  }
+  
