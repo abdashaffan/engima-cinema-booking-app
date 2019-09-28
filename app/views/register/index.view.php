@@ -5,7 +5,7 @@
 
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="joe.johndoe" class="input" autocomplete="off"
-            required onkeyup="validateUsername(this.value)">
+            required onkeyup="validate(this.value)">
         <!-- <?php if (isset($usernameExistMsg)) : ?>
         <p><?= $usernameExistMsg; ?></p>
         <?php endif; ?> -->
