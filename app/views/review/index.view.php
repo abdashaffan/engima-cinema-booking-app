@@ -11,12 +11,12 @@
 <body>
   <div class="row">
     <div class="flex">
-      <div><button type="button" class="iconbtn"><i class="arrow left"></i></button></div>
-      <div><h1>Avengers Endgame</h1></div>
+      <button type="button" class="iconbtn"><</button>
+      <h1>Avengers Endgame</h1>
     </div>
-    <div class="flex">
+    <div class="flexmid">
       <div><h3>Add Rating</h3></div>
-      <div><fieldset class="rating">
+      <div class="starrating"><fieldset class="star">
         <input type="radio" id="star10" name="rating" value="10" /><label class = "full" for="star10" title="Awesome - 10 stars"></label>
         <input type="radio" id="star9half" name="rating" value="9 and a half" /><label class="half" for="star9half" title="9.5 stars"></label>
         <input type="radio" id="star9" name="rating" value="9" /><label class = "full" for="star9" title="9 stars"></label>
@@ -40,8 +40,8 @@
       </fieldset>
       </div>
     </div>
-    <div class="flex">
-      <div><h3>Add Comment</h3></div>
+    <div class="flexmid2">
+      <div><h3>Add Review</h3></div>
       <textarea rows="7" class="comment" name="comment" form="review"></textarea>
     </div>
     <div class = "cancelsubmitbuttons">
@@ -50,4 +50,14 @@
     </div>
   </div>
 </body>
+<!-- <body>
+    <div class="flex">
+      <div><h1>Transaction History</h1></div>
+    </div>
+    <div class="list-transaksi">
+    <h1>Transaction History</h1>
+    <h1>Transaction History</h1>
+    <h1>Transaction History</h1>
+    </div>
+</body> -->
 

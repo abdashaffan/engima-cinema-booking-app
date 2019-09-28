@@ -45,7 +45,8 @@
     cursor: pointer; /* Mouse pointer on hover */
     /* HARD CODED POSITION */
     margin-left:700px;
-
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
   }
   .AddBtn:hover {
     background-color: #2d9cdb; /* Blue background */
