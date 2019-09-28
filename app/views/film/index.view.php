@@ -1,21 +1,22 @@
 <div class="film">
     <div class="film-detail">
-        <img class="film-image-big" src='/public/assets/img/film/1.jpeg'>
+        <?php echo "<img class='film-image-big' src='/public/assets/img/film/".$film['thumbnail']."'>"; ?>
         <div class="film-detail-desc">
-            <h2>Avengers: Endgame</h2>
+            
+            <h2><?php echo $film['title']; ?></h2>
             <b>
-                <p class="blue-color">Drama, Fantasy, Adventure | 187 mins</p>
-                <p>Released date: April 17, 2019</p>
+                <p class="blue-color"><?php echo $film['genre']; ?> | <?php echo $film['length']; ?> mins</p>
+                <p>Released date: <?php echo $film['release_date']; ?></p>
             </b>
             <div class='rating'>
                 <h3>
                     <img class="svg-big" src="/public/assets/icon/star-solid.svg">
-                    8.75
+                    <?php echo $film['rating']; ?>
                     <span>/10</span>
                 </h3>
             </div>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quam harum eligendi at qui laboriosam nobis quae soluta tempore dolor repudiandae, placeat ex deserunt in corporis, voluptate quas dolores modi!
+                <?php echo $film['sinopsis']; ?>
             </p>
         </div>  
     </div>

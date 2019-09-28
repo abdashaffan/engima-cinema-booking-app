@@ -21,4 +21,12 @@ class FilmModel
         );
         return $this->db->resultSet();
     }
+
+    public function getFilmById($id)
+    {
+        $this->db->query(
+            "SELECT * FROM {$this->table} WHERE film_id={$id}"
+        );
+        return $this->db->resultSet()[0];
+    }
 }
