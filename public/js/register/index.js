@@ -1,7 +1,7 @@
 
 
 
-const validateUsername = (str) => {
+const validate = (str) => {
 
     // TODO
 
