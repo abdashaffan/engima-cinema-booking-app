@@ -4,8 +4,12 @@
             <b class="blue-color">Engi</b>ma
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Search movie" name="keyword" onkeyup="getSearchResult(this.value)">
-            <img class="svg-big" src="/public/assets/icon/search-solid.svg" autocomplete=off>
+            <!-- TODO: rapihin search icon -->
+            <form action="<?= BASE_URL; ?>/search" method="POST">
+                <input type="text" placeholder="Search movie" name="keyword" onkeyup="getSearchResult(this.value)">
+                <img class="svg-big" src="<?= BASE_URL; ?>/assets/icon/search-solid.svg" autocomplete=off>
+                <button type="submit" name="submit" hidden></button>
+            </form>
         </div>
     </div>
     <div class="right-navbar">

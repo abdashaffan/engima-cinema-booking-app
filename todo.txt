@@ -7,3 +7,4 @@ validasi register:
 
 
 register sama login mending dibikin satu model: UserModel
+style element input image
