@@ -13,7 +13,7 @@ class SearchController extends Controller
         $data['css'] = $this->cssPath . "/style.css";
         $data['js'] = $this->jsPath;
         $data['keyword'] = $_GET['keyword'];
-        $data['result'] = $this->model("Search")->countResult($data['keyword']);
+        $data['result'] = $this->model("film")->getResult($data['keyword']);
         $data['resultNumber'] = count($data['result']);
         $this->view('templates/header', $data);
         $this->view('templates/nav');

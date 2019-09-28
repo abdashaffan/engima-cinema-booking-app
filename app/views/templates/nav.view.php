@@ -7,7 +7,7 @@
             <form action="<?= BASE_URL; ?>/search" method="GET">
                 <input type="text" placeholder="Search movie" name="keyword">
                 <img class="svg-big" src="/public/assets/icon/search-solid.svg">
-                <button type="submit" hidden>Submit</button>
+                <button type="submit" hidden />
             </form>
 
         </div>

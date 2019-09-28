@@ -4,3 +4,6 @@ validasi register:
     - harus belum ada di DATABASE
     - password sama konfirmasi harus sama
     - tipe file yang di upload
+
+
+register sama login mending dibikin satu model: UserModel

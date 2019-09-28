@@ -12,7 +12,6 @@ class FilmController extends Controller
     public function index($id)
     {
         // TODO: Change to parse id
-        // $id = 1;
         $data['judul'] = 'Film/index';
         $data['css'] = $this->cssPath . "/style.css";
 
