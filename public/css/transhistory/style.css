@@ -1,0 +1,94 @@
+
+.flex {
+    display : flex;
+}
+
+.list-transaksi {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+.list-transaksi img {
+    height: 250px;
+    width: 170px;
+    border-radius: 10px;
+}
+.list-transaksi h2 {
+    margin-left: 0px;
+    margin-right: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.list-transaksi > div {
+    display: flex;
+    margin-right: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width:100%;
+}
+
+.info{
+    margin-top : 30px;
+    margin-right: 15px;
+    margin-left: 20px;
+    width:100%;
+}
+
+.AddBtn {
+    display:flex;
+    background-color: #2f80ed; 
+    border-radius: 5px;
+    border:none;
+    color: white; 
+    padding: 12px 16px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    width:120px;
+    margin-left:80%;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+  }
+  .AddBtn:hover {
+    background-color: #2d9cdb; 
+  }
+
+.Btn2{
+    display:flex;
+    flex-direction: row;
+    margin-left:61%;
+}
+.DelBtn {
+    display:flex;
+    background-color: #af1717; 
+    border-radius: 5px;
+    border:none;
+    color: white; 
+    padding: 12px 16px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    width:140px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+  }
+.DelBtn:hover {
+    background-color: #db2d2d; 
+  }
+.EdtBtn {
+    display:flex;
+    background-color: #1f972f; 
+    border-radius: 5px;
+    border:none;
+    color: white; 
+    padding: 12px 16px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    width:120px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    margin-left:20px;
+  }
+  .EdtBtn:hover {
+    background-color: #2ddb36; 
+  }

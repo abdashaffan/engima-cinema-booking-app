@@ -12,7 +12,7 @@ class FilmModel
         $this->db = new Database();
     }
 
-    //TODO change to get all today
+    //TO DO chane to get all
     public function getAllCurrentFilm()
     {
         $this->db->query(

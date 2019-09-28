@@ -13,7 +13,7 @@ class RegisterModel
     }
 
 
-    public function checkIfUsernameExist($usernameInput)
+    public function validateUsername()
     {
         #
         #   TODO
