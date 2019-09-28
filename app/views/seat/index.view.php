@@ -22,10 +22,15 @@
     <div class="seat-desc">
         <div class="seat-number-wrapper">
             <div class="seat-number">
-                <?php for ($i = 1; $i<=30; $i++ ): ?>
-                    <div>
-                        <?php echo $i; ?>
-                    </div>
+                <?php for ($i = 0; $i<30; $i++ ): ?>
+                    <?php
+                        if ($seats[$i] != NULL and $seats[$i]['occupied']!=0){
+                            echo '<div class="occupied">';
+                        } else {
+                            echo '<div class="not-occupied">';
+                        }
+                        echo $i . '</div>';
+                    ?>
                 <?php endfor ?>
             </div>
             <div class="seat-screen">

@@ -13,6 +13,7 @@ class ScheduleModel
     }
 
     //TODO: ubah jadi yg blom lewat hari ini
+    //TODO: ubah count seatnya itung yg occupied doang
     public function getAllScheduleByFilmId($id)
     {   
         $this->db->query(

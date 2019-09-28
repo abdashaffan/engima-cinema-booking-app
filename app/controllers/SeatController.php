@@ -16,11 +16,11 @@ class SeatController extends Controller
         
         $data['schedule'] = $this->model('Schedule')->getScheduleByScheduleId($id);
         $data['film'] = $this->model('Film')->getFilmById($data['schedule']['film_id']);
-        // $dateTime = date_create_from_format('Y-m-d', $data['film']['release_date']);
-        // $data['film']['release_date'] = $dateTime->format('F d, Y');
         
-        // $data['schedules'] = $this->model('Schedule')->getAllScheduleByFilmId($id);
-        // $data['reviews'] = $this->model('Review')->getAllReviewAndUserByFilmId($id);
+        $seats = $this->model('Seat')->getAllSeatByScheduleId($id);
+        foreach ($seats as $key => $seat) {
+            $data['seats'][$seat['seat_number']] = $seat; 
+        }
 
         $this->view('templates/header', $data);
         $this->view('templates/nav');
