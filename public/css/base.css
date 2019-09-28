@@ -118,6 +118,7 @@ form label {
 
 /* Navigation Bar */
 .navbar {
+  z-index: 500;
   position: fixed;
   top: 0px;
   display: flex;
@@ -176,3 +177,31 @@ form label {
   padding: 10vh 50px 0 50px;
   box-sizing: border-box;
 }
+
+/* Rating */
+.rating img {
+  filter: invert(66%) sepia(74%) saturate(1742%) hue-rotate(14deg) brightness(108%) contrast(104%);
+}
+.rating {
+  color: gray;
+}
+
+/* Film Image */
+.film-image-big {
+  height: 250px;
+  width: 170px;
+  border-radius: 10px;
+}
+
+/* SVG Image */
+.svg-big {
+  height: 20px;
+}
+.svg-med {
+  height: 18px;
+}
+.svg-small {
+  height: 15px;
+}
+
+
