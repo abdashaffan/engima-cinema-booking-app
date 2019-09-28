@@ -4,8 +4,11 @@
             <b class="blue-color">Engi</b>ma
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Search movie">
-            <i class="fa fa-search"></i>
+            <input 
+                type="text"
+                placeholder="Search movie"
+            >
+            <img class="svg-big" src="/public/assets/icon/search-solid.svg">
         </div>
     </div>
     <div class="right-navbar">

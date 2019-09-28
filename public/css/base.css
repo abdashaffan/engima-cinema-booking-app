@@ -108,11 +108,14 @@ form label {
   font-weight: bold;
   color: #2d9cdb;
 }
-
+/* Heading */
+h3 {
+  margin: 7px 0;
+}
 
 /* Basic color pallete */
 .blue-color {
-  color: #2f80ed;
+  color: #2f80ed !important;
 }
 .black-background {
   background-color: #393939;
@@ -159,8 +162,8 @@ form label {
   color: gray;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
-.navbar i {
-  color: gray;
+.navbar img {
+  filter: invert(56%) sepia(7%) saturate(10%) hue-rotate(50deg) brightness(89%) contrast(92%);
 }
 .navbar a {
   text-decoration: none;
@@ -178,6 +181,32 @@ form label {
 .layout-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding: 10vh 50px 0 50px;
+  padding: 10vh 50px 5vh 50px;
   box-sizing: border-box;
+}
+
+/* Rating */
+.rating img {
+  filter: invert(66%) sepia(74%) saturate(1742%) hue-rotate(14deg) brightness(108%) contrast(104%);
+}
+.rating {
+  color: gray;
+}
+
+/* Film Image */
+.film-image-big {
+  height: 250px;
+  width: 170px;
+  border-radius: 10px;
+}
+
+/* SVG Image */
+.svg-big {
+  height: 20px;
+}
+.svg-med {
+  height: 18px;
+}
+.svg-small {
+  height: 15px;
 }
