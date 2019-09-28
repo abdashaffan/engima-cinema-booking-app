@@ -1,0 +1,54 @@
+/* Seat */
+.seat > div {
+    display: flex;
+    margin: 40px 0;
+}
+.seat-detail {
+    border-bottom: 1px solid #bbb;
+}
+.seat-detail img {
+    margin: 20px 20px 20px 0;
+    filter: invert(44%) sepia(93%) saturate(3622%) hue-rotate(202deg) brightness(100%) contrast(86%);
+}
+
+/* Description */
+.seat-desc > div {
+    flex: 1;
+}
+.seat-number-wrapper {
+    padding-right: 40px;
+}
+.seat-summary {
+    border-left: 1px solid #bbb;
+    color: gray;
+    padding-left: 40px;
+}
+.seat-summary p {
+    color: #bbb;
+}
+
+/* Number */
+.seat-number {
+    display: flex;
+    flex-wrap: wrap;
+}
+.seat-number > div {
+    background-color: #eaeaea;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    margin: 5px;
+    color: gray
+}
+.seat-screen {
+    margin-top: 10px;
+    background-color: #bbb;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
