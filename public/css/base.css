@@ -162,3 +162,17 @@ form label {
   font-weight: bold;
   color: black;
 }
+
+/* Layout */
+.layout {
+  width: 100%;
+  height: 100%;
+  padding: 0 150px;
+  display: flex;
+}
+.layout-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 10vh 50px 0 50px;
+  box-sizing: border-box;
+}
