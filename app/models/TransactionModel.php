@@ -16,7 +16,7 @@ class TransactionModel
     public function getAllTransaction()
     {
         $this->db->query(
-            "SELECT * FROM {$this->table}"
+            "SELECT * FROM {$this->table} t INNER JOIN schedule s ON t.schedule_ID=s.schedule_ID INNER JOIN film f ON s.film_id=f.film_id"
         );
         return $this->db->resultSet();
     }
@@ -24,7 +24,7 @@ class TransactionModel
     public function getAllUserTransaction($userid)
     {
         $this->db->query(
-            "SELECT * FROM {$this->table} WHERE user_id==$userid"
+            "SELECT * FROM {$this->table} t INNER JOIN schedule s ON t.schedule_ID=s.schedule_ID INNER JOIN film f ON s.film_id=f.film_id WHERE user_id==$userid"
         );
         return $this->db->resultSet();
     }
