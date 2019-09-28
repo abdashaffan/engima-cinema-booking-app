@@ -49,7 +49,7 @@ class RegisterController extends Controller
         $tmpProfileLocation = $_FILES['profile']['tmp_name'];
         $storedPassword =  password_hash($_POST['password'], PASSWORD_DEFAULT);
         $profileExtension = explode('/', $_FILES['profile']['type'])[1];
-        $savedLocation = "{$_SERVER["DOCUMENT_ROOT"]}/active/app/database/img/users/{$_POST['username']}.{$profileExtension}";
+        $savedLocation = ROOT . "/app/database/img/users/{$_POST['username']}.{$profileExtension}";
 
         if (move_uploaded_file($tmpProfileLocation, $savedLocation)) {
             $data = [];

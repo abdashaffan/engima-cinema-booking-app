@@ -15,15 +15,26 @@ class RegisterModel
 
     public function checkIfUsernameExist($usernameInput)
     {
-        // var_dump($usernameInput);
+        #
+        #   TODO
+        #
+
         return false;
     }
 
     public function saveProfilePicture()
-    { }
+    {
+        #
+        #   TODO
+        #
+    }
 
     public function encrypt_password()
-    { }
+    {
+        #
+        #   TODO
+        #
+    }
 
     public function addNewUser($data)
     {
