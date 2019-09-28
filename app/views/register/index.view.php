@@ -4,7 +4,12 @@
     <form action="/register" method="post" enctype="multipart/form-data">
 
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="joe.johndoe" class="input" required>
+        <input type="text" name="username" id="username" placeholder="joe.johndoe" class="input" autocomplete="off"
+            required onkeyup="validateUsername(this.value)">
+        <p id="testaja"></p>
+        <?php if (isset($usernameExistMsg)) : ?>
+        <p><?= $usernameExistMsg; ?></p>
+        <?php endif; ?>
 
         <label for="email">Email</label>
         <input type="email" name="email" required class="input" placeholder="john@doe.com" required>

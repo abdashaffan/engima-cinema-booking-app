@@ -13,9 +13,9 @@ class RegisterModel
     }
 
 
-    public function validateUsername()
+    public function checkIfUsernameExist($usernameInput)
     {
-        $username = $_GET['username'];
-        var_dump($username);
+        // var_dump($usernameInput);
+        return false;
     }
 }
