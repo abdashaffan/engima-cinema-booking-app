@@ -12,6 +12,13 @@ class LoginController extends Controller
 
     public function index($valid = "1")
     {
+
+        if ($this->model("Login")->isRedirectedToHome()) {
+            $this->redirect(BASE_URL . "home/index/{$_COOKIE['engima_user']}");
+        } else {
+            $this->model("Login")->resetCookie();
+        }
+
         if ($valid == "0") {
             $data['invalidLogin'] = true;
         }
@@ -37,12 +44,21 @@ class LoginController extends Controller
             exit;
         }
         if (password_verify($password, $userDataSearchResult['password'])) { //valid passwd
-            var_dump(BASE_URL . "/home/index/{$userDataSearchResult['username']}");
+
+            // set cookie
+            $this->model("Login")->setLoginCookie($userDataSearchResult['username']);
+            // redirect
             $this->redirect(BASE_URL . "/home/index/{$userDataSearchResult['username']}");
             exit;
         } else { //invalid passwd
             $this->redirect(BASE_URL . '/login/invalid');
             exit;
         }
+    }
+
+    public function logout()
+    {
+        $this->model("Login")->resetCookie();
+        $this->redirect(BASE_URL . '/login');
     }
 }
