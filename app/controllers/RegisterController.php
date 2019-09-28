@@ -14,7 +14,8 @@ class RegisterController extends Controller
     {
 
         $data['judul'] = 'Register/index';
-        $data['css'] = $this->cssPath;
+        $data['css'] = $this->cssPath . "/style.css";
+        $data['js'] = $this->jsPath . "/index.js";
         $this->view('templates/header', $data);
         $this->view('register/index', $data);
         $this->view('templates/footer');
