@@ -1,0 +1,60 @@
+.result-number {
+  font-weight: 400;
+}
+.film-wrapper {
+    display:flex;
+    align-items: center;
+    padding: 1.2em 1.1em;
+    justify-content: space-between;
+}
+
+.main-content {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.film-detail-wrapper {
+  max-width: 30vw;
+}
+.film-thumbnail {
+  max-width: 130px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-right: 2em;
+}
+
+.film-details-link {
+  max-width: 10vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.film-details-link img {
+  filter: invert(44%) sepia(93%) saturate(3622%) hue-rotate(202deg) brightness(100%) contrast(86%);
+  padding-left: .7em;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+.rating {
+  display: inline-block;
+  margin: .75em 0;
+}
+
+.sinopsis {
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+.detail-button {
+  display:flex;
+  justify-content: center;
+}
