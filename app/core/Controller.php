@@ -9,10 +9,8 @@ class Controller
     public function __construct($controllerName = "")
     {
         // di file viewnya tambahin pathnya kalo ternyata filenya ada banyak
-        // Contoh: $this->cssPath = ../public/css/register
-        // File yang mau dipake = ../public/css/register/style.css atau ../public/css/register/index.css
-        $this->cssPath = "../public/css/{$controllerName}";
-        $this->jsPath = "../public/js/{$controllerName}";
+        $this->cssPath = "/" . PROJECT_NAME . "/public/css/{$controllerName}";
+        $this->jsPath = "/" . PROJECT_NAME . "/public/js/{$controllerName}";
     }
 
     public function view($viewPath, $data = [])

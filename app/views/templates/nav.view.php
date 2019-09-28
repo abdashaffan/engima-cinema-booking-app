@@ -8,11 +8,11 @@
                 type="text"
                 placeholder="Search movie"
             >
-            <i class="fa fa-search"></i>
+            <img class="svg-big" src="/public/assets/icon/search-solid.svg">
         </div>
     </div>
     <div class="right-navbar">
         <a href="/transaction">Transactions</a>
-        <a href="/login">Logout</a>
+        <a href="<?= BASE_URL; ?>/login">Logout</a>
     </div>
 </div>
