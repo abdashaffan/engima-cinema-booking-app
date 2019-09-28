@@ -9,7 +9,7 @@
 </header>
 
 <body>
-  <div class="row">
+  <form id="review" action="<?= BASE_URL; ?>/public/review/add" method="post">
     <div class="flex">
       <button type="button" class="iconbtn"><</button>
       <h1>Avengers Endgame</h1>
@@ -46,8 +46,8 @@
     </div>
     <div class = "cancelsubmitbuttons">
         <button type="button" class="cancelbutton"> Cancel </button>
-        <button type="button" class="savebutton"> Submit </button>
+        <button type="submit" name="submit" class="savebutton"> Submit </button>
     </div>
-  </div>
+  </form>
 </body>
 

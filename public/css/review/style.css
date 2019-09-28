@@ -126,3 +126,7 @@ fieldset, label { margin: 0; padding: 0; }
   margin-top: 15px;
   margin-left: 30px;
 }
+
+form{
+  color: black;
+}
