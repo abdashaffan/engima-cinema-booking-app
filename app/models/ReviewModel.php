@@ -12,10 +12,10 @@ class ReviewModel
         $this->db = new Database();
     }
 
-    public function getAllReviewByFilmId($id)
+    public function getAllReviewAndUserByFilmId($id)
     {
         $this->db->query(
-            "SELECT * FROM {$this->table} WHERE film_id={$id}"
+            "SELECT comment, rating, username, profile_picture FROM review NATURAL JOIN user WHERE film_id={$id}"
         );
         return $this->db->resultSet();
     }

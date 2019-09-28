@@ -21,7 +21,7 @@ class FilmController extends Controller
         $data['film']['release_date'] = $dateTime->format('F d, Y');
         
         $data['schedules'] = $this->model('Schedule')->getAllScheduleByFilmId($id);
-        $data['reviews'] = $this->model('Review')->getAllReviewByFilmId($id);
+        $data['reviews'] = $this->model('Review')->getAllReviewAndUserByFilmId($id);
 
         $this->view('templates/header', $data);
         $this->view('templates/nav');

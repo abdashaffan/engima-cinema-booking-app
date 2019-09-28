@@ -93,54 +93,48 @@
             <div class="wrapper">
                 <h3>Reviews</h3>
                 <div class="review-detail">
-                    <div>
-                        <img class="review-user" class="review-user" src="/public/assets/img/user/5.jpg">
+                    <?php for ($i = 0; $i < count($reviews)-1; $i++) : ?>
                         <div>
-                            <b><p>antonius.wahyu</p></b>
-                            <div class='rating'>
-                                <h3>
-                                    <img class="svg-small" src="/public/assets/icon/star-solid.svg">
-                                    8.75
-                                    <span>/10</span>
-                                </h3>
+                            <?php echo "<img class='review-user' class='review-user' src='/public/assets/img/user/" . $reviews[$i]['profile_picture'] . "'>" ?>
+                            <div>
+                                <b><p><?php echo $reviews[$i]['username'] ?></p></b>
+                                <div class='rating'>
+                                    <h3>
+                                        <img class="svg-small" src="/public/assets/icon/star-solid.svg">
+                                        <?php echo $reviews[$i]['rating'] ?>
+                                        <span>/10</span>
+                                    </h3>
+                                </div>
+                                <p>
+                                    <?php echo $reviews[$i]['comment'] ?>
+                                </p>
                             </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit consectetur doloribus sed alias iste reiciendis perferendis hic voluptates! Officia, quaerat eos. Ut deserunt et, blanditiis perferendis dolor voluptates quos nisi?
-                            </p>
                         </div>
-                    </div>
-                    <div>
-                        <img class="review-user" src="/public/assets/img/user/5.jpg">
-                        <div>
-                            <b><p>antonius.wahyu</p></b>
-                            <div class='rating'>
-                                <h3>
-                                    <img class="svg-small" src="/public/assets/icon/star-solid.svg">
-                                    8.75
-                                    <span>/10</span>
-                                </h3>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit consectetur doloribus sed alias iste reiciendis perferendis hic voluptates! Officia, quaerat eos. Ut deserunt et, blanditiis perferendis dolor voluptates quos nisi?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="review-last">
-                        <img class="review-user" src="/public/assets/img/user/5.jpg">
-                        <div>
-                            <b><p>antonius.wahyu</p></b>
-                            <div class='rating'>
-                                <h3>
-                                    <img class="svg-small" src="/public/assets/icon/star-solid.svg">
-                                    8.75
-                                    <span>/10</span>
-                                </h3>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit consectetur doloribus sed alias iste reiciendis perferendis hic voluptates! Officia, quaerat eos. Ut deserunt et, blanditiis perferendis dolor voluptates quos nisi?
-                            </p>
-                        </div>
-                    </div>
+                    <?php endfor; ?>
+                    
+                    <?php
+                        $n = count($reviews);
+                        if ($n == 0) {
+                            echo "<p>Tidak Ada Review </p>";
+                        } else {
+
+                        }
+                        echo "
+                            <div class='review-last'>
+                                <img class='review-user' src='/public/assets/img/user/" . $reviews[$n-1]['profile_picture'] ."'>
+                                <div>
+                                    <b><p>" . $reviews[$n-1]['username'] ."</p></b>
+                                    <div class='rating'>
+                                        <h3>
+                                            <img class='svg-small' src='/public/assets/icon/star-solid.svg'>"
+                                            . $reviews[$n-1]['rating'] .
+                                            "<span>/10</span>
+                                        </h3>
+                                    </div>
+                                    <p>" . $reviews[$n-1]['comment'] . "</p>
+                                </div>
+                            </div> ";
+                    ?>
                 </div>
             </div>
         </div>
