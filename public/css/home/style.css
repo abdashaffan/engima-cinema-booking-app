@@ -1,0 +1,37 @@
+/* Home */
+
+.home {
+  width: 100%;
+  height: 100%;
+  padding: 0 150px;
+  display: flex;
+}
+.home-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 10vh 50px 0 50px;
+  box-sizing: border-box;
+}
+.home-wrapper img {
+  height: 250px;
+  width: 170px;
+  border-radius: 10px;
+}
+.list-film {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list-film > div {
+  margin-right: 15px;
+  margin-bottom: 20px;
+  max-width: 170px;
+}
+.rating i {
+  color: #eac903;
+}
+.rating h3 {
+  color: gray;
+}
+.home h3 {
+  margin: 7px 0;
+}
