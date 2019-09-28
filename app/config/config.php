@@ -1,6 +1,7 @@
 <?php
 
 
+define('ROOT',  "{$_SERVER["DOCUMENT_ROOT"]}/active");
 define('DEFAULT_CONTROLLER', 'HomeController');
 define('DEFAULT_METHOD', 'index');
 // GANTI SESUAI NAMA FILE MASING"
