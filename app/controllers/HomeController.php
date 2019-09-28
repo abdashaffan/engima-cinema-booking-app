@@ -3,7 +3,7 @@
 
 
 class HomeController extends Controller
-{   
+{
     public function __construct()
     {
         parent::__construct('home');
@@ -17,7 +17,9 @@ class HomeController extends Controller
         $data['films'] = $this->model('Film')->getAllCurrentFilm();
         $this->view('templates/header', $data);
         $this->view('templates/nav');
+        $this->view('templates/layout');
         $this->view('home/index', $data);
+        $this->view('templates/layout-end');
         $this->view('templates/footer');
     }
 }
