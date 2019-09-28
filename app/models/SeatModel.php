@@ -13,7 +13,8 @@ class SeatModel
 
     public function getAllSeatByScheduleId($id)
     {   
-        $this->db->query("SELECT * FROM {$this->table} WHERE schedule_id={$id}"
+        $this->db->query(
+            "SELECT * FROM {$this->table} WHERE schedule_id={$id}"
         );
         return $this->db->resultSet();
     }

@@ -23,7 +23,7 @@
     color: gray;
     padding-left: 40px;
 }
-.seat-summary p {
+.seat-summary .not-selected {
     color: #bbb;
 }
 
@@ -49,6 +49,7 @@
     background-color: white;
     border: 2px solid #2f80ed;
     color: #2f80ed;
+    cursor: pointer;
 }
 .seat-screen {
     margin-top: 10px;
@@ -58,4 +59,24 @@
     padding: 5px;
     text-align: center;
     font-weight: bold;
+}
+.seat-summary h4 {
+    color: black;
+    margin: 20px 0 5px 0;
+}
+.seat-price {
+    display: flex;
+    justify-content: space-between;
+}
+.seat-summary p {
+    margin: 5px 0;
+}
+
+.seat-buy {
+    background-color: #2f80ed;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 5px;
+    float: right;
+    margin-top: 30px;
 }

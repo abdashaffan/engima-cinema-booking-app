@@ -27,9 +27,9 @@
                         if ($seats[$i] != NULL and $seats[$i]['occupied']!=0){
                             echo '<div class="occupied">';
                         } else {
-                            echo '<div class="not-occupied">';
+                            echo '<div class="not-occupied" onclick="getSeatDetail()">';
                         }
-                        echo $i . '</div>';
+                        echo $i+1 . '</div>';
                     ?>
                 <?php endfor ?>
             </div>
@@ -38,10 +38,21 @@
             </div>
         </div>
         <div class="seat-summary"> 
-            <h4>Booking Summary</h4>
-            <p>
-                You haven't selected any seat yet. Please click on one of the seat provided.
-            </p>
+            <h3>Booking Summary</h3>
+            <div id="seat-summary-content" class="seat-sumary-content">
+                <!-- <div class="not-selected"> 
+                    You haven't selected any seat yet. Please click on one of the seat provided. 
+                </div> -->
+                <h4>Avengers: Endgame</h4>
+                <p>
+                    September 4, 2019, 09.40 PM
+                </p>
+                <div class="seat-price">
+                    <h4>Seat #18</h4>
+                    <h4>Rp 45.000</h4>
+                </div>
+                <div class="seat-buy">Buy Ticket</div>
+            <div>
         </div>
     </div>
 </div>
