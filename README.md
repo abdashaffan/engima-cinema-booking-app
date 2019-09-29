@@ -30,6 +30,13 @@ Pastikan sistem Anda memiliki hal-hal berikut sebelum menjalankan sistem:
 
 ## Screenshot
 
+### Transaction History
+![trans1](./Screenshots/TransHistory1.png)
+![trans1](./Screenshots/TransHistory1.png)
+
+### Review Page
+![review](./Screenshots/Review.png)
+
 ## Pembagian Tugas
 Berikut adalah pembagian tugas kelompok kami.
 ### Frontend
