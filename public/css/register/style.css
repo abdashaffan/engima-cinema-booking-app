@@ -1,0 +1,13 @@
+
+
+input.invalid-input {
+    border: 1px solid tomato;
+}
+
+input.valid-input {
+    border: 1px solid rgb(103, 172, 103);
+}
+span.invalid-message {
+color:tomato;
+font-size: .8em;
+}

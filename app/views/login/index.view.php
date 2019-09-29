@@ -1,6 +1,6 @@
 <div class="card">
     <span class="form-header">Welcome to <b>Engi</b>ma!</span>
-    <form action="" method="post">
+    <form action="<?= BASE_URL; ?>/login/validate" method="post">
         <label for="email">Email</label>
         <input type="email" name="email" required class="input" placeholder="john@doe.com">
         <label for="password">Password</label>
