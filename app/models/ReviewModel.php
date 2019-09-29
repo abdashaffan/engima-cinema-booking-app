@@ -38,12 +38,21 @@ class ReviewModel
 
         return $this->db->rowCount();
     }
+
     public function getReviewedFilmName($film_id)
     {
         $this->db->query(
             "SELECT title FROM {$this->table} r INNER JOIN film f ON r.film_id=f.film_id WHERE f.film_id = :id"
         );
         $this->db->bind('id', $film_id);
+        return $this->db->resultSet();
+    }
+
+    public function getAllReviewAndUserByFilmId($id)
+    {
+        $this->db->query(
+            "SELECT comment, rating, username, profile_picture FROM review NATURAL JOIN user WHERE film_id={$id}"
+        );
         return $this->db->resultSet();
     }
 }

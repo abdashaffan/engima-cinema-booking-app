@@ -23,8 +23,11 @@
     color: gray;
     padding-left: 40px;
 }
-.seat-summary .not-selected {
+.seat-summary #not-selected {
     color: #bbb;
+}
+.seat-summary #selected {
+    /* display: none; */
 }
 
 /* Number */

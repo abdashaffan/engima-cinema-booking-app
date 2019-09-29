@@ -11,8 +11,8 @@ class Controller
         // di file viewnya tambahin pathnya kalo ternyata filenya ada banyak
         // Contoh: $this->cssPath = ../public/css/register
         // File yang mau dipake = ../public/css/register/style.css atau ../public/css/register/index.css
-        $this->cssPath = "../public/css/{$controllerName}";
-        $this->jsPath = "../public/js/{$controllerName}";
+        $this->cssPath = BASE_URL."/css/{$controllerName}";
+        $this->jsPath =  BASE_URL. "/js/{$controllerName}";
     }
 
     public function view($viewPath, $data = [])
