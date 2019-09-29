@@ -41,9 +41,50 @@ class ReviewModel
     public function getReviewedFilmName($film_id)
     {
         $this->db->query(
-            "SELECT title FROM {$this->table} r INNER JOIN film f ON r.film_id=f.film_id WHERE f.film_id = :id"
+            "SELECT title FROM film f WHERE f.film_id = :id"
         );
         $this->db->bind('id', $film_id);
         return $this->db->resultSet();
+    }
+    public function changeTransStatus01($transid)
+    {
+        // set Transaction Status by id
+        $query2=
+            "UPDATE transaction t
+            SET status=1
+            WHERE transaction_id=:id And status=0 ;
+            ";
+
+        $this->db->query($query2);
+        $this->db->bind('id', $transid);
+        $this->db->execute();
+
+        return $this->db->rowCount();;
+    }
+    public function changeTransStatus10($transid)
+    {
+        // set Transaction Status by id
+        $query1=
+            "UPDATE transaction t
+            SET status=0
+            WHERE transaction_id=:id And status=1 ;
+            ";
+        $this->db->query($query1);
+        $this->db->bind('id', $transid);
+        $this->db->execute();
+
+        return $this->db->rowCount();;
+    }
+    public function getStatus($transid)
+    {
+        // set Transaction Status by id
+        $query=
+            "SELECT status FROM transaction t WHERE transaction_id=:id;
+            ";
+        $this->db->query($query);
+        $this->db->bind('id', $transid);
+        $this->db->execute();
+
+        return $this->db->resultSet();;
     }
 }

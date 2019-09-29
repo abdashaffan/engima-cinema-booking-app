@@ -26,10 +26,10 @@ class TranshistoryController extends Controller
     //     $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory?transid=".$transaction_id.",filmid=".$film_id);
     // }
     public function toreview(){
+        
         $data = [];
-        // HARDCODED
-        $data['film_id'] = 1;
-        $data['transaction_id'] = 1;
+        $data['transaction_id'] = $_GET["transaction_id"];
+        $data['film_id'] = $_GET['film_id'];
         var_dump($data['film_id']);
         $this->redirect(BASE_URL . "/" . "public" . "/" . "review" . "?filmid=" . $data['film_id'] . "&transid=" . $data['transaction_id']);
     }

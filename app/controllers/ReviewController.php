@@ -11,7 +11,6 @@ class ReviewController extends Controller
 
     public function index()
     {
-        
         $filmid = $_GET['filmid'];
         $transid = $_GET['transid'];    
         $data['judul'] = 'Review/index';
@@ -19,7 +18,8 @@ class ReviewController extends Controller
         $data['user_id'] = $this->model('User')->getUserID();
         $data['film_name'] = $this->model('Review')->getReviewedFilmName($filmid);
         // var_dump($data['film_name'][0]);
-        $data['film_id'] = 1;
+        $data['film_id'] = $filmid;
+        $data['trans_id'] = $transid;
         $this->view('templates/header', $data);
         $this->view('templates/nav');
         $this->view('templates/layout');
@@ -29,18 +29,30 @@ class ReviewController extends Controller
     }
     public function add()
     {
-        var_dump($_POST);
-            $data = [];
-            $data['rating'] = $_POST["rating"];
-            $data['comment'] = $_POST['comment'];
-            $data['user_id'] = $this->model('User')->getUserID();
-            // var_dump($filmid);
-            $data['film_id'] = 1;
-            // $data['trans_id'] = $transid[0];
+        $data = [];
+        $data['rating'] = $_POST["rating"];
+        $data['comment'] = $_POST['comment'];
+        $data['user_id'] = $this->model('User')->getUserID();
+        
+        //HARDCODED VALUES ------------------------------------------------------
+        $transid = $_POST['transaction_id'];
+        $data['film_id'] = $_POST['film_id']; ;
+        $status = $this->model('Review')->getStatus($transid);
+        $status = trim($status[0]['status']);
 
-            if ($this->model('Review')->addNewUserReview($data) > 0) {
-                $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory");
+        if ($this->model('Review')->addNewUserReview($data) > 0) {
+           // changetransStatus here
+            if($status=="0"){
+                $this->model('Review')->changeTransStatus01($transid);
             }
+            else if($status=="1"){
+                $this->model('Review')->changeTransStatus10($transid);
+            }
+            else{
+                echo "String failed to compare";
+            }
+            $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory");
+        }
     }
 
 }
