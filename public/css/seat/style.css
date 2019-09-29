@@ -27,7 +27,7 @@
     color: #bbb;
 }
 .seat-summary #selected {
-    /* display: none; */
+    display: none;
 }
 
 /* Number */
