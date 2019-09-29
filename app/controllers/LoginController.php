@@ -10,7 +10,7 @@ class LoginController extends Controller
         parent::__construct('login');
     }
 
-    public function index()
+    public function index($valid = 1)
     {
 
         if ($this->model("Login")->isRedirectedToHome()) {
