@@ -30,7 +30,7 @@
                       }
                     ?>
                   </h3>
-                  <form id="passV" method="get" action="<?= BASE_URL; ?>/public/transhistory/toreview">
+                  <form id="passV" method="get" action="<?= BASE_URL; ?>/transhistory/toreview">
                   
                   <?php
                     date_default_timezone_set('Asia/Jakarta');

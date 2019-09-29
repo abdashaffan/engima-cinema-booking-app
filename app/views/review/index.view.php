@@ -9,7 +9,7 @@
 </header>
 
 <body>
-  <form id="review" action="<?= BASE_URL; ?>/public/review/add" method="post">
+  <form id="review" action="<?= BASE_URL; ?>/review/add" method="post">
     <div class="flex">
       <button type="button" class="iconbtn"><</button>
       <?php
@@ -47,7 +47,7 @@
       <textarea rows="7" class="comment" name="comment" form="review"></textarea>
     </div>
     <div class = "cancelsubmitbuttons">
-        <button type="button" class="cancelbutton"> Cancel </button>
+        <button type="button" onclick="window.location.href='transhistory';" class="cancelbutton"> Cancel </button>
         <button type="submit" name="submit" class="savebutton"> Submit </button>
     </div>
     <input type="hidden" name="transaction_id" value = "<?php echo $trans_id; ?>" >

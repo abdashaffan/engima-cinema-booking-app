@@ -50,7 +50,7 @@ class ReviewController extends Controller
             else{
                 echo "String failed to compare";
             }
-            $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory");
+            $this->redirect(BASE_URL .  "/" . "transhistory");
         }
     }
 

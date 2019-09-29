@@ -32,6 +32,6 @@ class TranshistoryController extends Controller
         $data['transaction_id'] = $_GET["transaction_id"];
         $data['film_id'] = $_GET['film_id'];
         // var_dump($data['film_id']);
-        $this->redirect(BASE_URL . "/" . "public" . "/" . "review" . "?filmid=" . $data['film_id'] . "&transid=" . $data['transaction_id']);
+        $this->redirect(BASE_URL . "/" . "review" . "?filmid=" . $data['film_id'] . "&transid=" . $data['transaction_id']);
     }
 }
