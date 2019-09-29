@@ -13,6 +13,7 @@ class TranshistoryController extends Controller
     {
         $data['judul'] = 'Transhistory/index';
         $data['css'] = $this->cssPath . "/style.css";
+        $data['js'] = $this->jsPath . "/index.js";
         $data['user_ID'] = $this->model('User')->getUserID();
         $data['transactions'] = $this->model('Transaction')->getAllUserTransaction($data['user_ID']);
         $this->view('templates/header', $data);

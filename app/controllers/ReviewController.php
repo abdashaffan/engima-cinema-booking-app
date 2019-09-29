@@ -34,7 +34,6 @@ class ReviewController extends Controller
         $data['comment'] = $_POST['comment'];
         $data['user_id'] = $this->model('User')->getUserID();
         
-        //HARDCODED VALUES ------------------------------------------------------
         $transid = $_POST['transaction_id'];
         $data['film_id'] = $_POST['film_id']; ;
         $status = $this->model('Review')->getStatus($transid);
