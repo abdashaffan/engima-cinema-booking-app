@@ -146,4 +146,7 @@ class UserModel
         }
         return $this->db->rowCount();
     }
+    public function getUserID(){
+        return 1;
+    }
 }

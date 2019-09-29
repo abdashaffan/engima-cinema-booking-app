@@ -27,7 +27,7 @@ class ReviewModel
                 :comment,
                 :rating
             )";
-        var_dump($query);
+        // var_dump($query);
         
         $this->db->query($query);
         $this->db->bind('film_id', $data["film_id"]);
@@ -77,12 +77,24 @@ class ReviewModel
     }
     public function getStatus($transid)
     {
-        // set Transaction Status by id
+        // get Transaction Status by id
         $query=
             "SELECT status FROM transaction t WHERE transaction_id=:id;
             ";
         $this->db->query($query);
         $this->db->bind('id', $transid);
+        $this->db->execute();
+
+        return $this->db->resultSet();;
+    }
+    public function delReviewById($reviewid)
+    {
+        $query=
+            "DELETE FROM review 
+            WHERE review_id=:id;
+            ";
+        $this->db->query($query);
+        $this->db->bind('id', $reviewid);
         $this->db->execute();
 
         return $this->db->resultSet();;

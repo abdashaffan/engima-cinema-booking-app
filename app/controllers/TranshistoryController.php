@@ -13,6 +13,7 @@ class TranshistoryController extends Controller
     {
         $data['judul'] = 'Transhistory/index';
         $data['css'] = $this->cssPath . "/style.css";
+        $data['js'] = $this->jsPath . "/index.js";
         $data['user_ID'] = $this->model('User')->getUserID();
         $data['transactions'] = $this->model('Transaction')->getAllUserTransaction($data['user_ID']);
         $this->view('templates/header', $data);
@@ -30,7 +31,7 @@ class TranshistoryController extends Controller
         $data = [];
         $data['transaction_id'] = $_GET["transaction_id"];
         $data['film_id'] = $_GET['film_id'];
-        var_dump($data['film_id']);
-        $this->redirect(BASE_URL . "/" . "public" . "/" . "review" . "?filmid=" . $data['film_id'] . "&transid=" . $data['transaction_id']);
+        // var_dump($data['film_id']);
+        $this->redirect(BASE_URL . "/" . "review" . "?filmid=" . $data['film_id'] . "&transid=" . $data['transaction_id']);
     }
 }

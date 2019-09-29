@@ -34,7 +34,6 @@ class ReviewController extends Controller
         $data['comment'] = $_POST['comment'];
         $data['user_id'] = $this->model('User')->getUserID();
         
-        //HARDCODED VALUES ------------------------------------------------------
         $transid = $_POST['transaction_id'];
         $data['film_id'] = $_POST['film_id']; ;
         $status = $this->model('Review')->getStatus($transid);
@@ -51,7 +50,7 @@ class ReviewController extends Controller
             else{
                 echo "String failed to compare";
             }
-            $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory");
+            $this->redirect(BASE_URL .  "/" . "transhistory");
         }
     }
 

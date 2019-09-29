@@ -30,7 +30,7 @@
                       }
                     ?>
                   </h3>
-                  <form id="passV" method="get" action="<?= BASE_URL; ?>/public/transhistory/toreview">
+                  <form id="passV" method="get" action="<?= BASE_URL; ?>/transhistory/toreview">
                   
                   <?php
                     date_default_timezone_set('Asia/Jakarta');
@@ -48,8 +48,8 @@
                         <div class=\"Btn2\"><div>
                         <input type=\"hidden\" name=\"transaction_id\" value = ".$transaction['transaction_id'].">
                         <input type=\"hidden\" name=\"film_id\" value=".$transaction['film_id'].">
-                        <button type=\"submit\" class=\"DelBtn\">Delete Review</button></div>
-                        <button type=\"submit\" class=\"EdtBtn\">Edit Review</button>
+                        <button onclick=\"deleteReview()\" type=\"submit\" class=\"DelBtn\">Delete Review</button></div>
+                        <button onclick=\"editReview()\" type=\"submit\" class=\"EdtBtn\">Edit Review</button>
                         </div>";
                       }
                     } 
