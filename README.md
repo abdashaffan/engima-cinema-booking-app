@@ -35,6 +35,8 @@ Pastikan sistem Anda memiliki hal-hal berikut sebelum menjalankan sistem:
 * Buka Laman anda sesuai dengan path yang anda tentukan (default: http://localhost/-nama_folder- jika menggunakan XAMPP)
 
 ## Screenshot
+### Home
+![home](./Screenshots/home.jpg)
 ### Login
 ![login](./Screenshots/login.png)
 ### Register
