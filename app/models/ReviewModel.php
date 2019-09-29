@@ -27,7 +27,7 @@ class ReviewModel
                 :comment,
                 :rating
             )";
-        var_dump($query);
+        // var_dump($query);
         
         $this->db->query($query);
         $this->db->bind('film_id', $data["film_id"]);
