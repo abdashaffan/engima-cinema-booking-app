@@ -210,3 +210,17 @@ form label {
 .svg-small {
   height: 15px;
 }
+
+
+form.form-navbar {
+  display:flex;
+  flex-direction: row;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

@@ -1,7 +1,7 @@
 <?php
 
 class SeatController extends Controller
-{   
+{
     public function __construct()
     {
         parent::__construct('seat');
@@ -17,10 +17,10 @@ class SeatController extends Controller
 
         $data['schedule'] = $this->model('Schedule')->getScheduleByScheduleId($id);
         $data['film'] = $this->model('Film')->getFilmById($data['schedule']['film_id']);
-        
+
         $seats = $this->model('Seat')->getAllSeatByScheduleId($id);
         foreach ($seats as $key => $seat) {
-            $data['seats'][$seat['seat_number']] = $seat; 
+            $data['seats'][$seat['seat_number']] = $seat;
         }
 
         $this->view('templates/header', $data);
@@ -31,9 +31,8 @@ class SeatController extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function detail() 
-    {   
-        var_dump('tes');
+    public function detail()
+    {
         var_dump($_GET);
         echo "tes";
     }

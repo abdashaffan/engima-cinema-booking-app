@@ -27,7 +27,6 @@ class UserModel
         $query =
             "UPDATE  {$this->table} set login_token = :token WHERE username=:username";
 
-        // die(var_dump($query));
         $this->db->query($query);
         $this->db->bind('username', $username);
         $this->db->bind('token', $token);
@@ -132,7 +131,6 @@ class UserModel
                 :profile_picture,
                 :phone_num
             )";
-        var_dump($query);
         $this->db->query($query);
         $this->db->bind('username', $data["username"]);
         $this->db->bind('password', $data["password"]);
@@ -146,7 +144,19 @@ class UserModel
         }
         return $this->db->rowCount();
     }
-    public function getUserID(){
-        return 1;
+    public function getCurrentUser()
+    {
+        return $_COOKIE['engima_user'];
+    }
+
+    public function getUserID()
+    {
+        $this->db->query(
+            "SELECT user_id FROM {$this->table} WHERE username = :username"
+        );
+        $this->db->bind('username', $_COOKIE['engima_user']);
+
+
+        return $this->db->single();
     }
 }

@@ -8,8 +8,7 @@ class ReviewModel
 
     public function __construct()
     {
-        $this->db = new Database(); 
-
+        $this->db = new Database();
     }
 
     public function addNewUserReview($data)
@@ -27,8 +26,7 @@ class ReviewModel
                 :comment,
                 :rating
             )";
-        // var_dump($query);
-        
+
         $this->db->query($query);
         $this->db->bind('film_id', $data["film_id"]);
         $this->db->bind('user_id', $data["user_id"]);
@@ -50,7 +48,7 @@ class ReviewModel
     public function changeTransStatus01($transid)
     {
         // set Transaction Status by id
-        $query2=
+        $query2 =
             "UPDATE transaction t
             SET status=1
             WHERE transaction_id=:id And status=0 ;
@@ -65,7 +63,7 @@ class ReviewModel
     public function changeTransStatus10($transid)
     {
         // set Transaction Status by id
-        $query1=
+        $query1 =
             "UPDATE transaction t
             SET status=0
             WHERE transaction_id=:id And status=1 ;
@@ -79,7 +77,7 @@ class ReviewModel
     public function getStatus($transid)
     {
         // get Transaction Status by id
-        $query=
+        $query =
             "SELECT status FROM transaction t WHERE transaction_id=:id;
             ";
         $this->db->query($query);
@@ -90,7 +88,7 @@ class ReviewModel
     }
     public function delReviewById($reviewid)
     {
-        $query=
+        $query =
             "DELETE FROM review 
             WHERE review_id=:id;
             ";
@@ -98,7 +96,8 @@ class ReviewModel
         $this->db->bind('id', $reviewid);
         $this->db->execute();
 
-        return $this->db->resultSet();;
+        return $this->db->resultSet();
+    }
 
     public function getAllReviewAndUserByFilmId($id)
     {
