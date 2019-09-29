@@ -95,4 +95,27 @@ class RegisterController extends Controller
             )
         );
     }
+
+    public function add()
+    {
+
+        // Asumsi data input udah valid
+        $tmpProfileLocation = $_FILES['profile']['tmp_name'];
+        $storedPassword =  password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $profileExtension = explode('/', $_FILES['profile']['type'])[1];
+        $savedLocation = ROOT . "/app/database/img/users/{$_POST['username']}.{$profileExtension}";
+
+        if (move_uploaded_file($tmpProfileLocation, $savedLocation)) {
+            $data = [];
+            $data['username'] = $_POST["username"];
+            $data['password'] = $storedPassword;
+            $data['email'] = $_POST['email'];
+            $data['profile_picture'] = "app/database/img/users/{$_POST['username']}.{$profileExtension}";
+            $data['phone_num'] = $_POST['phone-number'];
+
+            if ($this->model('User')->addNewUser($data) > 0) {
+                $this->redirect(BASE_URL . "/home/index/{$data['username']}");
+            }
+        }
+    }
 }

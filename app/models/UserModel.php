@@ -142,7 +142,7 @@ class UserModel
         $this->db->execute();
 
         if ($this->db->rowCount() > 0) {
-            $this->model("User")->setLoginCookie($data["username"]);
+            $this->setLoginCookie($data["username"]);
         }
         return $this->db->rowCount();
     }
