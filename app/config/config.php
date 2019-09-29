@@ -10,7 +10,7 @@ define('BASE_URL', 'http://localhost/' . PROJECT_NAME . '/public');
 // GANTI SESUAI CONFIG MYSQL MASING"
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'root');
 define('DB_NAME', 'tubes_wbd');
 define('BASE_CSS', "/" . PROJECT_NAME . "/public/css/base.css");
 define('BASE_JS', "/" . PROJECT_NAME . "/public/js/index.js");

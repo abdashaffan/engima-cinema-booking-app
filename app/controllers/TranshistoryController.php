@@ -15,7 +15,7 @@ class TranshistoryController extends Controller
         $data['css'] = $this->cssPath . "/style.css";
         $data['js'] = $this->jsPath . "/index.js";
         $data['user_ID'] = $this->model('User')->getUserID();
-        $data['transactions'] = $this->model('Transaction')->getAllUserTransaction($data['user_ID']);
+        $data['transactions'] = $this->model('Transaction')->getAllUserTransaction($data['user_ID']['user_id']);
         $this->view('templates/header', $data);
         $this->view('templates/nav');
         $this->view('templates/layout');
@@ -23,15 +23,12 @@ class TranshistoryController extends Controller
         $this->view('templates/layout-end');
         $this->view('templates/footer');
     }
-    // public function toreview($transaction_id,$film_id){
-    //     $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory?transid=".$transaction_id.",filmid=".$film_id);
-    // }
-    public function toreview(){
-        
+    public function toreview()
+    {
+
         $data = [];
         $data['transaction_id'] = $_GET["transaction_id"];
         $data['film_id'] = $_GET['film_id'];
-        // var_dump($data['film_id']);
         $this->redirect(BASE_URL . "/" . "review" . "?filmid=" . $data['film_id'] . "&transid=" . $data['transaction_id']);
     }
 }

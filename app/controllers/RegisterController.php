@@ -49,7 +49,6 @@ class RegisterController extends Controller
         $content = json_decode(file_get_contents('php://input'));
         $key = $content->key;
         $value = $content->value;
-        // var_dump($content);
         if ($key == 'username') {
             if ($this->model("User")->isInputExist($key, $value) > 0) {
                 $validStatus = UNAME_EXIST_CODE;

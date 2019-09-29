@@ -9,18 +9,16 @@ class HomeController extends Controller
         parent::__construct('home');
     }
 
-    public function index()
+    public function index($username = "")
     {
 
-        // if (!$this->model("User")->isRedirectedToHome()) {
-        //     $this->redirect(BASE_URL . "/login");
-        // }
-        
+        if (!$this->model("User")->isRedirectedToHome()) {
+            $this->redirect(BASE_URL . "/login");
+        }
+
         $data['judul'] = 'Home/index';
         $data['css'] = $this->cssPath . "/style.css";
-        // TODO: get username from abda
-        // $data['user_name'] = $this->model('User')->getUser();
-        $data['user_name'] = "abda";
+        $data['user_name'] = $this->model('User')->getCurrentUser();
         $data['films'] = $this->model('Film')->getAllCurrentFilm();
         $this->view('templates/header', $data);
         $this->view('templates/nav');
