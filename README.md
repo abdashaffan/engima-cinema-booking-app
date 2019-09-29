@@ -6,8 +6,8 @@ Kontributor:
 * Abda Shaffan Diva/13517007
 * Rika Dewi/13517147
 ## Deskripsi 
-Engima adalah aplikasi web pemesanan tiket bioskop daring.
-
+Engima adalah aplikasi web pemesanan tiket bioskop daring untuk membantu saudara Engi dalam usahanya menjalankan sinema.
+Fitur-fitur yang dimiliki Engima berguna bagi para pelanggan dengan memberikan kemudahan dalam memesan tiket sehingga pelanggan lebih mungkin untuk kembali membeli.
 Berikut adalah fitur yang dimiliki oleh Engima:
 * Pencarian film
 * Pembelian tiket
@@ -23,10 +23,16 @@ Pastikan sistem Anda memiliki hal-hal berikut sebelum menjalankan sistem:
 * Browser dan Database
 
 ## Instalation
-* 
-
+* Siapkan Server atau aplikasi server anda
+* Taruh Folder proyek ini kedalam Server anda
+* Import Database dari file sql yang ada pada folder Database
+* Atur config dari Server anda untuk menghubungkan server dengan database
+* Atur config dari file (config.php) supaya memiliki isi yang benar
+* Laman anda siap dijalankan!
 
 ## Running Server
+* Nyalakan Server dan Database anda (Apache dan MySql pada XAMPP)
+* Buka Laman anda sesuai dengan path yang anda tentukan (default: http://localhost/-nama_folder- jika menggunakan XAMPP)
 
 ## Screenshot
 
