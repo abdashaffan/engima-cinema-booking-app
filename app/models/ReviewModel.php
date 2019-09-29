@@ -99,7 +99,8 @@ class ReviewModel
         $this->db->execute();
 
         return $this->db->resultSet();;
-
+    } 
+    
     public function getAllReviewAndUserByFilmId($id)
     {
         $this->db->query(
