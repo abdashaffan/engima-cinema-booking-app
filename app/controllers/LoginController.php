@@ -20,7 +20,9 @@ class LoginController extends Controller
         }
 
         if ($valid == "0") {
-            $data['invalidLogin'] = true;
+            $data['invalidLoginMsg'] = "
+                <span class='invalid' style='color:red;font-weight:bold;'>Invalid credentials</span>
+            ";
         }
         $data['judul'] = 'login/index';
         $data['css'] = $this->cssPath . "/style.css";
@@ -44,6 +46,7 @@ class LoginController extends Controller
             exit;
         }
         if (password_verify($password, $userDataSearchResult['password'])) { //valid passwd
+
 
             // set cookie
             $this->model("User")->setLoginCookie($userDataSearchResult['username']);
