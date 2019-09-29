@@ -33,7 +33,15 @@ class SeatController extends Controller
 
     public function detail()
     {
-        var_dump($_GET);
-        echo "tes";
+        $occupied = $this->model('Seat')->getOccupiedBySeatNumberandFilmId(4, 1);
+        if ($occupied == NULL) {
+            echo 0;
+        } else {
+            if ($occupied == 0) {
+                echo 0;
+            } else {
+                echo 1;
+            }
+        }
     }
 }

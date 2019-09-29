@@ -35,13 +35,22 @@ Pastikan sistem Anda memiliki hal-hal berikut sebelum menjalankan sistem:
 * Buka Laman anda sesuai dengan path yang anda tentukan (default: http://localhost/-nama_folder- jika menggunakan XAMPP)
 
 ## Screenshot
-
+### Login
+![login](./Screenshots/login.png)
+### Register
+![register](./Screenshots/register.png)
+### Search
+![search](./Screenshots/search.jpg)
+### Seats
+![seats](./Screenshots/seat.jpg)
+### Film
+![film](./Screenshots/film.jpg)
 ### Transaction History
 ![trans1](./Screenshots/TransHistory1.png)
 ![trans2](./Screenshots/TransHistory2.png)
-
 ### Review Page
 ![review](./Screenshots/Review.png)
+
 
 ## Pembagian Tugas
 Berikut adalah pembagian tugas kelompok kami.

@@ -15,7 +15,11 @@
 </div>
 <div class="seat">
     <div class="seat-detail">
-        <?php echo '<img class="svg-superbig" src="'.BASE_URL.'/assets/icon/chevron-left-solid.svg">' ?>
+        <?php echo '
+            <a href="'.BASE_URL.'/film/'.$film['film_id'].'">
+                <img class="svg-superbig" src="'.BASE_URL.'/assets/icon/chevron-left-solid.svg">
+            </a>'
+        ?>
         <div>
             <h3><?php echo $film['title'] ?></h3>
             <h4>
@@ -46,7 +50,7 @@
                                 echo '<div class="not-occupied">';
                             }
                         } else {
-                            echo '<div class="not-occupied" onclick="getSeatDetail('.$film['film_id'].','.$i.')">';
+                            echo '<div class="not-occupied" onclick="getSeatDetail('.$schedule['schedule_id'].','.$i.')">';
                         }
                         echo $i . '</div>';
                     ?>
@@ -59,7 +63,7 @@
         <div class="seat-summary"> 
             <h3>Booking Summary</h3>
             <div id="seat-summary-content" class="seat-sumary-content">
-                <div class="not-selected"> 
+                <div id="not-selected"> 
                     You haven't selected any seat yet. Please click on one of the seat provided. 
                 </div>
                 <div id="selected">
@@ -77,13 +81,14 @@
                                 echo date("H:i", $interval).' PM';
                             };
                         ?>
-                        <!-- September 4, 2019, 09.40 PM -->
                     </p>
                     <div class="seat-price">
-                        <h4 id="seat-current-number">Seat #18</h4>
+                        <h4 id="seat-current-number"></h4>
                         <h4><?php echo 'Rp'.$film['price'] ?></h4>
                     </div>
-                    <div class="seat-buy" onclick="showBuyModal()">Buy Ticket</div>
+                    <?php echo '<a href="'.BASE_URL.'/Transhistory">' ?>
+                        <div class="seat-buy" onclick="showBuyModal()">Buy Ticket</div>
+                    <?php echo '</a>' ?>
                 </div>
             <div>
         </div>
