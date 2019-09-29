@@ -3,6 +3,17 @@
 define("UNAME_VALID_CODE", 1);
 define("UNAME_EXIST_CODE", 0);
 define("UNAME_INVALID_CODE", -1);
+define("UNAME_EXIST_MSG", "Username sudah digunakan");
+define("UNAME_INVALID_MSG", "Hanya boleh kombinasi angka, huruf atau underscore");
+define("EMAIL_VALID_CODE", 1);
+define("EMAIL_EXIST_CODE", 0);
+define("EMAIL_EXIST_MSG", "Email sudah digunakan");
+define("PHONENUM_VALID_CODE", 1);
+define("PHONENUM_EXIST_CODE", 0);
+define("PHONENUM_EXIST_MSG", "Nomor sudah digunakan");
+define("PHONENUM_INVALID_CODE", -1);
+define("PHONENUM_INVALID_MSG", "Nomor tidak valid: 9-12 nomor");
+
 
 class RegisterController extends Controller
 {
@@ -35,23 +46,76 @@ class RegisterController extends Controller
     public function validate()
     {
         header('Content-Type: application/json, charset=UTF-8');
-        $username = json_decode(file_get_contents('php://input'))->username;
-
-        if ($this->model("User")->isUsernameExist($username)) {
-            if ($this->model("User")->isUsernameValid($username)) {
-                $validStatus = UNAME_VALID_CODE;
+        $content = json_decode(file_get_contents('php://input'));
+        $key = $content->key;
+        $value = $content->value;
+        // var_dump($content);
+        if ($key == 'username') {
+            if ($this->model("User")->isInputExist($key, $value) > 0) {
+                $validStatus = UNAME_EXIST_CODE;
+                $responseMsg = UNAME_EXIST_MSG;
             } else {
-                $validStatus = UNAME_INVALID_CODE;
+                if ($this->model("User")->isUsernameValid($value)) {
+                    $validStatus = UNAME_VALID_CODE;
+                    $responseMsg = "";
+                } else {
+                    $validStatus = UNAME_INVALID_CODE;
+                    $responseMsg = UNAME_INVALID_MSG;
+                }
             }
-        } else {
-            $validStatus = UNAME_EXIST_CODE;
+        } else if ($key == 'phone_num') {
+            if ($this->model("User")->isInputExist($key, $value) > 0) {
+                $validStatus = PHONENUM_EXIST_CODE;
+                $responseMsg = PHONENUM_EXIST_MSG;
+            } else {
+                if ($this->model("User")->isPhoneNumValid($value)) {
+                    $validStatus = PHONENUM_VALID_CODE;
+                    $responseMsg = "";
+                } else {
+                    $validStatus = PHONENUM_INVALID_CODE;
+                    $responseMsg = PHONENUM_INVALID_MSG;
+                }
+            }
+        } else { //email
+            if ($this->model("User")->isInputExist($key, $value) > 0) {
+
+                $validStatus = EMAIL_EXIST_CODE;
+                $responseMsg = EMAIL_EXIST_MSG;
+            } else {
+
+                $validStatus = EMAIL_VALID_CODE;
+                $responseMsg = "";
+            }
         }
 
         echo json_encode(
             array(
-                "validStatus" => $validStatus
-
+                "validStatus" => $validStatus,
+                "responseMsg" => $responseMsg
             )
         );
+    }
+
+    public function add()
+    {
+
+        // Asumsi data input udah valid
+        $tmpProfileLocation = $_FILES['profile']['tmp_name'];
+        $storedPassword =  password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $profileExtension = explode('/', $_FILES['profile']['type'])[1];
+        $savedLocation = ROOT . "/app/database/img/users/{$_POST['username']}.{$profileExtension}";
+
+        if (move_uploaded_file($tmpProfileLocation, $savedLocation)) {
+            $data = [];
+            $data['username'] = $_POST["username"];
+            $data['password'] = $storedPassword;
+            $data['email'] = $_POST['email'];
+            $data['profile_picture'] = "app/database/img/users/{$_POST['username']}.{$profileExtension}";
+            $data['phone_num'] = $_POST['phone-number'];
+
+            if ($this->model('User')->addNewUser($data) > 0) {
+                $this->redirect(BASE_URL . "/home/index/{$data['username']}");
+            }
+        }
     }
 }

@@ -1,5 +1,8 @@
 <div class="card">
     <span class="form-header">Welcome to <b>Engi</b>ma!</span>
+    <?php if (isset($invalidLoginMsg)) : ?>
+    <?= $invalidLoginMsg; ?>
+    <?php endif; ?>
     <form action="<?= BASE_URL; ?>/login/validate" method="post">
         <label for="email">Email</label>
         <input type="email" name="email" required class="input" placeholder="john@doe.com">

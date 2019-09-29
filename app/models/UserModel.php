@@ -95,17 +95,22 @@ class UserModel
 
     public function isUsernameValid($username)
     {
-        return (preg_match('/^[a-zA-Z0-9_]+$/', $username) === false);
+        return preg_match('/^[\w-]+$/', $username);
     }
 
-    public function isUsernameExist($username)
+    public function isPhoneNumValid($input)
+    {
+        return (strlen($input) >= 10 && strlen($input) <= 14);
+    }
+
+    public function isInputExist($key, $value)
     {
         $this->db->query(
             "
-                SELECT username from {$this->table} WHERE username = :username
+                SELECT * from {$this->table} WHERE " . $key . " = :value
             "
         );
-        $this->db->bind('username', $username);
+        $this->db->bind('value', $value);
         return $this->db->single();
     }
 
@@ -137,7 +142,7 @@ class UserModel
         $this->db->execute();
 
         if ($this->db->rowCount() > 0) {
-            $this->model("User")->setLoginCookie($data["username"]);
+            $this->setLoginCookie($data["username"]);
         }
         return $this->db->rowCount();
     }
