@@ -1,0 +1,132 @@
+/* Seat */
+.seat > div {
+    display: flex;
+    margin: 40px 0;
+}
+.seat-detail {
+    border-bottom: 1px solid #bbb;
+}
+.seat-detail img {
+    margin: 20px 20px 20px 0;
+    filter: invert(44%) sepia(93%) saturate(3622%) hue-rotate(202deg) brightness(100%) contrast(86%);
+}
+
+/* Description */
+.seat-desc > div {
+    flex: 1;
+}
+.seat-number-wrapper {
+    padding-right: 40px;
+}
+.seat-summary {
+    border-left: 1px solid #bbb;
+    color: gray;
+    padding-left: 40px;
+}
+.seat-summary .not-selected {
+    color: #bbb;
+}
+
+/* Number */
+.seat-number {
+    display: flex;
+    flex-wrap: wrap;
+}
+.seat-number > div {
+    border-radius: 5px;
+    padding: 5px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    margin: 5px;
+}
+.occupied {
+    background-color: #eaeaea;
+    border: 2px solid gray;
+    color: gray;
+}
+.not-occupied {
+    background-color: white;
+    border: 2px solid #2f80ed;
+    color: #2f80ed;
+    cursor: pointer;
+}
+.seat-screen {
+    margin-top: 10px;
+    background-color: #bbb;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.seat-summary h4 {
+    color: black;
+    margin: 20px 0 5px 0;
+}
+.seat-price {
+    display: flex;
+    justify-content: space-between;
+}
+.seat-summary p {
+    margin: 5px 0;
+}
+
+.seat-buy {
+    background-color: #2f80ed;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 5px;
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+/* Overlay */
+#overlay {
+    display: none;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, .65);
+}
+.modal-content-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    overflow: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-bottom {
+    background: #2f80ed;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
+.modal-content {
+    background: white;
+    width: 400px;
+    overflow: hidden;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+.modal-content a {
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+}

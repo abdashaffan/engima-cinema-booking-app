@@ -1,21 +1,3 @@
-const PROJECT_NAME = 'tugas-besar-1-2019';
-const BASE_URL = 'http://localhost/' + PROJECT_NAME + '/public';
-
-
-// const NUM_OF_RESULT_PER_PAGE = 1
-// const strapNumberFromString = (str) => str.replace(/\D+$/g, "");
-
-
-// const getResultNumber = () => {
-//     let resultString = document.querySelector('.result-number').innerHTML;
-//     console.log(strapNumberFromString(resultString));
-// }
-
-// const createPageNavigation = (numOfResult) => {
-
-// }
-
-// getResultNumber();
 
 
 const getSearchResult = (keyword="") => {
@@ -25,7 +7,6 @@ const getSearchResult = (keyword="") => {
             document.querySelector('.result-key').innerHTML = "";
             document.querySelector('.result-number').innerText = "0";
         }
-        // console.log(keyword);
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
