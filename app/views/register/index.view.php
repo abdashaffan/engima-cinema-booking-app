@@ -1,7 +1,7 @@
 <div class="card">
     <span class="form-header">Welcome to <b>Engi</b>ma!</span>
 
-    <form action="/register" method="post" enctype="multipart/form-data">
+    <form action="<?= BASE_URL; ?>/register/add" method="post" enctype="multipart/form-data">
 
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="joe.johndoe" class="input" id="username"
