@@ -9,7 +9,7 @@ class FilmController extends Controller
         parent::__construct('film');
     }
 
-    public function index($id)
+    public function index($id=1)
     {
         // TODO: Change to parse id
         $data['judul'] = 'Film/index';

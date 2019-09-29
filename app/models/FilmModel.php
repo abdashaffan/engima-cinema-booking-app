@@ -15,16 +15,19 @@ class FilmModel
     //TO DO chane to get all
     public function getAllCurrentFilm()
     {
+        date_default_timezone_set(date_default_timezone_get());
+        $currentDate = date('Y-m-d', time());
         $this->db->query(
-            "SELECT * FROM {$this->table}"
+            "SELECT * FROM {$this->table} WHERE release_date = :date"
         );
+        $this->db->bind('date', $currentDate);
         return $this->db->resultSet();
     }
 
     public function getFilmById($id)
-    {
+    {   
         $this->db->query(
-            "SELECT * FROM {$this->table} WHERE film_id={$id}"
+            "SELECT * FROM {$this->table} WHERE film_id={$id} "
         );
         return $this->db->resultSet()[0];
     }
