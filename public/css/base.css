@@ -195,6 +195,9 @@ form label {
 }
 
 /* SVG Image */
+.svg-superbig {
+  height: 40px;
+}
 .svg-big {
   height: 20px;
 }
