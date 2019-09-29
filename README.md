@@ -32,7 +32,7 @@ Pastikan sistem Anda memiliki hal-hal berikut sebelum menjalankan sistem:
 
 ### Transaction History
 ![trans1](./Screenshots/TransHistory1.png)
-![trans1](./Screenshots/TransHistory1.png)
+![trans2](./Screenshots/TransHistory2.png)
 
 ### Review Page
 ![review](./Screenshots/Review.png)
