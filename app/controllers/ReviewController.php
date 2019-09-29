@@ -29,18 +29,33 @@ class ReviewController extends Controller
     }
     public function add()
     {
-        var_dump($_POST);
-            $data = [];
-            $data['rating'] = $_POST["rating"];
-            $data['comment'] = $_POST['comment'];
-            $data['user_id'] = $this->model('User')->getUserID();
-            // var_dump($filmid);
-            $data['film_id'] = 1;
-            // $data['trans_id'] = $transid[0];
+        
+        $data = [];
+        $data['rating'] = $_POST["rating"];
+        $data['comment'] = $_POST['comment'];
+        $data['user_id'] = $this->model('User')->getUserID();
+        
+        //HARDCODED VALUES ------------------------------------------------------
+        $transid = 1;
+        $data['film_id'] = 1;
+        $status = $this->model('Review')->getStatus($transid);
+        $status = trim($status[0]['status']);
+        echo($status);
+        if($status=="0"){
+            $this->model('Review')->changeTransStatus01($transid);
+        }
+        else if($status=="1"){
+            $this->model('Review')->changeTransStatus10($transid);
+        }
+        else{
+            echo "String failed to compare";
+        }
 
-            if ($this->model('Review')->addNewUserReview($data) > 0) {
-                $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory");
-            }
+
+        // if ($this->model('Review')->addNewUserReview($data) > 0) {
+        //    // changetransStatus here
+        //     $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory");
+        // }
     }
 
 }
