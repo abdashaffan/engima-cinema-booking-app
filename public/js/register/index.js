@@ -79,21 +79,4 @@ const setInvalidTextbox = (identifier, invalidMessage="") => {
 }
 
 
-// const checkForm = () => {
-//     let textBoxes = document.querySelectorAll('input');
-//     let textBoxesArray = Array.from(textBoxes);
-//     console.log(textBoxesArray);
-//     let invalidTextbox = textBoxesArray.filter(textbox => {
-//         return textbox.classList.contains('invalid-input');
-//     });
 
-//     console.log(invalidTextbox);
-//     if (invalidTextbox.length > 0) {
-//         document.getElementById('submit').disabled = true;
-//     } else {
-//         document.getElementById('submit').disabled = false;
-//     }
-// }
-
-
-// checkForm();
