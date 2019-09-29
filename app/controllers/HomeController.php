@@ -18,7 +18,6 @@ class HomeController extends Controller
 
         $data['judul'] = 'Home/index';
         $data['css'] = $this->cssPath . "/style.css";
-        // TODO: get username from abda
         $data['user_name'] = $this->model('User')->getCurrentUser();
         $data['films'] = $this->model('Film')->getAllCurrentFilm();
         $this->view('templates/header', $data);
