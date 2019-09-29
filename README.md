@@ -3,7 +3,7 @@ Engima dibuat untuk memenuhi Tugas 1 IF3110 Pengembangan Aplikasi Berbasis Web.
 
 Kontributor:
 * Seldi Kurnia Trihardja/13516042
-* Abda Shaffan Diva/13517007
+* Abda Shaffan Diva/13517021
 * Rika Dewi/13517147
 ## Deskripsi 
 Engima adalah aplikasi web pemesanan tiket bioskop daring untuk membantu saudara Engi dalam usahanya menjalankan sinema.
