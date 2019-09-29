@@ -13,10 +13,10 @@ class LoginController extends Controller
     public function index($valid = 1)
     {
 
-        if ($this->model("Login")->isRedirectedToHome()) {
+        if ($this->model("User")->isRedirectedToHome()) {
             $this->redirect(BASE_URL . "/home/index/{$_COOKIE['engima_user']}");
         } else {
-            $this->model("Login")->resetCookie();
+            $this->model("User")->resetCookie();
         }
 
         if ($valid == "0") {
@@ -38,7 +38,7 @@ class LoginController extends Controller
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $userDataSearchResult = $this->model("Login")->getUserByEmail($email);
+        $userDataSearchResult = $this->model("User")->getUserByEmail($email);
         if (!$userDataSearchResult) { //User email not found 
             $this->redirect(BASE_URL . '/login/invalid');
             exit;
@@ -46,7 +46,7 @@ class LoginController extends Controller
         if (password_verify($password, $userDataSearchResult['password'])) { //valid passwd
 
             // set cookie
-            $this->model("Login")->setLoginCookie($userDataSearchResult['username']);
+            $this->model("User")->setLoginCookie($userDataSearchResult['username']);
             // redirect
             $this->redirect(BASE_URL . "/home/index/{$userDataSearchResult['username']}");
             exit;
@@ -58,7 +58,7 @@ class LoginController extends Controller
 
     public function logout()
     {
-        $this->model("Login")->resetCookie();
+        $this->model("User")->resetCookie();
         $this->redirect(BASE_URL . '/login');
     }
 }
