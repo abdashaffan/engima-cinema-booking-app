@@ -46,6 +46,8 @@
                       else{
                         echo "
                         <div class=\"Btn2\"><div>
+                        <input type=\"hidden\" name=\"transaction_id\" value = ".$transaction['transaction_id'].">
+                        <input type=\"hidden\" name=\"film_id\" value=".$transaction['film_id'].">
                         <button type=\"submit\" class=\"DelBtn\">Delete Review</button></div>
                         <button type=\"submit\" class=\"EdtBtn\">Edit Review</button>
                         </div>";

@@ -11,7 +11,6 @@ class ReviewController extends Controller
 
     public function index()
     {
-        
         $filmid = $_GET['filmid'];
         $transid = $_GET['transid'];    
         $data['judul'] = 'Review/index';
@@ -19,7 +18,8 @@ class ReviewController extends Controller
         $data['user_id'] = $this->model('User')->getUserID();
         $data['film_name'] = $this->model('Review')->getReviewedFilmName($filmid);
         // var_dump($data['film_name'][0]);
-        $data['film_id'] = 1;
+        $data['film_id'] = $filmid;
+        $data['trans_id'] = $transid;
         $this->view('templates/header', $data);
         $this->view('templates/nav');
         $this->view('templates/layout');
@@ -35,8 +35,8 @@ class ReviewController extends Controller
         $data['user_id'] = $this->model('User')->getUserID();
         
         //HARDCODED VALUES ------------------------------------------------------
-        $transid = 1;
-        $data['film_id'] = 1;
+        $transid = $_POST['transaction_id'];
+        $data['film_id'] = $_POST['film_id']; ;
         $status = $this->model('Review')->getStatus($transid);
         $status = trim($status[0]['status']);
 

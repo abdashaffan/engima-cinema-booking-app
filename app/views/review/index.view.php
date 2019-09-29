@@ -50,6 +50,8 @@
         <button type="button" class="cancelbutton"> Cancel </button>
         <button type="submit" name="submit" class="savebutton"> Submit </button>
     </div>
+    <input type="hidden" name="transaction_id" value = "<?php echo $trans_id; ?>" >
+    <input type="hidden" name="film_id" value= "<?php echo $film_id; ?>">
   </form>
 </body>
 
