@@ -16,9 +16,15 @@ Berikut adalah fitur yang dimiliki oleh Engima:
  
 ## Requirement
 Pastikan sistem Anda memiliki hal-hal berikut sebelum menjalankan sistem:
-// TODO: tambahin versi sesuai laptop Abda
-* PHP v.
+* PHP 
+* MySQL
+* Server
+* Javascript
+* Browser dan Database
+
 ## Instalation
+* 
+
 
 ## Running Server
 
