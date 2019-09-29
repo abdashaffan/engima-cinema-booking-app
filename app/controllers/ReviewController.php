@@ -29,7 +29,6 @@ class ReviewController extends Controller
     }
     public function add()
     {
-        
         $data = [];
         $data['rating'] = $_POST["rating"];
         $data['comment'] = $_POST['comment'];
@@ -40,22 +39,20 @@ class ReviewController extends Controller
         $data['film_id'] = 1;
         $status = $this->model('Review')->getStatus($transid);
         $status = trim($status[0]['status']);
-        echo($status);
-        if($status=="0"){
-            $this->model('Review')->changeTransStatus01($transid);
-        }
-        else if($status=="1"){
-            $this->model('Review')->changeTransStatus10($transid);
-        }
-        else{
-            echo "String failed to compare";
-        }
 
-
-        // if ($this->model('Review')->addNewUserReview($data) > 0) {
-        //    // changetransStatus here
-        //     $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory");
-        // }
+        if ($this->model('Review')->addNewUserReview($data) > 0) {
+           // changetransStatus here
+            if($status=="0"){
+                $this->model('Review')->changeTransStatus01($transid);
+            }
+            else if($status=="1"){
+                $this->model('Review')->changeTransStatus10($transid);
+            }
+            else{
+                echo "String failed to compare";
+            }
+            $this->redirect(BASE_URL . "/" . "public" . "/" . "transhistory");
+        }
     }
 
 }
