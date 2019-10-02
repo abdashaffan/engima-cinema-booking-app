@@ -7,9 +7,9 @@
                 Thank you for purchasing! You can view your purchase now.
             </p>
             <!-- TODO: go to transaction -->
-            <a href="/transaction">
+            <!-- <a href="/transHistory"> -->
                 <div class="modal-bottom">Go to transaction history</div>
-            </a>
+            <!-- </a> -->
         </div>
     </div>
 </div>
@@ -45,12 +45,12 @@
                     <?php
                         if (isset($seats[$i])){
                             if ($seats[$i]['occupied']==1) {
-                                echo '<div class="occupied">';
+                                echo '<div class="occupied" id="'.$i.'" >';
                             } else {
-                                echo '<div class="not-occupied">';
+                                echo '<div class="not-occupied" id="'.$i.'" onclick="getSeatDetail('.$schedule['schedule_id'].','.$i.')">';
                             }
                         } else {
-                            echo '<div class="not-occupied" onclick="getSeatDetail('.$schedule['schedule_id'].','.$i.')">';
+                            echo '<div class="not-occupied" id="'.$i.'" onclick="getSeatDetail('.$schedule['schedule_id'].','.$i.')">';
                         }
                         echo $i . '</div>';
                     ?>
@@ -86,9 +86,8 @@
                         <h4 id="seat-current-number"></h4>
                         <h4><?php echo 'Rp'.$film['price'] ?></h4>
                     </div>
-                    <?php echo '<a href="'.BASE_URL.'/Transhistory">' ?>
-                        <div class="seat-buy" onclick="showBuyModal()">Buy Ticket</div>
-                    <?php echo '</a>' ?>
+                    <input type="hidden" id="seat-number-buy" value="">
+                    <?php echo'<div class="seat-buy" onclick="showBuyModal('.$schedule['schedule_id'].')">Buy Ticket</div>' ?>
                 </div>
             <div>
         </div>

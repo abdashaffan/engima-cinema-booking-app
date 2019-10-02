@@ -65,7 +65,7 @@
                                     if ($schedule['count'] == NULL) {
                                         $schedule['count'] = 0;
                                     }
-                                    echo $schedule['count'];
+                                    echo 30 - $schedule['count'];
                                     ?>
                             seats
                         </td>
@@ -97,14 +97,15 @@
                 <div class="review-detail">
                     <?php for ($i = 0; $i < count($reviews) - 1; $i++) : ?>
                     <div>
-                        <?php echo "<img class='review-user' class='review-user' src='".BASE_URL."/assets/img/user/" . $reviews[$i]['profile_picture'] . "'>" ?>
+                    <!-- TODO!!! ubah router porfile -->
+                        <?php echo "<img class='review-user' class='review-user' src='".BASE_URL."/assets/img/user/" . "1.jpeg" . "'>" ?>
                         <div>
                             <b>
                                 <p><?php echo $reviews[$i]['username'] ?></p>
                             </b>
                             <div class='rating'>
                                 <h3>
-                                    <?php echo '<img class="svg-small" src="'.BASE_URL.'"/assets/icon/star-solid.svg">' ?>
+                                    <?php echo '<img class="svg-small" src="'.BASE_URL.'/assets/icon/star-solid.svg">' ?>
                                     
                                     <?php echo $reviews[$i]['rating'] ?>
                                     <span>/10</span>
@@ -122,10 +123,10 @@
                     if ($n == 0) {
                         echo "<p>Tidak Ada Review </p>";
                     } else {
-
+                        // TODO!!! ubah
                         echo "
                                 <div class='review-last'>
-                                    <img class='review-user' src='".BASE_URL."/assets/img/user/" . $reviews[$n - 1]['profile_picture'] . "'>
+                                    <img class='review-user' src='".BASE_URL."/assets/img/user/" . "1.jpeg" . "'>
                                     <div>
                                         <b><p>" . $reviews[$n - 1]['username'] . "</p></b>
                                         <div class='rating'>

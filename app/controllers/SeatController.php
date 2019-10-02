@@ -33,15 +33,34 @@ class SeatController extends Controller
 
     public function detail()
     {
-        $occupied = $this->model('Seat')->getOccupiedBySeatNumberandFilmId(4, 1);
-        if ($occupied == NULL) {
-            echo 0;
-        } else {
-            if ($occupied == 0) {
-                echo 0;
-            } else {
-                echo 1;
+        $seat_number = $_GET['seat_number'];
+        $schedule_id = $_GET['schedule_id'];
+        $occupied = $this->model('Seat')->getOccupiedBySeatNumberandScheduleId($seat_number, $schedule_id);
+        
+        $data['occupied'] = 0;
+        if ($occupied != NULL) {
+            if ($occupied[0]['occupied'] == 1) {
+                $data['occupied'] = 1;
             }
-        }
+        }         
+        echo json_encode($data);
+    }
+
+    public function buy()
+    {
+        // echo "tes";
+        $data = json_decode(stripslashes(file_get_contents("php://input")));
+        // echo json_encode($data);
+        var_dump($data);
+        $seat_number = $data->seat_number;
+        $schedule_id = $data->schedule_id;
+        // var_dump($seat_number);  
+        // var_dump($schedule_id);
+        // $responseArray = [];
+        // $responseArray['page'] = $data->page;
+        // $responseArray['keyword'] = $data->keyword;
+        // $responseArray['output'] = $this->model('Film')->paginateResult($responseArray);
+        // var_dump($responseArray);
+        // echo json_encode($responseArray);
     }
 }

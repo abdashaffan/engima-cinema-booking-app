@@ -18,10 +18,10 @@ class SeatModel
         );
         return $this->db->resultSet();
     }
-    public function getOccupiedBySeatNumberandFilmId($seat_number, $film_id)
+    public function getOccupiedBySeatNumberandScheduleId($seat_number, $schedule_id)
     {
         $this->db->query(
-            "SELECT occupied FROM {$this->table} WHERE seat_number={$seat_number} and schedule_id={$film_id}"
+            "SELECT occupied FROM {$this->table} WHERE seat_number={$seat_number} and schedule_id={$schedule_id}"
         );
         return $this->db->resultSet();
     }
