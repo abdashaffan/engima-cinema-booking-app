@@ -102,12 +102,15 @@ class FilmModel
         $this->db->bind('title', '%' . $keyword . '%');
         $totalRecords = sizeof($this->db->resultset());
         $totalPages = ceil($totalRecords / RECORD_PER_PAGE);
+        if ($totalPages <= 1) {
+            return $output;
+        }
         $output .= '<span class="pagination_wrapper">';
         for ($i = 1; $i <= $totalPages; $i++) {
             if ($i == $pageNum) {
                 $output .= "<span class='pagination_link disabled' id='" . $i . "' disabled >" . $i . "</span>";
             } else {
-                $output .= "<span class='pagination_link' id='" . $i . "' onClick='loadData(" . $i . ")'>" . $i . "</span>";
+                $output .= "<span class='pagination_link' id='" . $i . "' onClick='loadData(" . $i . ");scrollWin()'>" . $i . "</span>";
             }
         }
         $output .= '</span>';
