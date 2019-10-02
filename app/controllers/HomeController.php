@@ -9,14 +9,14 @@ class HomeController extends Controller
         parent::__construct('home');
     }
 
-    public function index($username = "")
+    public function index()
     {
 
         if (!$this->model("User")->isRedirectedToHome()) {
             $this->redirect(BASE_URL . "/login");
         }
 
-        $data['judul'] = 'Home/index';
+        $data['judul'] = 'Engima - halaman utama';
         $data['css'] = $this->cssPath . "/style.css";
         $data['user_name'] = $this->model('User')->getCurrentUser();
         $data['films'] = $this->model('Film')->getAllCurrentFilm();
