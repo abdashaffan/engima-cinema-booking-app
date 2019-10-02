@@ -26,4 +26,24 @@ class SeatModel
         return $this->db->resultSet();
     }
 
+    public function addSeat($schedule_id, $seat_number)
+    {
+        $query =
+            "INSERT INTO {$this->table} (
+                schedule_id,
+                occupied,
+                seat_number
+            ) VALUES
+            (
+                {$schedule_id},
+                1,
+                {$seat_number}
+            )";
+
+        $this->db->query($query);
+        $this->db->execute();
+
+        return $this->db->lastInsertId();
+    }
+
 }

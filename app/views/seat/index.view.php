@@ -7,9 +7,10 @@
                 Thank you for purchasing! You can view your purchase now.
             </p>
             <!-- TODO: go to transaction -->
+            <?php echo '<a href="'.BASE_URL.'/transHistory">' ?>
             <!-- <a href="/transHistory"> -->
                 <div class="modal-bottom">Go to transaction history</div>
-            <!-- </a> -->
+            </a>
         </div>
     </div>
 </div>

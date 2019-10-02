@@ -52,4 +52,30 @@ class TransactionModel
         $this->db->bind('user', $userid);
         $this->db->execute();   
     }
+
+    public function addTransaction($data)
+    {
+        $query =
+            "INSERT INTO {$this->table} (
+                user_id,
+                seat_id,
+                schedule_id,
+                status
+            ) VALUES
+            (
+                :user_id,
+                :seat_id,
+                :schedule_id,
+                0
+            )";
+
+        $this->db->query($query);
+        $this->db->bind('user_id', $data["user_id"]);
+        $this->db->bind('seat_id', $data["seat_id"]);
+        $this->db->bind('schedule_id', $data["schedule_id"]);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
 }

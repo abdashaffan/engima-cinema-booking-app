@@ -48,19 +48,21 @@ class SeatController extends Controller
 
     public function buy()
     {
-        // echo "tes";
-        $data = json_decode(stripslashes(file_get_contents("php://input")));
-        // echo json_encode($data);
-        var_dump($data);
-        $seat_number = $data->seat_number;
-        $schedule_id = $data->schedule_id;
-        // var_dump($seat_number);  
-        // var_dump($schedule_id);
-        // $responseArray = [];
-        // $responseArray['page'] = $data->page;
-        // $responseArray['keyword'] = $data->keyword;
-        // $responseArray['output'] = $this->model('Film')->paginateResult($responseArray);
-        // var_dump($responseArray);
-        // echo json_encode($responseArray);
+        $request = json_decode(stripslashes(file_get_contents("php://input")));
+        $data['seat_number'] = $request->seat_number;
+        $data['schedule_id'] = (int) $request->schedule_id;
+        $data['user_id'] = $this->model('User')->getUserID()['user_id'];
+        // var_dump("tes");
+        // $data['user_id'] = 1;
+        // var_dump($data['user_id']);
+        $data['seat_id'] = (int) $this->model('Seat')->addSeat($data['schedule_id'], $data['seat_number']);
+        // var_dump("tes");
+        if ($this->model('Transaction')->addTransaction($data) > 0) {
+            $data['response'] = 1;
+            echo json_encode($data);
+        } else {
+            $data['response'] = 0;
+            echo json_encode($data);
+        }
     }
 }
