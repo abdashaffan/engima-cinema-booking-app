@@ -104,29 +104,24 @@
                             }
 
                             // Bagian Review
-                            if (count($rating_data)>0)
+                            if (count($reviews)>0)
                             {
-                                foreach($movie as $mov){
-                                    $headertitle = $mov["name"];
-                                    $piclink = $mov["id"];
-                                }
                                 
                                 $headerrating="rate";
                                 $headerreview="review";
                                 echo "<table class ='review'>
                                         <tr>
-                                            <th>Reviews></th>
+                                            <th>Reviews</th>
                                         </tr>";
-                                foreach ($rating_data as $row)
+                                foreach ($reviews as $review)
                                 {
                                     echo "<tr>
-                                            <td><img src='Movie Pict\\".$piclink.".jpg' class='poster-img-reviews'/></td>
-                                            <td>" .$headertitle."<br>".$row[$headerrating]."/10<br>".$row[$headerreview]."</td>
+                                            <td>" .$review["username"] . "</br>" . 
+                                            $review["rating"] . "</br>" . 
+                                            $review["review"]."</td>
                                           </tr>";
-                                        
-                                        
+                                               
                                 }
-
                                     echo "</table>";
                             } else 
                             {
