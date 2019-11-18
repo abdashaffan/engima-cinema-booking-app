@@ -15,15 +15,15 @@ class ScheduleModel
     //TODO: ubah jadi yg blom lewat hari ini
     //TODO: ubah count seatnya itung yg occupied doang
     public function getAllScheduleByFilmId($id)
-    {   
+    {
         $this->db->query(
-            "SELECT {$this->table}.schedule_id, showtime, count FROM {$this->table}  LEFT JOIN (SELECT schedule_id, COUNT(*) AS count FROM seats WHERE occupied=1 GROUP BY(schedule_id)) as count_seat ON {$this->table}.schedule_id=count_seat.schedule_id WHERE film_id={$id}"
+            "SELECT {$this->table}.schedule_id, showtime, count FROM {$this->table}  LEFT JOIN (SELECT schedule_id, COUNT(*) AS count FROM booked_seats GROUP BY(schedule_id)) as count_seat ON {$this->table}.schedule_id=count_seat.schedule_id WHERE film_id={$id}"
         );
         return $this->db->resultSet();
     }
 
     public function getScheduleByScheduleId($id)
-    {   
+    {
         $this->db->query(
             "SELECT  * FROM {$this->table}  WHERE schedule_id={$id}"
         );
