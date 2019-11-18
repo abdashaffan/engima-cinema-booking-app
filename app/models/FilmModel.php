@@ -19,7 +19,7 @@ class FilmModel
         date_default_timezone_set(date_default_timezone_get());
         $currentDate = date('Y-m-d', time());
         $this->db->query(
-            "SELECT * FROM {$this->table} WHERE release_date = :date"
+            "SELECT * FROM {$this->table} WHERE YEAR(release_date) = 2019 AND MONTH(release_date) = 11"
         );
         $this->db->bind('date', $currentDate);
         return $this->db->resultSet();
