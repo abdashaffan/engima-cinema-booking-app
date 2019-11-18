@@ -12,10 +12,11 @@ class SeatModel
     }
 
     public function getAllSeatByScheduleId($id)
-    {   
+    {
         $this->db->query(
-            "SELECT * FROM {$this->table} WHERE schedule_id={$id}"
+            "SELECT * FROM {$this->table} WHERE schedule_id = :id ORDER BY seat_number"
         );
+        $this->db->bind('id', $id);
         return $this->db->resultSet();
     }
     public function getOccupiedBySeatNumberandScheduleId($seat_number, $schedule_id)
@@ -45,5 +46,4 @@ class SeatModel
 
         return $this->db->lastInsertId();
     }
-
 }

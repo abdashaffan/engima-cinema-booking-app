@@ -13,13 +13,15 @@ class SeatController extends Controller
         $data['css'] = $this->cssPath . "/style.css";
         // TODO: Uncomment bawahnya
         $data['js'] = $this->jsPath . "/index.js";
+        // $this->console_log($data['js']);
         // $data['js'] = $this->jsPath;
+
 
         $data['schedule'] = $this->model('Schedule')->getScheduleByScheduleId($id);
         $data['film'] = $this->model('Film')->getFilmById($data['schedule']['film_id']);
 
         $seats = $this->model('Seat')->getAllSeatByScheduleId($id);
-        foreach ($seats as $key => $seat) {
+        foreach ($seats as $seat) {
             $data['seats'][$seat['seat_number']] = $seat;
         }
 
@@ -36,13 +38,13 @@ class SeatController extends Controller
         $seat_number = $_GET['seat_number'];
         $schedule_id = $_GET['schedule_id'];
         $occupied = $this->model('Seat')->getOccupiedBySeatNumberandScheduleId($seat_number, $schedule_id);
-        
+
         $data['occupied'] = 0;
         if ($occupied != NULL) {
             if ($occupied[0]['occupied'] == 1) {
                 $data['occupied'] = 1;
             }
-        }         
+        }
         echo json_encode($data);
     }
 
@@ -52,11 +54,7 @@ class SeatController extends Controller
         $data['seat_number'] = $request->seat_number;
         $data['schedule_id'] = (int) $request->schedule_id;
         $data['user_id'] = $this->model('User')->getUserID()['user_id'];
-        // var_dump("tes");
-        // $data['user_id'] = 1;
-        // var_dump($data['user_id']);
         $data['seat_id'] = (int) $this->model('Seat')->addSeat($data['schedule_id'], $data['seat_number']);
-        // var_dump("tes");
         if ($this->model('Transaction')->addTransaction($data) > 0) {
             $data['response'] = 1;
             echo json_encode($data);

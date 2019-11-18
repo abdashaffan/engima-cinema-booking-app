@@ -45,13 +45,13 @@
                 <?php for ($i = 1; $i <= 30; $i++) : ?>
                 <?php
                         if (isset($seats[$i])) {
-                            if ($seats[$i]['occupied'] == 1) {
+                            if ($seats[$i]['seat_number'] == $i) {
                                 echo '<div id="seat-' . $i . '" class="seat occupied" id="' . $i . '" >';
                             } else {
-                                echo '<div id="seat-' . $i . '" class="seat not-occupied" id="' . $i . '" onclick="getSeatDetail(' . $schedule['schedule_id'] . ',' . $i . ')">';
+                                echo '<div id="seat-' . $i . '" class="seat not-occupied" id="' . $i . '" onclick="getSeatDetail('  . $i . ')">';
                             }
                         } else {
-                            echo '<div id="seat-' . $i . '" class="seat not-occupied" id="' . $i . '" onclick="getSeatDetail(' . $schedule['schedule_id'] . ',' . $i . ')">';
+                            echo '<div id="seat-' . $i . '" class="seat not-occupied" id="' . $i . '" onclick="getSeatDetail('  . $i . ')">';
                         }
                         echo $i . '</div>';
                         ?>
@@ -88,7 +88,7 @@
                         <h4><?php echo 'Rp' . $film['price'] ?></h4>
                     </div>
                     <input type="hidden" id="seat-number-buy" value="">
-                    <?php echo '<div class="seat-buy" onclick="showBuyModal(' . $schedule['schedule_id'] . ')">Buy Ticket</div>' ?>
+                    <?php echo '<div class="seat-buy" onclick="buy(' . $schedule['schedule_id'] . ')">Buy Ticket</div>' ?>
                 </div>
                 <div>
                 </div>
