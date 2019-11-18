@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 18, 2019 at 01:04 PM
+-- Generation Time: Nov 18, 2019 at 06:57 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -25,48 +25,55 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `schedule`
+-- Table structure for table `booked_seats`
 --
 
-CREATE TABLE `schedule` (
+CREATE TABLE `booked_seats` (
+  `seat_id` int(11) NOT NULL,
   `schedule_id` int(11) NOT NULL,
-  `film_id` int(11) NOT NULL,
-  `showtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `seat_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `schedule`
+-- Dumping data for table `booked_seats`
 --
 
-INSERT INTO `schedule` (`schedule_id`, `film_id`, `showtime`) VALUES
-(1, 1, '2020-01-01 00:00:00'),
-(2, 1, '2020-01-02 12:30:00'),
-(3, 1, '2020-01-03 23:40:00'),
-(4, 1, '2021-01-08 00:01:00'),
-(5, 2, '2020-09-01 00:00:00'),
-(6, 3, '2020-09-03 00:00:00'),
-(7, 4, '2020-09-29 00:00:00'),
-(8, 5, '2020-12-12 00:00:00');
+INSERT INTO `booked_seats` (`seat_id`, `schedule_id`, `seat_number`) VALUES
+(57, 1, 1),
+(58, 1, 2),
+(59, 1, 3),
+(60, 1, 4),
+(61, 1, 5),
+(62, 1, 6),
+(63, 1, 7),
+(64, 1, 8),
+(65, 1, 30),
+(66, 1, 21),
+(67, 1, 10),
+(68, 1, 18),
+(69, 1, 9),
+(70, 1, 17),
+(71, 1, 11);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `schedule`
+-- Indexes for table `booked_seats`
 --
-ALTER TABLE `schedule`
-  ADD PRIMARY KEY (`schedule_id`);
+ALTER TABLE `booked_seats`
+  ADD PRIMARY KEY (`seat_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `schedule`
+-- AUTO_INCREMENT for table `booked_seats`
 --
-ALTER TABLE `schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `booked_seats`
+  MODIFY `seat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

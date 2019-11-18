@@ -11,10 +11,7 @@ class SeatController extends Controller
     {
         $data['judul'] = 'Engima - Seats';
         $data['css'] = $this->cssPath . "/style.css";
-        // TODO: Uncomment bawahnya
         $data['js'] = $this->jsPath . "/index.js";
-        // $this->console_log($data['js']);
-        // $data['js'] = $this->jsPath;
 
 
         $data['schedule'] = $this->model('Schedule')->getScheduleByScheduleId($id);
@@ -33,20 +30,6 @@ class SeatController extends Controller
         $this->view('templates/footer', $data);
     }
 
-    public function detail()
-    {
-        $seat_number = $_GET['seat_number'];
-        $schedule_id = $_GET['schedule_id'];
-        $occupied = $this->model('Seat')->getOccupiedBySeatNumberandScheduleId($seat_number, $schedule_id);
-
-        $data['occupied'] = 0;
-        if ($occupied != NULL) {
-            if ($occupied[0]['occupied'] == 1) {
-                $data['occupied'] = 1;
-            }
-        }
-        echo json_encode($data);
-    }
 
     public function buy()
     {

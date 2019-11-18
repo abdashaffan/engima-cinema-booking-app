@@ -2,7 +2,7 @@
 
 class SeatModel
 {
-    private $table = 'seats';
+    private $table = 'booked_seats';
     private $db;
 
 
@@ -19,25 +19,16 @@ class SeatModel
         $this->db->bind('id', $id);
         return $this->db->resultSet();
     }
-    public function getOccupiedBySeatNumberandScheduleId($seat_number, $schedule_id)
-    {
-        $this->db->query(
-            "SELECT occupied FROM {$this->table} WHERE seat_number={$seat_number} and schedule_id={$schedule_id}"
-        );
-        return $this->db->resultSet();
-    }
 
     public function addSeat($schedule_id, $seat_number)
     {
         $query =
             "INSERT INTO {$this->table} (
                 schedule_id,
-                occupied,
                 seat_number
             ) VALUES
             (
                 {$schedule_id},
-                1,
                 {$seat_number}
             )";
 

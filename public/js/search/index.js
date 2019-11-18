@@ -12,7 +12,6 @@ const loadData = (page = 1) => {
   };
   xmlhttp.open("POST", BASE_URL + "/search/result", true);
   xmlhttp.setRequestHeader("Content-Type", "application/json");
-  console.log(JSON.stringify({ page, keyword }));
   xmlhttp.send(JSON.stringify({ page, keyword }));
 };
 

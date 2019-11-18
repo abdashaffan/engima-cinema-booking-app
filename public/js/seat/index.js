@@ -31,10 +31,8 @@ function getSeatDetail(seat_number) {
 function buy(schedule_id) {
   let seat_number = document.getElementById("the-seat-number").innerText;
   let xmlhttp2 = new XMLHttpRequest();
-  console.log(typeof seat_number);
   xmlhttp2.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
       let res = JSON.parse(this.responseText);
       if (res.response == 1) {
         let seat = document.getElementById(`seat-${res.seat_number}`);
