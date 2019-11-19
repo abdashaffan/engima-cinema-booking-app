@@ -2,7 +2,7 @@
 
 class SeatModel
 {
-    private $table = 'booked_seats';
+    private $table = 'seats';
     private $db;
 
 
