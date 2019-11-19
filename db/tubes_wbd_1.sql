@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2019 at 08:30 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.33
+-- Generation Time: Oct 02, 2019 at 03:35 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tubes_wbd_1`
+-- Database: `tubes_wbd`
 --
 
 -- --------------------------------------------------------
@@ -53,13 +53,13 @@ CREATE TABLE `count_set` (
 CREATE TABLE `film` (
   `film_id` int(11) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `sinopsis` text,
-  `rating` decimal(10,2) NOT NULL DEFAULT '3.00',
+  `sinopsis` text DEFAULT NULL,
+  `rating` decimal(10,2) NOT NULL DEFAULT 3.00,
   `genre` varchar(255) DEFAULT NULL,
-  `length` int(11) NOT NULL DEFAULT '120',
+  `length` int(11) NOT NULL DEFAULT 120,
   `release_date` date NOT NULL,
   `thumbnail` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL DEFAULT '35000'
+  `price` int(11) NOT NULL DEFAULT 35000
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `film` (
 --
 
 INSERT INTO `film` (`film_id`, `title`, `sinopsis`, `rating`, `genre`, `length`, `release_date`, `thumbnail`, `price`) VALUES
-(1, 'Avengers: End Game', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '9.25', 'Drama, Fantasy, Adventure', 1, '2020-10-04', '1.jpeg', 20000),
+(1, 'Avengers: End Game', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '9.25', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '1.jpeg', 20000),
 (2, 'My Lucky Day', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '7.50', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '2.jpg', 20000),
 (3, 'Abda Shaffan Diva', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2.10', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '3.jpg', 20000),
 (4, 'Amateur Radio Club', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '8.75', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '4.jpg', 20000),
@@ -88,7 +88,7 @@ CREATE TABLE `review` (
   `review_id` int(11) NOT NULL,
   `film_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `comment` text,
+  `comment` text DEFAULT NULL,
   `rating` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -109,7 +109,7 @@ INSERT INTO `review` (`review_id`, `film_id`, `user_id`, `comment`, `rating`) VA
 CREATE TABLE `schedule` (
   `schedule_id` int(11) NOT NULL,
   `film_id` int(11) NOT NULL,
-  `showtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `showtime` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -135,81 +135,23 @@ INSERT INTO `schedule` (`schedule_id`, `film_id`, `showtime`) VALUES
 CREATE TABLE `seats` (
   `seat_id` int(11) NOT NULL,
   `schedule_id` int(11) NOT NULL,
+  `occupied` tinyint(1) NOT NULL DEFAULT 0,
   `seat_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `count_seat`
--- (See below for the actual view)
---
-CREATE TABLE `count_seat` (
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `count_set`
--- (See below for the actual view)
---
-CREATE TABLE `count_set` (
-);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `film`
---
-
-CREATE TABLE `film` (
-  `film_id` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `sinopsis` text,
-  `rating` decimal(10,2) NOT NULL DEFAULT '3.00',
-  `genre` varchar(255) DEFAULT NULL,
-  `length` int(11) NOT NULL DEFAULT '120',
-  `release_date` date NOT NULL,
-  `thumbnail` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL DEFAULT '35000'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `film`
---
-
-INSERT INTO `film` (`film_id`, `title`, `sinopsis`, `rating`, `genre`, `length`, `release_date`, `thumbnail`, `price`) VALUES
-(1, 'Avengers: End Game', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '9.25', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '1.jpeg', 20000),
-(2, 'My Lucky Day', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '7.50', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '2.jpg', 20000),
-(3, 'Abda Shaffan Diva', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2.10', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '3.jpg', 20000),
-(4, 'Amateur Radio Club', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '8.75', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '4.jpg', 20000),
-(5, 'Naruto Shippuden', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '1.00', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '1.jpeg', 20000),
-(6, 'Kimi no nawa', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '4.00', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '2.jpg', 20000),
-(7, 'Bleach', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '8.00', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '4.jpg', 20000),
-(8, 'Boku Dake Ga Inai Machi', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '8.00', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '1.jpeg', 20000),
-(9, 'Weathering with you', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '8.00', 'Drama, Fantasy, Adventure', 1, '1999-10-04', '1.jpeg', 20000),
-(10, 'Avengers: End Game', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '8.00', 'Drama, Fantasy, Adventure', 187, '1999-10-04', '1.jpeg', 20000),
-(11, 'The Greatest Showman', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Vel risus commodo viverra maecenas accumsan lacus vel facilisis.', '5.00', 'Horror', 120, '2019-11-30', '5.jpg', 35000),
-(12, 'Dora and the Lost City of Gold', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut tristique et egestas quis. Cursus vitae congue mauris rhoncus.\r\n\r\n', '3.50', 'Comedy', 120, '2019-11-30', 'dora.jpg', 35000),
-(13, 'Aladdin', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut tristique et egestas quis. Cursus vitae congue mauris rhoncus.\r\n\r\n', '3.00', 'Adventure', 120, '2019-11-30', 'aladdin.jpg', 35000),
-(14, 'Charlies\' Angles', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut tristique et egestas quis. Cursus vitae congue mauris rhoncus.', '3.15', 'Adventure', 120, '2019-11-30', 'ca.jpeg', 35000),
-(15, 'Crazy Rich Asian', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut tristique et egestas quis. Cursus vitae congue mauris rhoncus.', '3.00', 'Romance', 120, '2019-11-30', 'cra.jpg', 35000);
-
--- --------------------------------------------------------
 
 --
 -- Dumping data for table `seats`
 --
 
-INSERT INTO `seats` (`seat_id`, `schedule_id`, `seat_number`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 10),
-(4, 2, 2),
-(5, 3, 2),
-(6, 1, 11),
-(7, 2, 30),
-(8, 2, 10);
+INSERT INTO `seats` (`seat_id`, `schedule_id`, `occupied`, `seat_number`) VALUES
+(1, 1, 1, 1),
+(2, 1, 1, 2),
+(3, 1, 1, 10),
+(4, 2, 1, 2),
+(5, 3, 1, 2),
+(6, 1, 0, 11),
+(7, 2, 1, 30),
+(8, 2, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -234,7 +176,7 @@ CREATE TABLE `transaction` (
   `user_id` int(11) NOT NULL,
   `seat_id` int(11) NOT NULL,
   `schedule_id` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1'
+  `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -269,9 +211,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `phone_num`, `login_token`, `profile_picture`, `mime`) VALUES
-(26, 'admin', '$2y$10$54FZ88342PSxku66sC/MOOnzKAupMokgWzd3Om6WsVcR7yy0YZBhq', 'admin@engima.com', '+6281319770771', '108d71e5bd9e4ea42dd75f7da2b4245d442323b2542ba6f61733e5b6456170fb', 0x5265736f7572636520696420233130, 'image/jpeg'),
+(26, 'admin', '$2y$10$54FZ88342PSxku66sC/MOOnzKAupMokgWzd3Om6WsVcR7yy0YZBhq', 'admin@engima.com', '+6281319770771', NULL, 0x5265736f7572636520696420233130, 'image/jpeg'),
 (27, 'abda', '$2y$10$ttmWuOpL06ceEfw05JYMAe7wSA4YWQbCo/tPfGKEv.Jvil.iQHBme', 'abdashaffan@gmail.com', '+6281319770772', NULL, 0x5265736f7572636520696420233131, 'image/png'),
-(28, 'rika', '$2y$10$EWiADXghxnvIi2gDAY5vDu6ehNUEd8Zq4JLv1nuYAt6sdzGRoY97a', 'rika@admin.com', '081333333333', NULL, 0x5265736f7572636520696420233130, 'image/png'),
+(28, 'rika', '$2y$10$EWiADXghxnvIi2gDAY5vDu6ehNUEd8Zq4JLv1nuYAt6sdzGRoY97a', 'rika@admin.com', '081333333333', '8fa5d4c1dfe4265591d75302a340501310fec8c27cc3a1d995972ea73d31b2b0', 0x5265736f7572636520696420233130, 'image/png'),
 (29, 'seldy', '$2y$10$iNbLjRWFVWlQZh/W4uN7WOBThKu4fE6rm7GtZz9EW8ku5sqK7jMSC', 'seldy@admin.com', '+6281311111113', NULL, 0x5265736f7572636520696420233130, 'image/png');
 
 -- --------------------------------------------------------
@@ -299,7 +241,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `tes`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tes`  AS  select `schedule`.`schedule_id` AS `schedule_id`,`schedule`.`film_id` AS `film_id`,`schedule`.`showtime` AS `showtime` from `schedule` where (`schedule`.`film_id` = 1) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tes`  AS  select `schedule`.`schedule_id` AS `schedule_id`,`schedule`.`film_id` AS `film_id`,`schedule`.`showtime` AS `showtime` from `schedule` where `schedule`.`film_id` = 1 ;
 
 --
 -- Indexes for dumped tables
