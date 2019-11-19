@@ -141,3 +141,30 @@
   color: white;
   font-weight: bolder;
 }
+
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.payment-details > hr {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+.payment-details-item {
+  color: #333;
+  margin: 5px 0;
+}
+
+#virtual-account,
+#trans-id {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* <span class="payment-details-item payment-details__trans-id">Transaction ID: <span id="trans-id"></span></span>
+                <span class="payment-details__trans-virtual-acc">Virtual Account: <span
+                        id="virtual-account"></span></span> */

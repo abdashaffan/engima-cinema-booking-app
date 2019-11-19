@@ -2,13 +2,18 @@
     <div class="modal-overlay"> </div>
     <div class="modal-content-wrapper">
         <div class="modal-content">
-            <h3 class="blue-color">Payment Success!</h3>
-            <p>
-                Thank you for purchasing! You can view your purchase now.
-            </p>
-            <!-- TODO: go to transaction -->
+            <h3 class="blue-color">Payment Request Created</h3>
+            <span class="payment-details">
+                <hr>
+                <span style="display:none;color:red;" class="payment-details payment-details__error"
+                    id="payment-modal-error"></span>
+                <span class="payment-details-item payment-details__trans-id">Transaction ID: <br><span
+                        id="trans-id"></span></span>
+                <span class="payment-details-item payment-details__trans-virtual-acc">Virtual Account: <br><span
+                        id="virtual-account"></span></span>
+                <hr>
+            </span>
             <?php echo '<a href="' . BASE_URL . '/transHistory">' ?>
-            <!-- <a href="/transHistory"> -->
             <div class="modal-bottom">Go to transaction history</div>
             </a>
         </div>
