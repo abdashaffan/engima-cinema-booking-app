@@ -1,103 +1,109 @@
 /* Film */
 .film-detail {
-    display: flex;
+  display: flex;
 }
 .film-detail-desc {
-    margin: 0 50px
+  margin: 0 50px;
 }
 .film p {
-    margin: 10px 0;
-    color: gray;
+  margin: 10px 0;
+  color: gray;
 }
 .rating span {
-    font-size: 0.8em;
+  font-size: 0.8em;
 }
 .film-desc {
-    display: flex;
-    margin-top: 40px;
+  display: flex;
+  margin-top: 40px;
 }
 .film-schedule {
-    flex: 9;
+  flex: 9;
 }
 .film-review {
-    flex: 8;
+  flex: 8;
 }
 .film-desc .wrapper {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
-    border-radius: 10px;
-    padding: 30px;
-    margin-right: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  margin-right: 20px;
 }
 
 /* Schedule */
 .film-schedule table {
-    width: 100%;
-    color: gray;
-    text-align: left;
-    border-collapse: collapse;
+  width: 100%;
+  color: gray;
+  text-align: left;
+  border-collapse: collapse;
 }
 .table-state {
-    text-align: right;
-    font-weight: bold;
+  text-align: right;
+  font-weight: bold;
 }
 .available img {
-    filter: invert(44%) sepia(93%) saturate(3622%) hue-rotate(202deg) brightness(100%) contrast(86%);
+  filter: invert(44%) sepia(93%) saturate(3622%) hue-rotate(202deg)
+    brightness(100%) contrast(86%);
 }
 .not-available img {
-    filter: invert(21%) sepia(73%) saturate(4377%) hue-rotate(10deg) brightness(98%) contrast(104%);
+  filter: invert(21%) sepia(73%) saturate(4377%) hue-rotate(10deg)
+    brightness(98%) contrast(104%);
 }
 .available {
-    color: #2f80ed;
+  color: #2f80ed;
 }
 .not-available {
-    color: #ec2c2c;
+  color: #ec2c2c;
 }
 
 .table-seat {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 .film-schedule td {
-    border-top: 1px solid gray;
+  border-top: 1px solid gray;
 }
 .film-schedule th {
-    border-bottom: 2px solid gray;
+  border-bottom: 2px solid gray;
 }
-.film-schedule td, .film-schedule th {
-    padding: 10px 30px 10px 0
+.film-schedule td,
+.film-schedule th {
+  padding: 10px 10px 10px 0;
 }
 td.table-state {
-    padding-right: 0px;
+  text-align: right;
+}
+td.table-state#book-button {
+  padding-right: 1px;
 }
 .film-schedule img {
-    vertical-align: middle;
-    margin-left: 5px;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 
 /* Review */
 img.review-user {
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
-    margin-right: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  margin-right: 20px;
 }
 .review-detail > div {
-    display: flex;
-    border-bottom: 1px solid gray;
-    padding: 15px 0;
+  display: flex;
+  border-bottom: 1px solid gray;
+  padding: 15px 0;
 }
 .review-detail p {
-    font-size: 0.8em;
-    margin: 6px 0;
+  font-size: 0.8em;
+  margin: 6px 0;
 }
 .film h3 {
-    margin: 15px 0;
+  margin: 15px 0;
 }
 .film-review .rating h3 {
-    font-size: 0.8em;
-    margin: 0;
+  font-size: 0.8em;
+  margin: 0;
 }
 div.review-last {
-    border-bottom: none;
-    padding-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }

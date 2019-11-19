@@ -80,7 +80,7 @@
                                     echo '
                                         <td class="table-state available">
                                             <a href="' . BASE_URL . '/seat/index/' . $schedule['schedule_id'] . '">
-                                                Book Now 
+                                                Book
                                                 <img class="svg-med" src="' . BASE_URL . '/assets/icon/right-arrow.svg">
                                             </a>
                                         </td>';
