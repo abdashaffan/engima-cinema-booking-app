@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="list-transaksi">
-            <?php foreach ($transactions as $key => $transaction) : ?>
+            <?php foreach ($transactions as $transaction) : ?>
             <div>
                 <?php echo "<img src='" . BASE_URL . "/assets/img/film/" . $transaction['thumbnail'] . "'>" ?>
                 <div class="info">

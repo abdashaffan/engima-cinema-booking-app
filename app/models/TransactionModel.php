@@ -26,15 +26,10 @@ class TransactionModel
 
         # Get all transactions from WS URL
         # Ineffective, but working for this current moment
-        $result = file_get_contents(TRANSACTION_WS_URL . "/api/transaksi");
+        $result = file_get_contents(TRANSACTION_WS_URL . "/api/transaksi/" . $userid);
         $transactions = json_decode($result,true)["response"];
-        $user_transactions= [];
-        foreach ($transactions as $transaction){
-            if($transaction["id_pengguna"]==$userid){
-                array_push($user_transactions,$transaction);
-            }
-        }
-        return $user_transactions;
+        
+        return $transactions["results"];
         
         
     }
