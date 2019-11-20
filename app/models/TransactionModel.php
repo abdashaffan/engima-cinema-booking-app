@@ -205,6 +205,7 @@ class TransactionModel
         $request_body = json_encode(["status"=>$status]);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_VERBOSE, 0);
         curl_setopt($ch,CURLOPT_CUSTOMREQUEST,"PUT");
         curl_setopt($ch,CURLOPT_POSTFIELDS,$request_body);
 

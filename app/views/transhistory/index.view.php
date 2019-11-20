@@ -18,7 +18,7 @@
         <div class="list-transaksi">
             <?php foreach ($transactions as $transaction) : ?>
             <div>
-                <?php echo "<img src='" . BASE_URL . "/assets/img/film/" . $transaction['thumbnail'] . "'>" ?>
+                <?php echo "<img src='" . BASE_URL . "/assets/img/film/" . $transaction['id_film'] . ".jpg'>" ?>
                 <div class="info">
                     <h2><?php echo $transaction['title'] ?></h2>
                     <h3>Schedule:
