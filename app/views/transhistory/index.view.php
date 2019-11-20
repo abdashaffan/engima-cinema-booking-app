@@ -23,7 +23,7 @@
                     <h2><?php echo $transaction['title'] ?></h2>
                     <h3>Schedule:
                         <?php
-              $date = DateTime::createFromFormat('Y-m-d H:i:s', $transaction['showtime']);
+              $date = new DateTime($transaction['jadwal_film']);
               if ($date) {
                 $string = $date->format('F d Y - h:i A');
                 echo $string;

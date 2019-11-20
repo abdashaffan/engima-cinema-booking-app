@@ -23,12 +23,28 @@ class TransactionModel
 
     public function getAllUserTransaction($userid)
     {
-        $this->db->query(
-            "SELECT * FROM {$this->table} t INNER JOIN schedule s ON t.schedule_ID=s.schedule_ID INNER JOIN film f ON s.film_id=f.film_id 
-            WHERE t.user_id =:id ORDER BY showtime DESC"           
-        );
-        $this->db->bind('id', $userid);
-        return $this->db->resultSet();
+        # Now we're going to fetch user transaction data
+        # However, now the data is stored separately, so we need to 
+
+        // $this->db->query(
+        //     "SELECT * FROM {$this->table} t INNER JOIN schedule s ON t.schedule_ID=s.schedule_ID INNER JOIN film f ON s.film_id=f.film_id 
+        //     WHERE t.user_id =:id ORDER BY showtime DESC"           
+        // );
+        // $this->db->bind('id', $userid);
+        // return $this->db->resultSet();
+
+        # Inititate 
+        $result = file_get_contents(TRANSACTION_WS_URL . "/api/transaksi");
+        $transactions = json_decode($result,true)["response"];
+        $user_transactions= [];
+        foreach ($transactions as $transaction){
+            if($transaction["id_pengguna"]==$userid){
+                array_push($user_transactions,$transaction);
+            }
+        }
+        return $user_transactions;
+        
+        
     }
     public function delReviewTransactionUpdate($transid){
         // set Transaction Status by id
