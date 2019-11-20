@@ -146,6 +146,7 @@ class TransactionModel
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_VERBOSE, 0);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $request_body); // the SOAP request
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
@@ -207,10 +208,12 @@ class TransactionModel
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch, CURLOPT_VERBOSE, 0);
         curl_setopt($ch,CURLOPT_CUSTOMREQUEST,"PUT");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch,CURLOPT_POSTFIELDS,$request_body);
 
 
-        $curl_output = curl_exec($ch);
+        curl_exec($ch);
+        curl_close($ch);
 
     }
 }
