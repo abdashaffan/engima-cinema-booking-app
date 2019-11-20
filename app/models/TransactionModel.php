@@ -99,65 +99,116 @@ class TransactionModel
         $transactions = $json_data["response"];
         foreach($transactions as $transaction){
             if ($transaction["status_transaksi"]=='pending'){
-                $tranc_time = new DateTime($transaction["waktu_pembuatan_transaksi"]);
-                $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
-                $tranc_endtime->modify('+2 minutes');
 
-                # Adjust timezone to Indonesia
-                $tranc_time->setTimeZone(new DateTimeZone("Asia/Jakarta"));
-                $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
-                # Check whether a transaction occured between time and endtime of transaction
-                # Get soap body
-                # Harga fixed to 30000
-                $request_body = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:k03="http://K03G04Tubes2.org/">' . PHP_EOL;
-                $request_body = $request_body . '  <soapenv:Header/>' . PHP_EOL;
-                $request_body = $request_body . '  <soapenv:Body>' . PHP_EOL;
-                $request_body = $request_body . '    <k03:isTransactionExist>' . PHP_EOL;
-                $request_body = $request_body . '      <to_account>' . $transaction["va_tujuan"]. ' </to_account>' . PHP_EOL;
-                $request_body = $request_body . '        <nominal>30000</nominal>' . PHP_EOL;
-                $request_body = $request_body . '        <!--Optional:-->' . PHP_EOL;
-                $request_body = $request_body . '        <begin_date>' . $tranc_time->format("Y:m:d H:i:s") .'</begin_date>' . PHP_EOL;
-                $request_body = $request_body . '        <!--Optional:-->' . PHP_EOL;
-                $request_body = $request_body . '        <end_date>' . $tranc_endtime->format("Y:m:d H:i:s") .'</end_date>' . PHP_EOL;
-                $request_body = $request_body . '    </k03:isTransactionExist>' . PHP_EOL;
-                $request_body = $request_body . '  </soapenv:Body>' . PHP_EOL;
-                $request_body = $request_body . '  </soapenv:Envelope>' . PHP_EOL;
+                $check = $this->checkIfTransactionIsPaid($transaction);
 
-                #  adjust header for SOAP
-                print(strlen($request_body));
-                print($request_body);
-                $headers = array(
-                    "Accept-Encoding: gzip,deflate",
-                    "Content-Type: text/xml;charset=UTF-8",
-                    "SOAPAction: \"\"", 
-                    "Content-length: ".strlen($request_body),
-                    "Host: " . BANK_WS_URL,
-                    "Connection: Keep-Alive",
-                    "User-Agent: Apache-HttpClient/4.1.1 (java 1.5)",
-                );
+                if($check==true){
 
-                $url = "http://" . BANK_WS_URL . "/services/bankpro";
-                print($url);
-                # curl
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $request_body); // the SOAP request
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                    $this->setStatus($transaction,"success");
 
-                $response = curl_exec($ch);
-            
-                # search true or false
-                if(strstr($response,"true")){
-                    echo "ketemu !";
-                } else {
-                    echo "tidak !"; 
+                } else if ($check==false) {
+                    $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
+                    $tranc_endtime->modify('+2 minutes');
+                    $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
+                    if($tranc_endtime >= $timeNow){
+                        # Transaction can still be paid
+                        # Keep pending status
+                    } else {
+                        $this->setStatus($transaction,"cancelled");
+                    }
                 }
             }
         }
+    }
+
+    private function checkIfTransactionIsPaid($transaction){
+
+        $tranc_time = new DateTime($transaction["waktu_pembuatan_transaksi"]);
+        $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
+        $tranc_endtime->modify('+2 minutes');
+
+        # Adjust timezone to Indonesia
+        $tranc_time->setTimeZone(new DateTimeZone("Asia/Jakarta"));
+        $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
+        # Check whether a transaction occured between time and endtime of transaction
+        # Get SOAP request, price fixed at 30000
+
+        $request_body = $this->getTransactionSOAPBody(
+            $transaction["va_tujuan"],
+            $tranc_time->format("Y:m:d H:i:s"),
+            $tranc_endtime->format("Y:m:d H:i:s"));
+
+        $headers = $this->getTransactionSOAPHeader(strlen($request_body));
+        $url = "http://" . BANK_WS_URL . "/services/bankpro";
+        # curl
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $request_body); // the SOAP request
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+        # Return without parsing
+        if(strstr($response,"true")){
+            return true;
+        } else if (strstr($response,"false")){
+            return false;
+        } else {
+            return null;
+        }
 
 
-        exit();
+    }
+
+    private function getTransactionSOAPBody($va_number,$begin_time,$end_time){
+
+        $request_body = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:k03="http://K03G04Tubes2.org/">' . PHP_EOL;
+        $request_body = $request_body . '  <soapenv:Header/>' . PHP_EOL;
+        $request_body = $request_body . '  <soapenv:Body>' . PHP_EOL;
+        $request_body = $request_body . '    <k03:isTransactionExist>' . PHP_EOL;
+        $request_body = $request_body . '      <to_account>' . $va_number. ' </to_account>' . PHP_EOL;
+        $request_body = $request_body . '        <nominal>30000</nominal>' . PHP_EOL;
+        $request_body = $request_body . '        <!--Optional:-->' . PHP_EOL;
+        $request_body = $request_body . '        <begin_date>' . $begin_time .'</begin_date>' . PHP_EOL;
+        $request_body = $request_body . '        <!--Optional:-->' . PHP_EOL;
+        $request_body = $request_body . '        <end_date>' . $end_time .'</end_date>' . PHP_EOL;
+        $request_body = $request_body . '    </k03:isTransactionExist>' . PHP_EOL;
+        $request_body = $request_body . '  </soapenv:Body>' . PHP_EOL;
+        $request_body = $request_body . '  </soapenv:Envelope>' . PHP_EOL;
+
+
+        return $request_body;
+    }
+
+    private function getTransactionSOAPHeader($len_of_request_body){
+
+        $headers = array(
+            "Accept-Encoding: gzip,deflate",
+            "Content-Type: text/xml;charset=UTF-8",
+            "SOAPAction: \"\"", 
+            "Content-length: ".$len_of_request_body,
+            "Host: " . BANK_WS_URL,
+            "Connection: Keep-Alive",
+            "User-Agent: Apache-HttpClient/4.1.1 (java 1.5)",
+        );
+
+        return $headers;
+
+    }
+
+    private function setStatus($transaction,$status){
+        $ch = curl_init();
+        $url = TRANSACTION_WS_URL . "/api/transaksi/" . $transaction["id_transaksi"];
+        $request_body = json_encode(["status"=>$status]);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_CUSTOMREQUEST,"PUT");
+        curl_setopt($ch,CURLOPT_POSTFIELDS,$request_body);
+
+
+        $curl_output = curl_exec($ch);
+
     }
 }
