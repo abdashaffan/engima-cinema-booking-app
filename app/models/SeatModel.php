@@ -22,13 +22,17 @@ class SeatModel
 
     public function addSeat($schedule_id, $seat_number)
     {
+        //occupied di hardcode karena sebenernya gak kepake
+        //cuma kalo dihapus dbnya jadi corrupt...
         $query =
             "INSERT INTO {$this->table} (
                 schedule_id,
+                occupied,
                 seat_number
             ) VALUES
             (
                 {$schedule_id},
+                1,
                 {$seat_number}
             )";
 

@@ -9,8 +9,8 @@
                     id="payment-modal-error"></span>
                 <span class="payment-details-item payment-details__trans-id">Transaction ID: <br><span
                         id="trans-id"></span></span>
-                <span class="payment-details-item payment-details__trans-virtual-acc">Virtual Account: <br><span
-                        id="virtual-account"></span></span>
+                <span class="payment-details-item payment-details__trans-virtual-acc">Engima Virtual Account: <br><span
+                        id="virtual-account" style="color:green"></span></span>
                 <hr>
             </span>
             <?php echo '<a href="' . BASE_URL . '/transHistory">' ?>
@@ -93,7 +93,7 @@
                         <h4><?php echo 'Rp' . $film['price'] ?></h4>
                     </div>
                     <input type="hidden" id="seat-number-buy" value="">
-                    <?php echo '<div class="seat-buy" onclick="buy(' . $schedule['schedule_id'] . ')">Buy Ticket</div>' ?>
+                    <?php echo '<div class="seat-buy" onclick="createPaymentRequest(' . $schedule['schedule_id'] . ')">Buy Ticket</div>' ?>
                 </div>
                 <div>
                 </div>

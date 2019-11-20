@@ -124,10 +124,12 @@ async function createVirtualAccountNumberSOAP(account_num) {
 
 async function createNewTransactionREST(account_num, virtual_account_num) {
   //prekondisi: virtual_account tidak kosong dan valid
+  //TODO: Liat komen" nya'
+  const film_id = -999;
   const requestBody = JSON.stringify({
     id_pengguna: account_num,
     va_tujuan: virtual_account_num,
-    id_film: "DUMMY_FILM_ID", //dummy data
+    id_film: film_id.toString(), //dummy data, nanti ganti jadi number
     jadwal_film: "2019-11-09 00:00:00", //dummy data
     kursi_pesanan: 30 //dummy data
   });
@@ -140,36 +142,48 @@ async function createNewTransactionREST(account_num, virtual_account_num) {
   return -999; //no response, insert transaction failed
 }
 
-async function buy(schedule_id) {
-  const account_num = await getAccountNumberSOAP(engima_user);
-  const va = await createVirtualAccountNumberSOAP(account_num);
-  const newTrasactionId = await createNewTransactionREST(account_num, va);
-  if (newTrasactionId !== -999 && va !== -999) {
-    trans_id_el.innerText = newTrasactionId;
-    virtual_account_el.innerText = va;
-  } else {
-    modal_error_el.style.display = "inline-block";
-    modal_error_el.innerText = "Internal server error";
-  }
-  let seat_number = document.getElementById("the-seat-number").innerText;
-  let xmlhttp2 = new XMLHttpRequest();
-  xmlhttp2.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      let res = JSON.parse(this.responseText);
-      if (res.response == 1) {
-        let seat = document.getElementById(`seat-${res.seat_number}`);
-        seat.classList.remove("not-occupied");
-        seat.classList.add("occupied");
-        let overlay = document.getElementById("overlay");
-        overlay.style.display = "block";
-      } else {
-        console.log("Not OK");
+function isPaymentRequestValid(trans_id, virtual_account) {
+  return (
+    trans_id !== -999 &&
+    virtual_account !== -999 &&
+    virtual_account !== -1 &&
+    trans_id &&
+    -1
+  );
+}
+
+async function createPaymentRequest(schedule_id) {
+  const user_account_num = await getAccountNumberSOAP(engima_user);
+  const engima_account_num = await getAccountNumberSOAP("engima");
+  const va = await createVirtualAccountNumberSOAP(engima_account_num);
+  const newTrasactionId = await createNewTransactionREST(user_account_num, va);
+  const seat_number = document.getElementById("the-seat-number").innerText;
+  if (isPaymentRequestValid(newTrasactionId, va)) {
+    let xmlhttp2 = new XMLHttpRequest();
+    xmlhttp2.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        let res = JSON.parse(this.responseText);
+        if (res.response == 1) {
+          //seat booking success
+          trans_id_el.innerText = newTrasactionId;
+          virtual_account_el.innerText = va;
+        } else {
+          //Bikin Virtual account sukses, transaksi Id sukses, tapi booking seat gagal
+          //TODO (kalo sempet) : Hapus virtual akun sama transaksi yang sebelumnya dibuat
+          // ^ mesti bikin endpoint baru di ws-transaksi dan ws-bank
+          console.log("Not OK");
+          modal_error_el.style.display = "inline-block";
+          modal_error_el.innerText = "Internal server error";
+        }
       }
-    }
-  };
-  //
-  url = BASE_URL + "/seat/buy";
-  xmlhttp2.open("POST", url, true);
-  xmlhttp2.setRequestHeader("Content-Type", "application/json");
-  xmlhttp2.send(JSON.stringify({ schedule_id, seat_number }));
+    };
+    //
+    url = BASE_URL + "/seat/buy";
+    xmlhttp2.open("POST", url, true);
+    xmlhttp2.setRequestHeader("Content-Type", "application/json");
+    xmlhttp2.send(JSON.stringify({ schedule_id, seat_number }));
+  } else {
+  }
+  let overlay = document.getElementById("overlay");
+  overlay.style.display = "block";
 }

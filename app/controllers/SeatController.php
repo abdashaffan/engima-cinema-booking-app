@@ -32,13 +32,19 @@ class SeatController extends Controller
 
 
     public function buy()
+    /**
+     * dipanggil pas:
+     * 1. Pertama kali bikin request payment
+     * 2. kalo payment success, tetep diblok, kalo gak di unblok
+     * 
+     */
     {
         $request = json_decode(stripslashes(file_get_contents("php://input")));
         $data['seat_number'] = $request->seat_number;
         $data['schedule_id'] = (int) $request->schedule_id;
         $data['user_id'] = $this->model('User')->getUserID()['user_id'];
         $data['seat_id'] = (int) $this->model('Seat')->addSeat($data['schedule_id'], $data['seat_number']);
-        if ($this->model('Transaction')->addTransaction($data) > 0) {
+        if ($data['seat_id'] > 0) {
             $data['response'] = 1;
             echo json_encode($data);
         } else {
@@ -46,4 +52,7 @@ class SeatController extends Controller
             echo json_encode($data);
         }
     }
+
+    //TODO : Bikin endpoint buat batalin book seat kalo status paymentnya udah cancelled
+    // public function unbook() {}
 }
