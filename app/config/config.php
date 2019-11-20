@@ -14,4 +14,5 @@ define('DB_PASS', 'root');
 define('DB_NAME', 'tubes_wbd_1');
 define('BASE_CSS', "/" . PROJECT_NAME . "/public/css/base.css");
 define('BASE_JS', "/" . PROJECT_NAME . "/public/js/index.js");
-define('TRANSACTION_WS_URL','localhost:3000');
+define('TRANSACTION_WS_URL','http://localhost:3000');
+define('BANK_WS_URL','localhost:8080');
