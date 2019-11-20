@@ -97,28 +97,34 @@ class TransactionModel
         $data = file_get_contents(TRANSACTION_WS_URL . "/api/transaksi");
         $json_data = json_decode($data,true);
         $transactions = $json_data["response"];
-        foreach($transactions as $transaction){
-            if ($transaction["status_transaksi"]=='pending'){
-
-                $check = $this->checkIfTransactionIsPaid($transaction);
-
-                if($check==true){
-
-                    $this->setStatus($transaction,"success");
-
-                } else if ($check==false) {
-                    $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
-                    $tranc_endtime->modify('+2 minutes');
-                    $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
-                    if($tranc_endtime >= $timeNow){
-                        # Transaction can still be paid
-                        # Keep pending status
-                    } else {
-                        $this->setStatus($transaction,"cancelled");
+        try {
+            foreach($transactions as $transaction){
+                if ($transaction["status_transaksi"]=='pending'){
+    
+                    $check = $this->checkIfTransactionIsPaid($transaction);
+    
+                    if($check==true){
+    
+                        $this->setStatus($transaction,"success");
+    
+                    } else if ($check==false) {
+                        $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
+                        $tranc_endtime->modify('+2 minutes');
+                        $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
+                        if($tranc_endtime >= $timeNow){
+                            # Transaction can still be paid
+                            # Keep pending status
+                        } else {
+                            $this->setStatus($transaction,"cancelled");
+                        }
                     }
                 }
             }
+        } catch(Exception $e){
+            echo "Error ! " . $e->getMessage();
+            die();
         }
+        
     }
 
     private function checkIfTransactionIsPaid($transaction){
