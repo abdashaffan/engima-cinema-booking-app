@@ -1,3 +1,4 @@
+**/config.php
 /bootstrap/compiled.php
 /vendor
 /vendor/**/.git
