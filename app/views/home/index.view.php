@@ -13,7 +13,7 @@
                 <div class='rating'>
                     <h3>
                         <i class='fa fa-star'></i>
-                        <?php echo $film['vote_average'] ?>
+                        <?php echo $film['vote_average'] . "/10"; ?>
                     </h3>
                 </div>
             </div>

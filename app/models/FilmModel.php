@@ -160,7 +160,7 @@ class FilmModel
                         <span class=\"title\"> " . $movie['title'] . "</span><br>
                             <span class=\"rating\">
                                 <img src=\"" . BASE_URL . "/assets/icon/star-solid.svg\" alt=\"rating-star\" class=\"svg-big\">
-                                " . $movie['vote_average'] . "
+                                " . $movie['vote_average'] . "/10
                             </span><br>
                         <span class=\"sinopis\">
                             " . $overview . "
