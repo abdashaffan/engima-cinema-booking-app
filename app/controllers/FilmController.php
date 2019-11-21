@@ -13,6 +13,7 @@ class FilmController extends Controller
     {
         $data['judul'] = 'Film kami';
         $data['css'] = $this->cssPath . "/style.css";
+        $data['js'] = $this->jsPath . "/index.js";
         $data['film_id'] = $id;
         $data['film'] = $this->model('Film')->getFilmByIdTMDB($id);
         $dateTime = date_create_from_format('Y-m-d', $data['film']['release_date']);
@@ -26,6 +27,6 @@ class FilmController extends Controller
         $this->view('templates/layout');
         $this->view('film/index', $data);
         $this->view('templates/layout-end');
-        $this->view('templates/footer');
+        $this->view('templates/footer', $data);
     }
 }

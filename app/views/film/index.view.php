@@ -88,23 +88,21 @@
                                     ?>
                             seats
                         </td>
-                        <?php
-                                if ($schedule['count'] == 30) {
-                                    echo '
-                                        <td class="table-state not-available">
-                                            Not Available 
-                                            <img class="svg-med" src="' . BASE_URL . '/assets/icon/times-circle-solid.svg">
-                                        </td>';
-                                } else {
-                                    echo '
-                                        <td class="table-state available">
-                                            <a href="' . BASE_URL . '/seat/index/' . $schedule['schedule_id'] . '">
-                                                Book
-                                                <img class="svg-med" src="' . BASE_URL . '/assets/icon/right-arrow.svg">
-                                            </a>
-                                        </td>';
-                                }
-                                ?>
+                        <?php if ($schedule['count'] == 30) : ?>
+                        <td class="table-state not-available">
+                            Not Available
+                            <img src="<?php echo BASE_URL; ?>/assets/icon/times-circle-solid.svg" alt=""
+                                class="svg-med">
+                        </td>
+                        <?php else : ?>
+                        <td class="table-state available">
+                            <form id="book_form" action="<?= BASE_URL; ?>/seat" method="GET">
+                                <input type="hidden" name="film_id" value="<?php echo $film_id; ?>">
+                                <input type="hidden" name="schedule_id" value="<?php echo $schedule['schedule_id']; ?>">
+                                <span style="color:blue;cursor:pointer;" id="book-submit-btn">Book</span>
+                            </form>
+                        </td>
+                        <?php endif; ?>
                     </tr>
                     <?php endforeach; ?>
                 </table>
@@ -123,12 +121,9 @@
                             </b>
                             <div class='rating'>
                                 <h3>
-                                    <<<<<<< HEAD
-                                        <?php echo '<img class="svg-small" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>=======<?php echo '<img class="svg-small" src="' . BASE_URL . '"/assets/icon/star-solid.svg">' ?>>
-                                        >>>>>> e97a7aef2c8e0e6e9171cfc82354f15bf233329d
-
-                                        <?php echo $reviews[$i]['rating'] ?>
-                                        <span>/10</span>
+                                    <?php echo '<img class="svg-small" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>
+                                    <?php echo $reviews[$i]['rating'] ?>
+                                    <span>/10</span>
                                 </h3>
                             </div>
                             <p>
