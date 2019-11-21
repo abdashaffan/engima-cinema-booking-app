@@ -7,8 +7,8 @@ class FilmModel
     // Query to get data from TMDB
     public function getAllTMDB()
     {
-        $time_now = time() * 1000; //Time now in milisecond
-        $time_seven_day_ago = $time_now - 1573640048000;
+        $time_now = time()*1000; //Time now in milisecond
+        $time_seven_day_ago = $time_now - 604800000;
 
         $curl = curl_init();
 
