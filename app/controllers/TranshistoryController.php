@@ -11,6 +11,12 @@ class TranshistoryController extends Controller
 
     public function index()
     {
+        # Call update transaction on transaction model
+        # current model works such that two times fetching all transactions is done
+        # Ineffective, but works as an MVP for demo
+
+        $this->model('Transaction')->updateAllTransactions();
+
         $data['judul'] = 'Engima - Transaction History';
         $data['css'] = $this->cssPath . "/style.css";
         $data['js'] = $this->jsPath . "/index.js";
