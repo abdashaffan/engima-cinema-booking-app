@@ -6,9 +6,9 @@ const loadData = (page = 1) => {
   let xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
       let searchResult = JSON.parse(this.responseText);
       document.querySelector(".container").innerHTML = searchResult.output;
+      scrollWin();
     }
   };
   xmlhttp.open("POST", BASE_URL + "/search/result", true);
