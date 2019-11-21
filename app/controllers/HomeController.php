@@ -19,7 +19,9 @@ class HomeController extends Controller
         $data['judul'] = 'Engima - halaman utama';
         $data['css'] = $this->cssPath . "/style.css";
         $data['user_name'] = $this->model('User')->getCurrentUser();
-        $data['films'] = $this->model('Film')->getAllCurrentFilm();
+        // $data['films'] = $this->model('Film')->getAllCurrentFilm();
+        $data['films'] = $this->model('Film')->getAllTMDB();
+        // var_dump($data['films']);
         $this->view('templates/header', $data);
         $this->view('templates/nav');
         $this->view('templates/layout');

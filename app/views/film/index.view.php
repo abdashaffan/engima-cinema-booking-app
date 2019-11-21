@@ -1,22 +1,41 @@
 <div class="film">
     <div class="film-detail">
-        <?php echo "<img class='film-image-big' src='" . BASE_URL . "/assets/img/film/" . $film['thumbnail'] . "'>"; ?>
+        <?php echo "<img src='http://image.tmdb.org/t/p/w200/".$film['poster_path']."'". BASE_URL ."/assets/img/film/'>"; ?>
         <div class="film-detail-desc">
 
             <h2><?php echo $film['title']; ?></h2>
             <b>
-                <p class="blue-color"><?php echo $film['genre']; ?> | <?php echo $film['length']; ?> mins</p>
+                <p class="blue-color">
+                <?php 
+                $i = 0;
+                $len = count($film['genres']);
+                foreach ($film['genres'] as $genre): ?>
+                    <?php 
+                    if ($i == 0) {
+                        echo $genre['name'];
+                    } ?>
+                    
+                    <?php
+                    if ($i != 0) {
+                        echo ", ";
+                        echo $genre['name'];
+                    } ?>
+
+                    <?php $i++ ?>
+
+                <?php endforeach; ?>
+                | <?php echo $film['runtime']; ?> mins</p>
                 <p>Released date: <?php echo $film['release_date']; ?></p>
             </b>
             <div class='rating'>
                 <h3>
                     <?php echo '<img class="svg-big" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>
-                    <?php echo $film['rating']; ?>
+                    <?php echo $film['vote_average']; ?>
                     <span>/10</span>
                 </h3>
             </div>
             <p>
-                <?php echo $film['sinopsis']; ?>
+                <?php echo $film['overview']; ?>
             </p>
         </div>
     </div>
