@@ -1,9 +1,8 @@
 /* Home */
 
-
 .list-film img {
   height: 250px;
-  width: 170px;
+  width: auto;
   border-radius: 10px;
 }
 .list-film {

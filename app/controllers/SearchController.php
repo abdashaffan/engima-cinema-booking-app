@@ -13,10 +13,7 @@ class SearchController extends Controller
         if (isset($_GET['keyword'])) {
             $data['keyword'] = $_GET['keyword'];
             unset($_GET['keyword']);
-            // $data['initialResult'] = $this->model("film")->getResult($data['keyword']);
-            $resultTMDB = $this->model("film")->getResultTMDB($data['keyword']);
-            $data['initialResult'] = $resultTMDB['results'];
-            // var_dump($data['initialResult']);
+            $data['totalResults'] = $this->model("film")->getResultTMDB($data['keyword']);
         }
         $data['judul'] = 'Engima - search';
         $data['css'] = $this->cssPath . "/style.css";
