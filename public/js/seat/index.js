@@ -122,16 +122,23 @@ async function createVirtualAccountNumberSOAP(account_num) {
   }
 }
 
-async function createNewTransactionREST(account_num, virtual_account_num) {
+async function createNewTransactionREST(
+  account_num,
+  virtual_account_num,
+  schedule_id,
+  film_id,
+  price,
+  seat_num
+) {
   //prekondisi: virtual_account tidak kosong dan valid
   //TODO: Liat komen" nya'
-  const film_id = -999;
   const requestBody = JSON.stringify({
     id_pengguna: account_num,
     va_tujuan: virtual_account_num,
-    id_film: film_id.toString(), //dummy data, nanti ganti jadi number
-    jadwal_film: "2019-11-09 00:00:00", //dummy data
-    kursi_pesanan: 30 //dummy data
+    id_film: film_id.toString(), // nanti ganti jadi number
+    id_jadwal: schedule_id,
+    kursi_pesanan: seat_num,
+    harga: price
   });
   const Uri = BaseServiceUriRest + "/api/transaksi";
   const res = await makeRequest("POST", Uri, requestBody, "application/json");
@@ -152,12 +159,22 @@ function isPaymentRequestValid(trans_id, virtual_account) {
   );
 }
 
-async function createPaymentRequest(schedule_id) {
+async function createPaymentRequest(schedule_id, film_id, price) {
   const user_account_num = await getAccountNumberSOAP(engima_user);
   const engima_account_num = await getAccountNumberSOAP("engima");
   const va = await createVirtualAccountNumberSOAP(engima_account_num);
-  const newTrasactionId = await createNewTransactionREST(user_account_num, va);
-  const seat_number = document.getElementById("the-seat-number").innerText;
+  const seat_number = parseInt(
+    document.getElementById("the-seat-number").innerText,
+    10
+  );
+  const newTrasactionId = await createNewTransactionREST(
+    user_account_num,
+    va,
+    schedule_id,
+    film_id,
+    price,
+    seat_number
+  );
   if (isPaymentRequestValid(newTrasactionId, va)) {
     let xmlhttp2 = new XMLHttpRequest();
     xmlhttp2.onreadystatechange = function() {

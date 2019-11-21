@@ -7,17 +7,18 @@ class SeatController extends Controller
         parent::__construct('seat');
     }
 
-    public function index($id)
+    public function index()
     {
+        $data['schedule_id'] = $_GET['schedule_id'];
+        $data['film_id'] = $_GET['film_id'];
         $data['judul'] = 'Engima - Seats';
         $data['css'] = $this->cssPath . "/style.css";
         $data['js'] = $this->jsPath . "/index.js";
 
 
-        $data['schedule'] = $this->model('Schedule')->getScheduleByScheduleId($id);
-        $data['film'] = $this->model('Film')->getFilmById($data['schedule']['film_id']);
-
-        $seats = $this->model('Seat')->getAllSeatByScheduleId($id);
+        $data['schedule'] = $this->model('Schedule')->getScheduleByScheduleId($data['schedule_id']);
+        $data['film'] = $this->model('Film')->getFilmByIdTMDB($data['film_id']);
+        $seats = $this->model('Seat')->getAllSeatByScheduleId($data['schedule_id']);
         foreach ($seats as $seat) {
             $data['seats'][$seat['seat_number']] = $seat;
         }
