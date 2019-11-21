@@ -7,7 +7,7 @@ class FilmModel
     // Query to get data from TMDB
     public function getAllTMDB()
     {
-        $time_now = time()*1000; //Time now in milisecond
+        $time_now = time() * 1000; //Time now in milisecond
         $time_seven_day_ago = $time_now - 604800000;
 
         $curl = curl_init();
@@ -212,8 +212,9 @@ class FilmModel
             $output .= $prevArrowClass;
             $output .= "'> prev  </span>";
         }
-
-        for ($i = 1; $i <= $totalPages; $i++) {
+        $firstPageNum = $pageNum - 3 < 1 ? 1 : $pageNum - 3;
+        $LastPageNum = $pageNum + 3 < $totalPages ? $pageNum + 3 : $totalPages;
+        for ($i = $firstPageNum; $i <= $LastPageNum; $i++) {
             if ($i == $pageNum) {
                 $output .= "<span class='pagination_link disabled' id='" . $i . "' disabled >" . $i . "</span>";
             } else {
@@ -236,7 +237,7 @@ class FilmModel
         } else {
             $output .= "<span class='pagination_link ";
             $output .= $nextArrowClass;
-            $output .= "'> next;  </span>";
+            $output .= "'> next  </span>";
 
             $output .= "<span class='pagination_link ";
             $output .= $lastArrowClass;

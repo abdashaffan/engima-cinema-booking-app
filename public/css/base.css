@@ -219,6 +219,8 @@ form.form-navbar {
 .film-thumbnail {
   height: 250px;
   width: auto;
+  border-radius: 10px;
+  margin-right: 2em;
 }
 
 input:focus,
