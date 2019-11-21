@@ -36,7 +36,7 @@ class SearchController extends Controller
         $responseArray = [];
         $responseArray['page'] = $data->page;
         $responseArray['keyword'] = $data->keyword;
-        $responseArray['output'] = $this->model('Film')->paginateResult($responseArray);
+        $responseArray['output'] = $this->model('Film')->paginateResultTMDB($responseArray);
         echo json_encode($responseArray);
     }
 }

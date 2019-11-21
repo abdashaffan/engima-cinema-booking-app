@@ -110,7 +110,7 @@ class FilmModel
         $query = "https://api.themoviedb.org/3/search/movie?api_key=342cd394f089d67c3e28dfc6e965a8b5&language=en-US&pages=";
         $query .= $page;
         $query .= "&query=";
-        $query .=  $keyword;
+        $query .=  $data['keyword'];
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $query,
@@ -130,20 +130,14 @@ class FilmModel
 
         $hasil = json_decode($response, true);
 
-        if ($err) {
-                echo "cURL Error #:" . $err;
-        } else {
-            $hasil = json_decode($response, true);
-            // var_dump($hasil);
-        }
 
         if ($hasil['results'] > 0) {
             foreach ($hasil['results'] as $movie) {
                 $output .= "
             <div class=\"film-wrapper\">
                 <div class=\"main-content\">
-                    <img src=\"" . BASE_URL . "/assets/img/film/" . $movie['thumbnail'] . "\" 
-                    <div class=\"film-detail-wrapper\">
+                    <img src=\"http://image.tmdb.org/t/p/w154/".$movie['poster_path']."\" 
+                    <div class=\"film-detail-wrapper\"><br>
                         <span class=\"title\"> " . $movie['title'] . "</span><br>
                             <span class=\"rating\">
                                 <img src=\"" . BASE_URL . "/assets/icon/star-solid.svg\" alt=\"rating-star\" class=\"svg-big\">
@@ -200,12 +194,6 @@ class FilmModel
         curl_close($curl);
 
         $hasil = json_decode($response, true);
-        if ($err) {
-                echo "cURL Error #:" . $err;
-        } else {
-            $hasil = json_decode($response, true);
-            // var_dump($hasil);
-        }
 
         $totalRecords = sizeof($hasil);
         $totalPages = ceil($totalRecords / RECORD_PER_PAGE);
