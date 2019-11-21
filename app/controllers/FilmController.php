@@ -11,10 +11,9 @@ class FilmController extends Controller
 
     public function index($id = 1)
     {
-        // TODO: Change to parse id
         $data['judul'] = 'Film kami';
         $data['css'] = $this->cssPath . "/style.css";
-
+        $data['film_id'] = $id;
         $data['film'] = $this->model('Film')->getFilmByIdTMDB($id);
         $dateTime = date_create_from_format('Y-m-d', $data['film']['release_date']);
         $data['film']['release_date'] = $dateTime->format('F d, Y');
