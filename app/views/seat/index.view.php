@@ -90,13 +90,13 @@
                     </p>
                     <div class="seat-price">
                         <h4 id="seat-current-number"></h4>
-                        <h4><?php echo 'Rp 40000'; ?></h4>
+                        <h4><?php echo 'Rp 30000'; ?></h4>
                     </div>
                     <input type="hidden" id="seat-number-buy" value="">
                     <div class="seat-buy" onclick="createPaymentRequest(
                             <?php echo  $schedule['schedule_id']; ?>,
                             <?php echo $film['id']; ?>
-                            ,40000
+                            ,30000
                         )">
                         Buy Ticket
                     </div>
