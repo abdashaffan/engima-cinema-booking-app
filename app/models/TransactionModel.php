@@ -1,5 +1,6 @@
 <?php
 
+require 'SeatModel.php';
 
 class TransactionModel
 {
@@ -111,6 +112,8 @@ class TransactionModel
                             # Keep pending status
                         } else {
                             $this->setStatus($transaction,"CANCELLED");
+                            $seat_model = new SeatModel();
+                            $seat_model->deleteSeat($transaction["id_jadwal"],$transaction["kursi_pesanan"]);
                         }
                     }
                 }

@@ -1,6 +1,8 @@
 const form = document.getElementById("book_form");
-const book_btn = document.getElementById("book-submit-btn");
 
-book_btn.addEventListener("click", function() {
+
+function submit(num){
+  const form = document.getElementById("form" + num);
+  console.log("form"+num);
   form.submit();
-});
+}

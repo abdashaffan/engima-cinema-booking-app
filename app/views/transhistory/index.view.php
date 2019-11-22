@@ -16,14 +16,16 @@
             </div>
         </div>
         <div class="list-transaksi">
-            <?php foreach ($transactions as $transaction) : ?>
+            <?php foreach ($transactions as $transaction) : 
+                $film_id = $transaction["schedule"]["film_id"];
+                ?>
             <div>
-                <?php echo "<img src='" . BASE_URL . "/assets/img/film/" . $transaction['id_film'] . ".jpg'>" ?>
+                <?php echo "<img src='http://image.tmdb.org/t/p/w200/".  $films[$film_id]["poster_path"] . "'>" ?>
                 <div class="info">
-                    <h2><?php echo $transaction['title'] ?></h2>
+                    <h2><?php echo $films[$film_id]['title'] ?></h2>
                     <h3>Schedule:
                         <?php
-              $date = new DateTime($transaction['jadwal_film']);
+              $date = new DateTime($transaction['schedule']['showtime']);
               if ($date) {
                 $string = $date->format('F d Y - h:i A');
                 echo $string;
@@ -38,7 +40,7 @@
               date_default_timezone_set('Asia/Jakarta');
               $currdatestr = date('Y-m-d H:i:s', time());
               $currdate = DateTime::createFromFormat('Y-m-d H:i:s', $currdatestr);
-              if($transaction['status_transaksi']=='cancelled'){
+              if($transaction['status_transaksi']=='CANCELLED'){
                     echo "<button type=\"button\" class=\"AddBtn\">Cancelled</button>";
               } else if ($transaction['status_transaksi']=='pending'){
                     echo "<button type=\"button\" class=\"AddBtn\">Pending</button>";
