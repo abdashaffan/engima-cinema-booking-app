@@ -99,7 +99,21 @@
                             <form id="book_form" action="<?= BASE_URL; ?>/seat" method="GET">
                                 <input type="hidden" name="film_id" value="<?php echo $film_id; ?>">
                                 <input type="hidden" name="schedule_id" value="<?php echo $schedule['schedule_id']; ?>">
-                                <span style="color:blue;cursor:pointer;" id="book-submit-btn">Book</span>
+                                <?php
+                                    # Check if passed already
+                                    # If passed or fully booked then cannot book
+                                    if ($schedule['count']==30){
+                                        echo '<span style="color:red;cursor:pointer;" id="book-full-btn">Full</span>';
+                                    } else {
+                                        $film_time = new DateTime($schedule["showtime"]);
+                                        $current_time = new DateTime();
+                                        if($film_time<$current_time){
+                                            echo '<span style="color:red;cursor:pointer;" id="book-played-btn">Played</span>';
+                                        } else {
+                                            echo '<span style="color:blue;cursor:pointer;" id="book-submit-btn">Book</span>';
+                                        }
+                                    }
+                                ?>
                             </form>
                         </td>
                         <?php endif; ?>
