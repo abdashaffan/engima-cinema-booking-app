@@ -11,7 +11,6 @@ if (!isset($keyword)) {
             </a>
         </div>
         <div class="input-box">
-            <!-- TODO: rapihin search icon -->
             <form action="<?= BASE_URL; ?>/search" method="GET" class="form-navbar">
                 <input type=" text" placeholder="Search movie" name="keyword" autocomplete="off" class="keyword"
                     value="<?= $keyword; ?>">

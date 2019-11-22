@@ -9,8 +9,8 @@
                     id="payment-modal-error"></span>
                 <span class="payment-details-item payment-details__trans-id">Transaction ID: <br><span
                         id="trans-id"></span></span>
-                <span class="payment-details-item payment-details__trans-virtual-acc">Virtual Account: <br><span
-                        id="virtual-account"></span></span>
+                <span class="payment-details-item payment-details__trans-virtual-acc">Engima Virtual Account: <br><span
+                        id="virtual-account" style="color:green"></span></span>
                 <hr>
             </span>
             <?php echo '<a href="' . BASE_URL . '/transHistory">' ?>
@@ -22,7 +22,7 @@
 <div class="seat">
     <div class="seat-detail">
         <?php echo '
-            <a href="' . BASE_URL . '/film/' . $film['film_id'] . '">
+            <a href="' . BASE_URL . '/film/' . $film['id'] . '">
                 <img class="svg-superbig" src="' . BASE_URL . '/assets/icon/chevron-left-solid.svg">
             </a>'
         ?>
@@ -90,10 +90,16 @@
                     </p>
                     <div class="seat-price">
                         <h4 id="seat-current-number"></h4>
-                        <h4><?php echo 'Rp' . $film['price'] ?></h4>
+                        <h4><?php echo 'Rp 30000'; ?></h4>
                     </div>
                     <input type="hidden" id="seat-number-buy" value="">
-                    <?php echo '<div class="seat-buy" onclick="buy(' . $schedule['schedule_id'] . ')">Buy Ticket</div>' ?>
+                    <div class="seat-buy" onclick="createPaymentRequest(
+                            <?php echo  $schedule['schedule_id']; ?>,
+                            <?php echo $film['id']; ?>
+                            ,30000
+                        )">
+                        Buy Ticket
+                    </div>
                 </div>
                 <div>
                 </div>

@@ -1,22 +1,41 @@
 <div class="film">
     <div class="film-detail">
-        <?php echo "<img class='film-image-big' src='" . BASE_URL . "/assets/img/film/" . $film['thumbnail'] . "'>"; ?>
+        <?php echo "<img class='film-thumbnail' src='http://image.tmdb.org/t/p/w200/" . $film['poster_path'] . "'" . BASE_URL . "/assets/img/film/'>"; ?>
         <div class="film-detail-desc">
 
             <h2><?php echo $film['title']; ?></h2>
             <b>
-                <p class="blue-color"><?php echo $film['genre']; ?> | <?php echo $film['length']; ?> mins</p>
+                <p class="blue-color">
+                    <?php
+                    $i = 0;
+                    $len = count($film['genres']);
+                    foreach ($film['genres'] as $genre) : ?>
+                    <?php
+                            if ($i == 0) {
+                                echo $genre['name'];
+                            } ?>
+
+                    <?php
+                            if ($i != 0) {
+                                echo ", ";
+                                echo $genre['name'];
+                            } ?>
+
+                    <?php $i++ ?>
+
+                    <?php endforeach; ?>
+                    | <?php echo $film['runtime']; ?> mins</p>
                 <p>Released date: <?php echo $film['release_date']; ?></p>
             </b>
             <div class='rating'>
                 <h3>
                     <?php echo '<img class="svg-big" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>
-                    <?php echo $film['rating']; ?>
+                    <?php echo $film['vote_average']; ?>
                     <span>/10</span>
                 </h3>
             </div>
             <p>
-                <?php echo $film['sinopsis']; ?>
+                <?php echo $film['overview']; ?>
             </p>
         </div>
     </div>
@@ -69,23 +88,35 @@
                                     ?>
                             seats
                         </td>
-                        <?php
-                                if ($schedule['count'] == 30) {
-                                    echo '
-                                        <td class="table-state not-available">
-                                            Not Available 
-                                            <img class="svg-med" src="' . BASE_URL . '/assets/icon/times-circle-solid.svg">
-                                        </td>';
-                                } else {
-                                    echo '
-                                        <td class="table-state available">
-                                            <a href="' . BASE_URL . '/seat/index/' . $schedule['schedule_id'] . '">
-                                                Book
-                                                <img class="svg-med" src="' . BASE_URL . '/assets/icon/right-arrow.svg">
-                                            </a>
-                                        </td>';
-                                }
+                        <?php if ($schedule['count'] == 30) : ?>
+                        <td class="table-state not-available">
+                            Not Available
+                            <img src="<?php echo BASE_URL; ?>/assets/icon/times-circle-solid.svg" alt=""
+                                class="svg-med">
+                        </td>
+                        <?php else : ?>
+                        <td class="table-state available">
+                            <form id="book_form" action="<?= BASE_URL; ?>/seat" method="GET">
+                                <input type="hidden" name="film_id" value="<?php echo $film_id; ?>">
+                                <input type="hidden" name="schedule_id" value="<?php echo $schedule['schedule_id']; ?>">
+                                <?php
+                                    # Check if passed already
+                                    # If passed or fully booked then cannot book
+                                    if ($schedule['count']==30){
+                                        echo '<span style="color:red;cursor:pointer;" id="book-full-btn">Full</span>';
+                                    } else {
+                                        $film_time = new DateTime($schedule["showtime"]);
+                                        $current_time = new DateTime();
+                                        if($film_time<$current_time){
+                                            echo '<span style="color:red;cursor:pointer;" id="book-played-btn">Played</span>';
+                                        } else {
+                                            echo '<span style="color:blue;cursor:pointer;" id="book-submit-btn">Book</span>';
+                                        }
+                                    }
                                 ?>
+                            </form>
+                        </td>
+                        <?php endif; ?>
                     </tr>
                     <?php endforeach; ?>
                 </table>
@@ -104,12 +135,9 @@
                             </b>
                             <div class='rating'>
                                 <h3>
-                                    <<<<<<< HEAD
-                                        <?php echo '<img class="svg-small" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>=======<?php echo '<img class="svg-small" src="' . BASE_URL . '"/assets/icon/star-solid.svg">' ?>>
-                                        >>>>>> e97a7aef2c8e0e6e9171cfc82354f15bf233329d
-
-                                        <?php echo $reviews[$i]['rating'] ?>
-                                        <span>/10</span>
+                                    <?php echo '<img class="svg-small" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>
+                                    <?php echo $reviews[$i]['rating'] ?>
+                                    <span>/10</span>
                                 </h3>
                             </div>
                             <p>
