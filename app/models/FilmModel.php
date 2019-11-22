@@ -7,15 +7,16 @@ class FilmModel
     // Query to get data from TMDB
     public function getAllTMDB()
     {
-        $time_now = time() * 1000; //Time now in milisecond
-        $time_seven_day_ago = $time_now - 604800000;
+        $time_now = date('Y-m-d');
+        
+        $time_seven_day_ago = date('Y-m-d', strtotime('-7 days'));
 
         $curl = curl_init();
 
         $query = "https://api.themoviedb.org/3/discover/movie?api_key=342cd394f089d67c3e28dfc6e965a8b5&language=en-US&";
-        $query .= "language=en-US&release_date.gte=";
+        $query .= "language=en-US&primary_release_date.gte=";
         $query .= $time_seven_day_ago;
-        $query .= "&release_date.lte=";
+        $query .= "&primary_release_date.lte=";
         $query .=  $time_now;
 
         curl_setopt_array($curl, array(
