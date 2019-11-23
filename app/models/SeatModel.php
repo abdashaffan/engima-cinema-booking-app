@@ -27,12 +27,10 @@ class SeatModel
         $query =
             "INSERT INTO {$this->table} (
                 schedule_id,
-                occupied,
                 seat_number
             ) VALUES
             (
                 {$schedule_id},
-                1,
                 {$seat_number}
             )";
 
@@ -40,5 +38,13 @@ class SeatModel
         $this->db->execute();
 
         return $this->db->lastInsertId();
+    }
+
+    public function deleteSeat($schedule_id,$chair){
+        $query = "DELETE FROM seats WHERE schedule_id= :s_id AND seat_number= :sn;";
+        $this->db->query($query);
+        $this->db->bind("s_id",$schedule_id);
+        $this->db->bind("sn",$chair);
+        $this->db->execute();   
     }
 }

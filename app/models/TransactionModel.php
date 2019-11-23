@@ -1,5 +1,6 @@
 <?php
 
+require 'SeatModel.php';
 
 class TransactionModel
 {
@@ -94,13 +95,13 @@ class TransactionModel
         $transactions = $json_data["response"];
         try {
             foreach($transactions as $transaction){
-                if ($transaction["status_transaksi"]=='pending'){
+                if ($transaction["status_transaksi"]=='PENDING'){
     
                     $check = $this->checkIfTransactionIsPaid($transaction);
     
                     if($check==true){
     
-                        $this->setStatus($transaction,"success");
+                        $this->setStatus($transaction,"SUCCESS");
     
                     } else if ($check==false) {
                         $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
@@ -110,7 +111,9 @@ class TransactionModel
                             # Transaction can still be paid
                             # Keep pending status
                         } else {
-                            $this->setStatus($transaction,"cancelled");
+                            $this->setStatus($transaction,"CANCELLED");
+                            $seat_model = new SeatModel();
+                            $seat_model->deleteSeat($transaction["id_jadwal"],$transaction["kursi_pesanan"]);
                         }
                     }
                 }
@@ -152,6 +155,7 @@ class TransactionModel
 
         $response = curl_exec($ch);
         curl_close($ch);
+
         # Return without parsing
         if(strstr($response,"true")){
             return true;

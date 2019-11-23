@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 21, 2019 at 02:15 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.33
+-- Generation Time: Nov 23, 2019 at 12:29 AM
+-- Server version: 5.7.27-0ubuntu0.16.04.1
+-- PHP Version: 7.2.14-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,28 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `tubes_wbd_1`
 --
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `count_seat`
--- (See below for the actual view)
---
-CREATE TABLE `count_seat` (
-`schedule_id` int(11)
-,`count` bigint(21)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `count_set`
--- (See below for the actual view)
---
-CREATE TABLE `count_set` (
-`schedule_id` int(11)
-,`count(*)` bigint(21)
-);
 
 -- --------------------------------------------------------
 
@@ -84,7 +60,34 @@ CREATE TABLE `schedule` (
 --
 
 INSERT INTO `schedule` (`schedule_id`, `film_id`, `showtime`) VALUES
-(9, 330457, '2019-11-21 13:31:56');
+(38, 501907, '2019-11-22 21:00:00'),
+(39, 501907, '2019-11-23 11:00:00'),
+(40, 501907, '2019-11-24 17:00:00'),
+(41, 501907, '2019-11-25 19:00:00'),
+(42, 501907, '2019-11-26 16:00:00'),
+(43, 501907, '2019-11-27 13:00:00'),
+(44, 501907, '2019-11-28 13:00:00'),
+(45, 630900, '2019-11-23 10:48:42'),
+(46, 630900, '2019-11-24 08:48:42'),
+(47, 630900, '2019-11-25 07:48:42'),
+(48, 630900, '2019-11-26 21:48:42'),
+(49, 630900, '2019-11-27 09:48:42'),
+(50, 630900, '2019-11-28 13:48:42'),
+(51, 630900, '2019-11-29 12:48:42'),
+(52, 330457, '2019-11-20 08:00:00'),
+(53, 330457, '2019-11-21 20:00:00'),
+(54, 330457, '2019-11-22 13:00:00'),
+(55, 330457, '2019-11-23 16:00:00'),
+(56, 330457, '2019-11-24 15:00:00'),
+(57, 330457, '2019-11-25 20:00:00'),
+(58, 330457, '2019-11-26 19:00:00'),
+(59, 638806, '2019-11-23 21:00:00'),
+(60, 638806, '2019-11-24 19:00:00'),
+(61, 638806, '2019-11-25 19:00:00'),
+(62, 638806, '2019-11-26 16:00:00'),
+(63, 638806, '2019-11-27 20:00:00'),
+(64, 638806, '2019-11-28 22:00:00'),
+(65, 638806, '2019-11-29 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -95,7 +98,6 @@ INSERT INTO `schedule` (`schedule_id`, `film_id`, `showtime`) VALUES
 CREATE TABLE `seats` (
   `seat_id` int(11) NOT NULL,
   `schedule_id` int(11) NOT NULL,
-  `occupied` tinyint(1) NOT NULL DEFAULT '0',
   `seat_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -103,20 +105,9 @@ CREATE TABLE `seats` (
 -- Dumping data for table `seats`
 --
 
-INSERT INTO `seats` (`seat_id`, `schedule_id`, `occupied`, `seat_number`) VALUES
-(7, 9, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `tes`
--- (See below for the actual view)
---
-CREATE TABLE `tes` (
-`schedule_id` int(11)
-,`film_id` int(11)
-,`showtime` datetime
-);
+INSERT INTO `seats` (`seat_id`, `schedule_id`, `seat_number`) VALUES
+(7, 9, 1),
+(11, 63, 27);
 
 -- --------------------------------------------------------
 
@@ -140,34 +131,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `phone_num`, `login_token`, `profile_picture`, `mime`) VALUES
-(27, 'abda', '$2y$10$ttmWuOpL06ceEfw05JYMAe7wSA4YWQbCo/tPfGKEv.Jvil.iQHBme', 'abdashaffan@gmail.com', '+6281319770772', '4c4b4c6993873029ae124f19f52b81c7640f17e1544aa6103e3017f2c8782a70', 0x5265736f7572636520696420233131, 'image/png');
-
--- --------------------------------------------------------
-
---
--- Structure for view `count_seat`
---
-DROP TABLE IF EXISTS `count_seat`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `count_seat`  AS  select `seats`.`schedule_id` AS `schedule_id`,count(0) AS `count` from `seats` group by `seats`.`schedule_id` ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `count_set`
---
-DROP TABLE IF EXISTS `count_set`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `count_set`  AS  select `seats`.`schedule_id` AS `schedule_id`,count(0) AS `count(*)` from `seats` group by `seats`.`schedule_id` ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `tes`
---
-DROP TABLE IF EXISTS `tes`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tes`  AS  select `schedule`.`schedule_id` AS `schedule_id`,`schedule`.`film_id` AS `film_id`,`schedule`.`showtime` AS `showtime` from `schedule` where (`schedule`.`film_id` = 1) ;
+(27, 'abda', '$2y$10$ttmWuOpL06ceEfw05JYMAe7wSA4YWQbCo/tPfGKEv.Jvil.iQHBme', 'abdashaffan@gmail.com', '+6281319770772', NULL, 0x5265736f7572636520696420233131, 'image/png'),
+(28, 'alamhasabie', '$2y$10$/nGAmaqgrMsvLUO5acYcYe/.wo8cQgfL9WndH9t8bLcW.pxJWAjlS', 'alamhasabie@yahoo.com', '087722679123', '8397f81780454f3ed8c738c33b955e0881a703833fcaea5bad0d89893e8bd3c8', 0x30, '');
 
 --
 -- Indexes for dumped tables
@@ -206,26 +171,21 @@ ALTER TABLE `user`
 --
 ALTER TABLE `review`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 --
 -- AUTO_INCREMENT for table `seats`
 --
 ALTER TABLE `seats`
-  MODIFY `seat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `seat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-COMMIT;
-
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

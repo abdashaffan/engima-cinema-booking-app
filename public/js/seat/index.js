@@ -159,8 +159,7 @@ function isPaymentRequestValid(trans_id, virtual_account) {
   );
 }
 
-async function createPaymentRequest(schedule_id, film_id, price) {
-  const user_account_num = await getAccountNumberSOAP(engima_user);
+async function createPaymentRequest(curr_user,schedule_id, film_id, price) {
   const engima_account_num = await getAccountNumberSOAP("engima");
   const va = await createVirtualAccountNumberSOAP(engima_account_num);
   const seat_number = parseInt(
@@ -168,7 +167,7 @@ async function createPaymentRequest(schedule_id, film_id, price) {
     10
   );
   const newTrasactionId = await createNewTransactionREST(
-    user_account_num,
+    curr_user,
     va,
     schedule_id,
     film_id,
