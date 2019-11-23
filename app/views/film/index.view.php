@@ -58,7 +58,11 @@
 
                         </th>
                     </tr>
-                    <?php foreach ($schedules as $key => $schedule) : ?>
+                    <?php 
+                    $i=-1;
+                    foreach ($schedules as $schedule) :
+                        $i = $i+1;
+                    ?>
                     <tr>
                         <td>
                             <!-- TODO: trim zero in front of date -->
@@ -96,22 +100,19 @@
                         </td>
                         <?php else : ?>
                         <td class="table-state available">
-                            <form id="book_form" action="<?= BASE_URL; ?>/seat" method="GET">
+                            <form class="book_form" action="<?= BASE_URL; ?>/seat" method="GET" id='<?php echo "form" . $i;?>'>
+                                <?php $id = $schedule["schedule_id"];?>
                                 <input type="hidden" name="film_id" value="<?php echo $film_id; ?>">
-                                <input type="hidden" name="schedule_id" value="<?php echo $schedule['schedule_id']; ?>">
+                                <input type="hidden" name="schedule_id" value="<?php echo $id ?>">
                                 <?php
                                     # Check if passed already
                                     # If passed or fully booked then cannot book
-                                    if ($schedule['count']==30){
-                                        echo '<span style="color:red;cursor:pointer;" id="book-full-btn">Full</span>';
+                                    $film_time = new DateTime($schedule["showtime"]);
+                                    $current_time = new DateTime();
+                                    if($film_time<$current_time){
+                                        echo '<span style="color:red;cursor:pointer;" class="book-played-btn">Played</span>';
                                     } else {
-                                        $film_time = new DateTime($schedule["showtime"]);
-                                        $current_time = new DateTime();
-                                        if($film_time<$current_time){
-                                            echo '<span style="color:red;cursor:pointer;" id="book-played-btn">Played</span>';
-                                        } else {
-                                            echo '<span style="color:blue;cursor:pointer;" id="book-submit-btn">Book</span>';
-                                        }
+                                        echo '<span style="color:blue;cursor:pointer;" onClick="submit(' . $i.  ')">Book</span>';
                                     }
                                 ?>
                             </form>

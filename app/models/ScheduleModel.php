@@ -55,11 +55,11 @@ class ScheduleModel
         // idk how to access the film model
         $film_model = new FilmModel();
         $film = $film_model->getFilmByIdTMDB($id);
-        $release_date = new DateTime($film["release_date"]);
         for ($i=0;$i<7;$i++){
-            $playing_time = $release_date->modify("+{$i} days");
+            $playing_time = new DateTime($film["release_date"]);
+            $playing_time->modify("+{$i} days");
             $hour = rand(8,22);
-            $playing_time = $playing_time->modify("+{$hour} hours");
+            $playing_time->modify("+{$hour} hours");
             $query = "INSERT INTO {$this->table} (
                 film_id,
                 showtime
