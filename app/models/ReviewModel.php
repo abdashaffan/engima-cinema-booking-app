@@ -106,4 +106,13 @@ class ReviewModel
         );
         return $this->db->resultSet();
     }
+
+    public function getAvgRatingByFilmId($id){
+
+        $this->db->query(
+            "SELECT avg(rating) as avg_rating FROM review WHERE film_id = {$id};"
+        );
+
+        return $this->db->resultSet()[0]["avg_rating"];
+    }
 }
