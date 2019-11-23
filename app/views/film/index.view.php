@@ -37,7 +37,7 @@
             <div class='rating'>
                 <h3>
                     <?php echo '<img class="svg-big" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>
-                    <?php echo $rating_from_users; ?>
+                    <?php echo round($rating_from_users,1); ?>
                     <span>/10 (Engima)</span>
                 </h3>
             </div>

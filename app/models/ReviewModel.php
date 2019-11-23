@@ -37,6 +37,29 @@ class ReviewModel
         return $this->db->rowCount();
     }
 
+    public function editUserReview($data)
+    {
+        $query =
+            "UPDATE {$this->table} SET 
+            comment = :comment ,
+            rating = :rating 
+            WHERE 
+            film_id = :film_id 
+            AND 
+            user_id = :user_id
+            ;";
+
+        $this->db->query($query);
+        $this->db->bind('film_id', $data["film_id"]);
+        $this->db->bind('user_id', $data["user_id"]['user_id']);
+        $this->db->bind('comment', $data["comment"]);
+        $this->db->bind('rating', $data["rating"]);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+
     public function getReviewedFilmName($film_id)
     {
         $this->db->query(
@@ -114,5 +137,14 @@ class ReviewModel
         );
 
         return $this->db->resultSet()[0]["avg_rating"];
+    }
+
+    public function getReviewByUserAndFilmID($id,$film_id){
+        $film_id_c = intval($film_id);
+        $this->db->query(
+            "SELECT * FROM review WHERE user_id={$id} AND film_id={$film_id_c};"
+        );
+
+        return $this->db->resultSet();
     }
 }
