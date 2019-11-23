@@ -46,14 +46,14 @@
 				if ($currdate > $date) {
 
 					if ($transaction['status'] == 0) {
-					  echo "<input type=\"hidden\" name=\"transaction_id\" value = " . $transaction['transaction_id'] . ">
-							<input type=\"hidden\" name=\"film_id\" value=" . $transaction['film_id'] . ">
+					  echo "<input type=\"hidden\" name=\"transaction_id\" value = " . $transaction['id_transaksi'] . ">
+							<input type=\"hidden\" name=\"film_id\" value=" . $film_id . ">
 							<button type=\"submit\" class=\"AddBtn\">Add Review</button>";
 					} else {
 					  echo "
 							<div class=\"Btn2\"><div>
-							<input type=\"hidden\" name=\"transaction_id\" value = " . $transaction['transaction_id'] . ">
-							<input type=\"hidden\" name=\"film_id\" value=" . $transaction['film_id'] . ">
+							<input type=\"hidden\" name=\"transaction_id\" value = " . $transaction['id_transaksi'] . ">
+							<input type=\"hidden\" name=\"film_id\" value=" . $film_id . ">
 							<button onclick=\"deleteReview()\" type=\"submit\" class=\"DelBtn\">Delete Review</button></div>
 							<button onclick=\"editReview()\" type=\"submit\" class=\"EdtBtn\">Edit Review</button>
 							</div>";
