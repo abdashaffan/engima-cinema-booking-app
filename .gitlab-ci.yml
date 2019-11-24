@@ -21,7 +21,7 @@ remove_last_repo :
 deploy_code :
   stage : deploy_new
   script :
-    - cd
+    - cd ../../../../../../
     - cd /var/www/html
     - pwd
   only:
