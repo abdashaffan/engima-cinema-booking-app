@@ -16,7 +16,7 @@ Aplikasi Engima tidak lagi menggunakan tabel movie yang berisi data mengenai mov
 <div style="text-align:center"><img src="Screenshots/" /></div>
 
 
-## Pembagian tugas
+## Pembagian tugas WBD IF3110
 ### REST
 1. Menambah transaksi baru : 13517096
 2. Mengubah status transaksi : 13517108
@@ -46,7 +46,7 @@ Aplikasi Engima tidak lagi menggunakan tabel movie yang berisi data mengenai mov
 
 ### Untuk tugas DPPL IF3159
 1. Continous Integration :
-    a. Linting : 13517095
+    a. Linting : 13517096
 2. Eksplorasi EC2 : 13517096
 3. Deployment Engima ke EC2: 13517096
 4. Deployment basis data Engima ke Amazon RDS : 13517096
