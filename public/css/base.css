@@ -9,10 +9,10 @@ body {
   background: #fff;
   font-family: "Lato", sans-serif;
 }
- a {
-   text-decoration: none;
-   cursor: pointer;
- }
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .form-header {
   margin-bottom: 1.7em;
@@ -107,7 +107,6 @@ form label {
   color: #2d9cdb;
 }
 
-
 /* Basic color pallete */
 .blue-color {
   color: #2f80ed;
@@ -152,7 +151,7 @@ form label {
   border: none;
 }
 .input-box {
-  display:flex;
+  display: flex;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 5px 20px;
@@ -184,7 +183,8 @@ form label {
 
 /* Rating */
 .rating img {
-  filter: invert(66%) sepia(74%) saturate(1742%) hue-rotate(14deg) brightness(108%) contrast(104%);
+  filter: invert(66%) sepia(74%) saturate(1742%) hue-rotate(14deg)
+    brightness(108%) contrast(104%);
 }
 .rating {
   color: gray;
@@ -211,16 +211,21 @@ form label {
   height: 15px;
 }
 
-
 form.form-navbar {
-  display:flex;
+  display: flex;
   flex-direction: row;
 }
 
+.film-thumbnail {
+  height: 250px;
+  width: auto;
+  border-radius: 10px;
+  margin-right: 2em;
+}
 
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }

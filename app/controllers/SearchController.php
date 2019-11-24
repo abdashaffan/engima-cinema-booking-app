@@ -13,7 +13,7 @@ class SearchController extends Controller
         if (isset($_GET['keyword'])) {
             $data['keyword'] = $_GET['keyword'];
             unset($_GET['keyword']);
-            $data['initialResult'] = $this->model("film")->getResult($data['keyword']);
+            $data['totalResults'] = $this->model("film")->getResultTMDB($data['keyword']);
         }
         $data['judul'] = 'Engima - search';
         $data['css'] = $this->cssPath . "/style.css";
@@ -33,7 +33,7 @@ class SearchController extends Controller
         $responseArray = [];
         $responseArray['page'] = $data->page;
         $responseArray['keyword'] = $data->keyword;
-        $responseArray['output'] = $this->model('Film')->paginateResult($responseArray);
+        $responseArray['output'] = $this->model('Film')->paginateResultTMDB($responseArray);
         echo json_encode($responseArray);
     }
 }
