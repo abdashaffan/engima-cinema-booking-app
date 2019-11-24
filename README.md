@@ -52,3 +52,4 @@ Aplikasi Engima tidak lagi menggunakan tabel movie yang berisi data mengenai mov
 4. Deployment basis data Engima ke Amazon RDS : 13517096
 5. Continuous Deployment :
     b. Deploy ke httpd : 13517096
+6. URL deployment : http://ec2-107-21-68-151.compute-1.amazonaws.com
