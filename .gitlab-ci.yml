@@ -12,6 +12,17 @@ lint-check :
 remove_last_repo :
   stage : clean_apache_root
   script :
+    - sudo rm /var/www/html/bankpro -r
+  only:
+    - dev
+    - master
+    - feature/ci-cd
+
+deploy_code :
+  stage : deploy_new
+  script :
+    - cd
+    - cd /var/www/html
     - pwd
   only:
     - dev
