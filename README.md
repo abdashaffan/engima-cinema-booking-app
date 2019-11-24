@@ -42,3 +42,13 @@ Aplikasi Engima tidak lagi menggunakan tabel movie yang berisi data mengenai mov
 3. Buy ticket : 13517021
 4. Transaction history : 13517096
 5. Transaksi tiket film : 13517021
+
+
+### Untuk tugas DPPL IF3159
+1. Continous Integration :
+    a. Linting : 13517095
+2. Eksplorasi EC2 : 13517096
+3. Deployment Engima ke EC2: 13517096
+4. Deployment basis data Engima ke Amazon RDS : 13517096
+5. Continuous Deployment :
+    b. Deploy ke httpd : 13517096
