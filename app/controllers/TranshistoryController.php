@@ -27,7 +27,7 @@ class TranshistoryController extends Controller
         for($i=0;$i<count($data['transactions']);$i++){
             $data['transactions'][$i]["schedule"] = $this->model("Schedule")->getScheduleByScheduleId($data['transactions'][$i]["id_jadwal"]);
             $film_id = $data['transactions'][$i]["schedule"]["film_id"];
-            if(!$data['films'][$film_id]){
+            if(!isset($data['films'][$film_id])){
                 $data['films'][$film_id] = $this->model("Film")->getFilmByIdTMDB($film_id);
             }
             $review = $this->model("Review")->getReviewByUserAndFilmID($user_id,$film_id);
