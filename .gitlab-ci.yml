@@ -1,3 +1,19 @@
-run test :
-  script :
+stages :
+  - test
+  - clean_apache_root
+  - deploy_new
+
+lint-check :
+  stage : test
+  script : 
     find -regex ".*\.\(php\)" | while read file; do php -l "$file"; done
+
+
+remove_last_repo :
+  stage : clean_apache_root
+  script :
+    - pwd
+  only:
+    - dev
+    - master
+    - feature/ci-cd
