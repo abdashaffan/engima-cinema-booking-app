@@ -12,7 +12,7 @@ lint-check :
 remove_last_repo :
   stage : clean_apache_root
   script :
-    - rm -f /var/www/html/bankpro -r
+    - rm -f /var/www/html/engima -r
   only:
     - dev
     - master
@@ -23,7 +23,7 @@ deploy_code :
   script :
     - cd ../../../../../../
     - cd /var/www/html
-    - pwd
+    - git clone git@gitlab.informatika.org:if3110-2019-02-k03-04/engima.git
   only:
     - dev
     - master
