@@ -1,6 +1,6 @@
 /** Variabel buat Request ke WS-Bank dan WS-Transaksi */
 const serviceUriSoap = "http://52.90.76.43:8080/ws-bank-1.0/services/bankpro";
-const BaseServiceUriRest = "http://localhost:3000";
+const BaseServiceUriRest = "http://ec2-54-242-9-29.compute-1.amazonaws.com:3000";
 const parser = new DOMParser();
 
 /************************************************************ */
