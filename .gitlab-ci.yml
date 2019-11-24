@@ -6,7 +6,8 @@ stages :
 lint-check :
   stage : test
   script : 
-    find -regex ".*\.\(php\)" | while read file; do php -l "$file"; done
+    - pwd
+    - find -regex ".*\.\(php\)" | while read file; do php -l "$file"; done
 
 
 remove_last_repo :
