@@ -40,10 +40,10 @@ class ReviewController extends Controller
         $transid = $_POST['transaction_id'];
         $data['film_id'] = $_POST['film_id'];
 
-        $status = var_dump($_POST["status"]);
+        $status = $_POST["status"];
         if($status=="1"){
             $this->model('Review')->editUserReview($data);
-        } else if($status==0) {
+        } else if($status=="0") {
             $this->model('Review')->addNewUserReview($data);
         }
         $this->redirect(BASE_URL .  "/" . "transhistory");
