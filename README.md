@@ -13,7 +13,7 @@ Aplikasi Engima tidak lagi menggunakan tabel movie yang berisi data mengenai mov
 3. Movie detail dengan data dari TheMovieDB
 <div style="text-align:center"><img src="Screenshots/detailtmdb.png" /></div>
 3. Pemesanan Tiket
-<div style="text-align:center"><img src="Screenshots/" /></div>
+<div style="text-align:center"><img src="Screenshots/buytickettmdb.jpg" /></div>
 
 
 ## Pembagian tugas
@@ -52,3 +52,4 @@ Aplikasi Engima tidak lagi menggunakan tabel movie yang berisi data mengenai mov
 4. Deployment basis data Engima ke Amazon RDS : 13517096
 5. Continuous Deployment :
     b. Deploy ke httpd : 13517096
+6. URL deployment : http://ec2-107-21-68-151.compute-1.amazonaws.com
