@@ -1,0 +1,132 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+
+.star { 
+  border: none;
+  float: left;
+}
+
+.star > input { display: none; } 
+.star > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.star > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.star > label { 
+  color: rgb(240, 232, 232); 
+ float: right; 
+}
+
+.star > input:checked ~ label, /* show gold star when clicked */
+.star:not(:checked) > label:hover, /* hover current star */
+.star:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.star > input:checked + label:hover, /* hover current star when changing rating */
+.star > input:checked ~ label:hover,
+.star > label:hover ~ input:checked ~ label, /* lighten current selection */
+.star > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+.cancelsubmitbuttons{
+    display: flex;
+    margin-left: 70%
+}
+.savebutton{
+    background-color: #2f80ed;
+    border-radius: 5px;
+    color:white;
+    padding-left : 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    align-items: right;
+    border-style: none;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+.savebutton:hover{
+    background: #2d9cdb;
+    color: white;
+}
+.cancelbutton{
+    background-color: white;
+    color:rgb(141, 139, 139);
+    border: 2px solid rgb(129, 131, 129);
+    border-radius: 5px;
+    padding-left : 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    align-items: right;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s; 
+    transition-duration: 0.2s;
+}
+.cancelbutton:hover{
+    background: rgb(163, 162, 162);
+    color: white;
+}
+
+
+.comment{
+    border: 1px solid #818181;
+    width: 50%;
+    height: 200px;
+    font-size:24px;
+    font-family: helvetica;
+    margin-left:30px;
+}
+
+.iconbtn {
+    background-color: white; /* Blue background */
+    border: none; /* Remove borders */
+    color: #2f80ed; /* White text */
+    font-size: 50px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  
+.flex {
+  display : flex;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.flexmid{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-right:23%;
+}
+.flexmid2{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-left:1%;
+}
+
+.starrating{
+  margin-top: 15px;
+  margin-left: 30px;
+}
+
+form{
+  color: black;
+}
