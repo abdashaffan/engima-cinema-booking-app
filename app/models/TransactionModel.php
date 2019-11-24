@@ -96,7 +96,6 @@ class TransactionModel
         try {
             foreach($transactions as $transaction){
                 if ($transaction["status_transaksi"]=='PENDING'){
-    
                     $check = $this->checkIfTransactionIsPaid($transaction);
     
                     if($check==true){
@@ -106,7 +105,6 @@ class TransactionModel
                     } else if ($check==false) {
                         $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
                         $tranc_endtime->modify('+2 minutes');
-                        $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
                         if($tranc_endtime >= $timeNow){
                             # Transaction can still be paid
                             # Keep pending status
@@ -130,10 +128,6 @@ class TransactionModel
         $tranc_time = new DateTime($transaction["waktu_pembuatan_transaksi"]);
         $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
         $tranc_endtime->modify('+2 minutes');
-
-        # Adjust timezone to Indonesia
-        $tranc_time->setTimeZone(new DateTimeZone("Asia/Jakarta"));
-        $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
         # Check whether a transaction occured between time and endtime of transaction
         # Get SOAP request, price fixed at 30000
 
