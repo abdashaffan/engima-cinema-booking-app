@@ -14,5 +14,5 @@ define('DB_PASS', 'rootroot');
 define('DB_NAME', 'tubes_1_wbd');
 define('BASE_CSS', "/" . PROJECT_NAME . "/public/css/base.css");
 define('BASE_JS', "/" . PROJECT_NAME . "/public/js/index.js");
-define('TRANSACTION_WS_URL', 'http://localhost:3000');
-define('BANK_WS_URL', 'localhost:8080');
+define('TRANSACTION_WS_URL', 'http://ec2-54-242-9-29.compute-1.amazonaws.com:3000/');
+define('BANK_WS_URL', '52.90.76.43:8080');
