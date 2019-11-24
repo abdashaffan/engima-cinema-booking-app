@@ -1,0 +1,31 @@
+stages :
+  - test
+  - clean_apache_root
+  - deploy_new
+
+lint-check :
+  stage : test
+  script : 
+    - pwd
+    - find -regex ".*\.\(php\)" | while read file; do php -l "$file"; done
+
+
+remove_last_repo :
+  stage : clean_apache_root
+  script :
+    - rm -f /var/www/html/engima -r
+  only:
+    - dev
+    - master
+    - feature/ci-cd
+
+deploy_code :
+  stage : deploy_new
+  script :
+    - cd ../../../../../../
+    - cd /var/www/html
+    - git clone git@gitlab.informatika.org:if3110-2019-02-k03-04/engima.git
+  only:
+    - dev
+    - master
+    - feature/ci-cd
