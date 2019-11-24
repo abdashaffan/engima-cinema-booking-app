@@ -101,7 +101,6 @@ class TransactionModel
                     if($check==true){
     
                         $this->setStatus($transaction,"SUCCESS");
-                        
     
                     } else if ($check==false) {
                         $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
