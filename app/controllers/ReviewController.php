@@ -12,13 +12,17 @@ class ReviewController extends Controller
     public function index()
     {
         $filmid = $_GET['filmid'];
-        $transid = $_GET['transid'];
         $data['judul'] = 'Engima -review';
         $data['css'] = $this->cssPath . "/style.css";
-        $data['user_id'] = $this->model('User')->getUserID();
-        $data['film_name'] = $this->model('Review')->getReviewedFilmName($filmid);
-        $data['film_id'] = $filmid;
-        $data['trans_id'] = $transid;
+        $data['user_id'] = intval($_GET['userid']);
+        $data['film_name'] = $this->model('Film')->getFilmByIdTMDB($filmid)["original_title"];
+        $data['film_id'] = intval($filmid);
+        $data['status'] = intval($_GET['status']);
+        if($data['status']==1){
+            $data['review'] = $this->model('Review')->getReviewByUserAndFilmID($data["user_id"],$data['film_id'])[0];
+        } else {
+            $data['review'] == NULL;
+        }
         $this->view('templates/header', $data);
         $this->view('templates/nav');
         $this->view('templates/layout');
@@ -34,20 +38,15 @@ class ReviewController extends Controller
         $data['user_id'] = $this->model('User')->getUserID();
 
         $transid = $_POST['transaction_id'];
-        $data['film_id'] = $_POST['film_id'];;
-        $status = $this->model('Review')->getStatus($transid);
-        $status = trim($status[0]['status']);
+        $data['film_id'] = $_POST['film_id'];
 
-        if ($this->model('Review')->addNewUserReview($data) > 0) {
-            // changetransStatus here
-            if ($status == "0") {
-                $this->model('Review')->changeTransStatus01($transid);
-            } else if ($status == "1") {
-                $this->model('Review')->changeTransStatus10($transid);
-            } else {
-                echo "String failed to compare";
-            }
-            $this->redirect(BASE_URL .  "/" . "transhistory");
+        $status = var_dump($_POST["status"]);
+        if($status=="1"){
+            $this->model('Review')->editUserReview($data);
+        } else if($status==0) {
+            $this->model('Review')->addNewUserReview($data);
         }
+        $this->redirect(BASE_URL .  "/" . "transhistory");
+
     }
 }

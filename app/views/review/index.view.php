@@ -13,7 +13,7 @@
     <div class="flex">
       <button type="button" class="iconbtn"><</button>
       <?php
-        echo "<h1>".$film_name[0]['title']."</h1>";
+        echo "<h1>".$film_name."</h1>";
         ?>
     </div>
     <div class="flexmid">
@@ -50,8 +50,9 @@
         <button type="button" onclick="window.location.href='transhistory';" class="cancelbutton"> Cancel </button>
         <button type="submit" name="submit" class="savebutton"> Submit </button>
     </div>
-    <input type="hidden" name="transaction_id" value = "<?php echo $trans_id; ?>" >
+    <input type="hidden" name="user_id" value = "<?php echo $user_id; ?>" >
     <input type="hidden" name="film_id" value= "<?php echo $film_id; ?>">
+    <input type="hidden" name="status" value = "<?php echo $status; ?>">
   </form>
 </body>
 

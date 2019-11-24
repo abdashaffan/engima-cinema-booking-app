@@ -16,7 +16,9 @@
             </div>
         </div>
         <div class="list-transaksi">
-            <?php foreach ($transactions as $transaction) : 
+            <?php 
+                $user_id = intval($user_ID['user_id']);
+                foreach ($transactions as $transaction) : 
                 $film_id = $transaction["schedule"]["film_id"];
                 ?>
             <div>
@@ -38,24 +40,24 @@
 
                         <?php
               date_default_timezone_set('Asia/Jakarta');
-              $currdatestr = date('Y-m-d H:i:s', time());
-              $currdate = DateTime::createFromFormat('Y-m-d H:i:s', $currdatestr);
+              $currdate = new DateTime();
               if($transaction['status_transaksi']=='CANCELLED'){
                     echo "<button type=\"button\" class=\"AddBtn\">Cancelled</button>";
-              } else if ($transaction['status_transaksi']=='pending'){
+              } else if ($transaction['status_transaksi']=='PENDING'){
                     echo "<button type=\"button\" class=\"AddBtn\">Pending</button>";
-              }else{
+              }else if ($transaction['status_transaksi']=='SUCCESS'){
 				if ($currdate > $date) {
-
-					if ($transaction['status'] == 0) {
-					  echo "<input type=\"hidden\" name=\"transaction_id\" value = " . $transaction['transaction_id'] . ">
-							<input type=\"hidden\" name=\"film_id\" value=" . $transaction['film_id'] . ">
+					if ($transaction['status_review'] == 0) {
+					  echo "<input type=\"hidden\" name=\"user_id\" value = " . $user_id . ">
+                            <input type=\"hidden\" name=\"film_id\" value=" . $film_id . ">
+                            <input type=\"hidden\" name=\"status\" value=" . $transaction["status_review"] . ">
 							<button type=\"submit\" class=\"AddBtn\">Add Review</button>";
 					} else {
 					  echo "
 							<div class=\"Btn2\"><div>
-							<input type=\"hidden\" name=\"transaction_id\" value = " . $transaction['transaction_id'] . ">
-							<input type=\"hidden\" name=\"film_id\" value=" . $transaction['film_id'] . ">
+							<input type=\"hidden\" name=\"user_id\" value = " . $user_id . ">
+                            <input type=\"hidden\" name=\"film_id\" value=" . $film_id . ">
+                            <input type=\"hidden\" name=\"status\" value=" . $transaction["status_review"] . ">
 							<button onclick=\"deleteReview()\" type=\"submit\" class=\"DelBtn\">Delete Review</button></div>
 							<button onclick=\"editReview()\" type=\"submit\" class=\"EdtBtn\">Edit Review</button>
 							</div>";
