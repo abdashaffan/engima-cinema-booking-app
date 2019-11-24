@@ -137,7 +137,7 @@ class TransactionModel
             $tranc_endtime->format("Y:m:d H:i:s"));
 
         $headers = $this->getTransactionSOAPHeader(strlen($request_body));
-        $url = "http://" . BANK_WS_URL . "/services/bankpro";
+        $url = "http://" . BANK_WS_URL . "/ws-bank-1.0/services/bankpro";
         # curl
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
