@@ -1,5 +1,6 @@
 <?php
 
+require 'SeatModel.php';
 
 class TransactionModel
 {
@@ -94,23 +95,23 @@ class TransactionModel
         $transactions = $json_data["response"];
         try {
             foreach($transactions as $transaction){
-                if ($transaction["status_transaksi"]=='pending'){
-    
+                if ($transaction["status_transaksi"]=='PENDING'){
                     $check = $this->checkIfTransactionIsPaid($transaction);
     
                     if($check==true){
     
-                        $this->setStatus($transaction,"success");
+                        $this->setStatus($transaction,"SUCCESS");
     
                     } else if ($check==false) {
                         $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
                         $tranc_endtime->modify('+2 minutes');
-                        $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
                         if($tranc_endtime >= $timeNow){
                             # Transaction can still be paid
                             # Keep pending status
                         } else {
-                            $this->setStatus($transaction,"cancelled");
+                            $this->setStatus($transaction,"CANCELLED");
+                            $seat_model = new SeatModel();
+                            $seat_model->deleteSeat($transaction["id_jadwal"],$transaction["kursi_pesanan"]);
                         }
                     }
                 }
@@ -127,10 +128,6 @@ class TransactionModel
         $tranc_time = new DateTime($transaction["waktu_pembuatan_transaksi"]);
         $tranc_endtime = new DateTime($transaction["waktu_pembuatan_transaksi"]);
         $tranc_endtime->modify('+2 minutes');
-
-        # Adjust timezone to Indonesia
-        $tranc_time->setTimeZone(new DateTimeZone("Asia/Jakarta"));
-        $tranc_endtime->setTimeZone(new DateTimeZone("Asia/Jakarta"));
         # Check whether a transaction occured between time and endtime of transaction
         # Get SOAP request, price fixed at 30000
 
@@ -140,7 +137,7 @@ class TransactionModel
             $tranc_endtime->format("Y:m:d H:i:s"));
 
         $headers = $this->getTransactionSOAPHeader(strlen($request_body));
-        $url = "http://" . BANK_WS_URL . "/services/bankpro";
+        $url = "http://" . BANK_WS_URL . "/ws-bank-1.0/services/bankpro";
         # curl
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -152,6 +149,7 @@ class TransactionModel
 
         $response = curl_exec($ch);
         curl_close($ch);
+
         # Return without parsing
         if(strstr($response,"true")){
             return true;

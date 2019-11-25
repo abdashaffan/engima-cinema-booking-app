@@ -94,6 +94,7 @@
                     </div>
                     <input type="hidden" id="seat-number-buy" value="">
                     <div class="seat-buy" onclick="createPaymentRequest(
+                            <?php echo $user_id;?>,
                             <?php echo  $schedule['schedule_id']; ?>,
                             <?php echo $film['id']; ?>
                             ,30000

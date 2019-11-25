@@ -31,7 +31,14 @@
                 <h3>
                     <?php echo '<img class="svg-big" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>
                     <?php echo $film['vote_average']; ?>
-                    <span>/10</span>
+                    <span>/10 (TheMovieDB)</span>
+                </h3>
+            </div>
+            <div class='rating'>
+                <h3>
+                    <?php echo '<img class="svg-big" src="' . BASE_URL . '/assets/icon/star-solid.svg">' ?>
+                    <?php echo round($rating_from_users,1); ?>
+                    <span>/10 (Engima)</span>
                 </h3>
             </div>
             <p>
@@ -58,7 +65,11 @@
 
                         </th>
                     </tr>
-                    <?php foreach ($schedules as $key => $schedule) : ?>
+                    <?php 
+                    $i=-1;
+                    foreach ($schedules as $schedule) :
+                        $i = $i+1;
+                    ?>
                     <tr>
                         <td>
                             <!-- TODO: trim zero in front of date -->
@@ -96,10 +107,21 @@
                         </td>
                         <?php else : ?>
                         <td class="table-state available">
-                            <form id="book_form" action="<?= BASE_URL; ?>/seat" method="GET">
+                            <form class="book_form" action="<?= BASE_URL; ?>/seat" method="GET" id='<?php echo "form" . $i;?>'>
+                                <?php $id = $schedule["schedule_id"];?>
                                 <input type="hidden" name="film_id" value="<?php echo $film_id; ?>">
-                                <input type="hidden" name="schedule_id" value="<?php echo $schedule['schedule_id']; ?>">
-                                <span style="color:blue;cursor:pointer;" id="book-submit-btn">Book</span>
+                                <input type="hidden" name="schedule_id" value="<?php echo $id ?>">
+                                <?php
+                                    # Check if passed already
+                                    # If passed or fully booked then cannot book
+                                    $film_time = new DateTime($schedule["showtime"]);
+                                    $current_time = new DateTime();
+                                    if($film_time<$current_time){
+                                        echo '<span style="color:red;cursor:pointer;" class="book-played-btn">Played</span>';
+                                    } else {
+                                        echo '<span style="color:blue;cursor:pointer;" onClick="submit(' . $i.  ')">Book</span>';
+                                    }
+                                ?>
                             </form>
                         </td>
                         <?php endif; ?>

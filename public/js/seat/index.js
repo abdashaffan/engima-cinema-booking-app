@@ -1,6 +1,6 @@
 /** Variabel buat Request ke WS-Bank dan WS-Transaksi */
-const serviceUriSoap = "http://localhost:8080/services/bankpro";
-const BaseServiceUriRest = "http://localhost:3000";
+const serviceUriSoap = "http://52.90.76.43:8080/ws-bank-1.0/services/bankpro";
+const BaseServiceUriRest = "http://ec2-54-242-9-29.compute-1.amazonaws.com:3000";
 const parser = new DOMParser();
 
 /************************************************************ */
@@ -159,8 +159,7 @@ function isPaymentRequestValid(trans_id, virtual_account) {
   );
 }
 
-async function createPaymentRequest(schedule_id, film_id, price) {
-  const user_account_num = await getAccountNumberSOAP(engima_user);
+async function createPaymentRequest(curr_user,schedule_id, film_id, price) {
   const engima_account_num = await getAccountNumberSOAP("engima");
   const va = await createVirtualAccountNumberSOAP(engima_account_num);
   const seat_number = parseInt(
@@ -168,7 +167,7 @@ async function createPaymentRequest(schedule_id, film_id, price) {
     10
   );
   const newTrasactionId = await createNewTransactionREST(
-    user_account_num,
+    curr_user,
     va,
     schedule_id,
     film_id,
