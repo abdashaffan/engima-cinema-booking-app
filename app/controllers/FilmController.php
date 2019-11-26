@@ -21,7 +21,10 @@ class FilmController extends Controller
 
         $data['schedules'] = $this->model('Schedule')->getAllScheduleByFilmId($id);
         $data['reviews'] = $this->model('Review')->getAllReviewAndUserByFilmId($id);
-
+        $data["rating_from_users"] = $this->model('Review')->getAvgRatingByFilmId($id);
+        if($data["rating_from_users"]==NULL){
+            $data["rating_from_users"]=0;
+        }
         $this->view('templates/header', $data);
         $this->view('templates/nav');
         $this->view('templates/layout');

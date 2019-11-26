@@ -15,7 +15,7 @@ class SeatController extends Controller
         $data['css'] = $this->cssPath . "/style.css";
         $data['js'] = $this->jsPath . "/index.js";
 
-
+        $data['user_id'] = (int)$this->model('user')->getUserId()['user_id'];
         $data['schedule'] = $this->model('Schedule')->getScheduleByScheduleId($data['schedule_id']);
         $data['film'] = $this->model('Film')->getFilmByIdTMDB($data['film_id']);
         $seats = $this->model('Seat')->getAllSeatByScheduleId($data['schedule_id']);
